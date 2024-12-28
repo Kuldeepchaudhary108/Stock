@@ -91,6 +91,18 @@ const Navbar = () => {
         >
           Blogs
         </NavLink>
+        <NavLink
+          to="/trading-chart"
+          className={({ isActive }) =>
+            `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
+              isActive
+                ? "text-blue-700 dark:text-blue-300"
+                : "text-gray-700 dark:text-gray-300"
+            } hover:text-blue-500 dark:hover:text-blue-400 transition-colors`
+          }
+        >
+          Papertrading
+        </NavLink>
         {/* Logout for Mobile */}
         <li
           className="text-xl font-medium cursor-pointer text-red-500 px-6 py-2 md:hidden"

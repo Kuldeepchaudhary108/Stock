@@ -19,6 +19,13 @@ import {
   VideoLesson,
   VideoModule,
 } from "./pages/index.js";
+import { Trading } from "./components/index.js";
+import {
+  Dashboard,
+  StockDetails,
+  TradingHome,
+  Transactions,
+} from "./components/Trading/index.js";
 // import store from "./App/store.js";
 // import Login from "./components/Login.jsx";
 // import About from "./components/About.jsx";
@@ -42,6 +49,12 @@ function App() {
           <Route path="/blog" element={<BlogList />} />
           <Route path="/Video-lesson" element={<VideoLesson />} />
           <Route path="/certified" element={<VarsityCertified />} />
+          {/* <Route path="/trading-chart" element={<Trading />} /> */}
+
+          <Route path="/trading-chart" element={<TradingHome />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/stock/:symbol" element={<StockDetails />} />
+          <Route path="/transactions" element={<Transactions />} />
         </Route>
       </>
     )
