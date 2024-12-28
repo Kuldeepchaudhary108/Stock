@@ -59,19 +59,21 @@ const ModuleCard = ({ id, title, chapters, description, color }) => {
   };
   return (
     <div
-      className="p-6 border shadow-md rounded-md cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg"
+      className="p-6 border shadow-md rounded-md cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-700"
       onClick={handleTextModule}
     >
       <div className="flex items-center mb-2">
-        <h1 className="text-3xl font-bold">{id}</h1>
+        <h1 className="text-3xl font-bold dark:text-white">{id}</h1>
         <div className={`w-full h-1 ml-2 ${color}`}></div>
       </div>
-      <h2 className="text-xl font-semibold mb-2 cursor-pointer hover:text-blue-700">
+      <h2 className="text-xl font-semibold mb-2 cursor-pointer hover:text-blue-700 dark:text-blue-400">
         {title}
       </h2>
-      <p className="text-sm text-gray-500 mb-4">{chapters}</p>
-      <p className="text-gray-700 mb-4">{description}</p>
-      <div className="flex gap-4 text-blue-500">
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        {chapters}
+      </p>
+      <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
+      <div className="flex gap-4 text-blue-500 dark:text-blue-400">
         <button className="hover:underline">View module</button>
         <button className="hover:underline">Watch videos</button>
         <button className="hover:underline">हिंदी</button>
@@ -82,8 +84,8 @@ const ModuleCard = ({ id, title, chapters, description, color }) => {
 
 const Modules = () => {
   return (
-    <div className="px-10 py-10">
-      <h1 className="text-4xl font-bold mb-8">Modules</h1>
+    <div className="px-10 py-10 bg-gray-50 dark:bg-gray-900 transition-colors">
+      <h1 className="text-4xl font-bold mb-8 dark:text-white">Modules</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {modules.map((module) => (
           <ModuleCard key={module.id} {...module} />

@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
   return (
-    <div className="w-1/3 bg-gray-50 p-4 rounded-lg shadow-md">
+    <div className="w-1/3 bg-gray-50 p-4 rounded-lg shadow-md dark:bg-gray-400">
       <h2 className="text-lg font-bold mb-4">
         Module 1. Introduction to Stock Market (video series)
       </h2>

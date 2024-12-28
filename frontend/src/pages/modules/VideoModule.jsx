@@ -70,10 +70,10 @@ const VideoModuleCard = ({
   return (
     <div
       onClick={handleVideoClick}
-      className="p-6 border shadow-md rounded-md  cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg "
+      className="p-6 border shadow-md rounded-md cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg dark:bg-gray-800 dark:border-gray-700"
     >
-      <div className="flex items-center mb-4 ">
-        <h1 className="text-3xl font-bold">{id}</h1>
+      <div className="flex items-center mb-4">
+        <h1 className="text-3xl font-bold dark:text-white">{id}</h1>
         <div className={`w-full h-1 ml-2 ${color}`}></div>
       </div>
       <div className="mb-4">
@@ -83,12 +83,14 @@ const VideoModuleCard = ({
           className="w-full h-auto rounded-md shadow-md"
         />
       </div>
-      <h2 className="text-xl font-semibold mb-2 cursor-pointer hover:text-blue-700">
+      <h2 className="text-xl font-semibold mb-2 cursor-pointer hover:text-blue-700 dark:text-blue-400">
         {title}
       </h2>
-      <p className="text-sm text-gray-500 mb-4">{chapters}</p>
-      <p className="text-gray-700 mb-4">{description}</p>
-      <div className="flex gap-4 text-blue-500">
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        {chapters}
+      </p>
+      <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
+      <div className="flex gap-4 text-blue-500 dark:text-blue-400">
         <button className="hover:underline">View module</button>
         <button className="hover:underline">Watch videos</button>
         <button className="hover:underline">हिंदी</button>
@@ -99,8 +101,8 @@ const VideoModuleCard = ({
 
 const VideoModules = () => {
   return (
-    <div className="px-10 py-10">
-      <h1 className="text-4xl font-bold mb-8">Video modules</h1>
+    <div className="px-10 py-10 dark:bg-gray-900">
+      <h1 className="text-4xl font-bold mb-8 dark:text-white">Video modules</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {videoModules.map((module) => (
           <VideoModuleCard key={module.id} {...module} />

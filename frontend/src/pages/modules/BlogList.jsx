@@ -2,14 +2,22 @@ import React from "react";
 
 const BlogCard = ({ title, description, author, authorRole, date, image }) => {
   return (
-    <div className="border rounded-lg shadow-sm p-4 flex gap-8">
-      <div className="flex-shrink-0 ">
-        <img src={image} alt="" className="w-56 h-56 object-contain" />
+    <div className="border dark:border-gray-700 rounded-lg shadow-sm p-4 flex flex-col md:flex-row gap-4 md:gap-8 bg-white dark:bg-gray-800 transition-colors">
+      <div className="flex-shrink-0">
+        <img
+          src={image}
+          alt=""
+          className="w-full h-48 md:w-56 md:h-56 object-contain rounded-lg"
+        />
       </div>
       <div className="flex flex-col">
-        <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
-        <p className="text-sm text-gray-600 mt-2">{description}</p>
-        <div className="flex items-center justify-between mt-4 text-sm text-gray-500">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+          {title}
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+          {description}
+        </p>
+        <div className="flex items-center justify-between mt-4 text-sm text-gray-500 dark:text-gray-400">
           <div>
             <span>{author}</span> &bull; <span>{authorRole}</span>
           </div>
@@ -57,17 +65,17 @@ const BlogList = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Varsity</h1>
-      <div className="flex gap-2 mb-4 text-center">
+    <div className="max-w-4xl mx-auto p-6 bg-gray-50 dark:bg-gray-900 transition-colors">
+      <h1 className="text-2xl font-bold mb-6 dark:text-white">Varsity</h1>
+      <div className="flex gap-2 mb-4 text-center dark:text-gray-300">
         Top tags :
-        <span className="text-blue-500 text-sm text-center cursor-pointer hover:text-blue-700">
+        <span className="text-blue-500 text-sm cursor-pointer hover:text-blue-700 dark:hover:text-blue-400">
           #personal finance
         </span>
-        <span className="text-blue-500 text-sm text-center cursor-pointer hover:text-blue-700">
+        <span className="text-blue-500 text-sm cursor-pointer hover:text-blue-700 dark:hover:text-blue-400">
           #zerodha news
         </span>
-        <span className="text-blue-500 text-sm text-center cursor-pointer hover:text-blue-700">
+        <span className="text-blue-500 text-sm cursor-pointer hover:text-blue-700 dark:hover:text-blue-400">
           #inflation
         </span>
       </div>

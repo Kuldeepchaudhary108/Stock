@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { CgProfile } from "react-icons/cg";
+import { FaSun, FaMoon } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../contexts/theme"; // Import the Theme Context
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
+
+  const { themeMode, darkTheme, lightTheme } = useContext(ThemeContext); // Access the theme context
+
+  const handleThemeToggle = () => {
+    if (themeMode === "light") {
+      darkTheme();
+    } else {
+      lightTheme();
+    }
+  };
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -16,15 +28,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" sticky top-0 left-0 z-30 flex justify-between items-center px-6 py-4  bg-white shadow-md">
+    <nav className="sticky top-0 left-0 z-30 flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-900 shadow-md transition-colors">
       {/* Brand Name */}
-      <NavLink to="/" className="text-4xl font-black font-samarkan">
+      <NavLink
+        to="/"
+        className="text-4xl font-black font-samarkan dark:text-white"
+      >
         MerCat
       </NavLink>
 
       {/* Desktop and Mobile Menu */}
       <ul
-        className={`absolute md:relative w-full md:w-auto bg-white md:bg-transparent top-20 md:top-auto left-0 md:left-auto flex flex-col md:flex-row md:items-center transition-all duration-500 ease-in-out ${
+        className={`absolute md:relative w-full md:w-auto bg-white dark:bg-gray-900 md:bg-transparent top-20 md:top-auto left-0 md:left-auto flex flex-col md:flex-row md:items-center transition-all duration-500 ease-in-out ${
           showMenu ? "block" : "hidden md:flex"
         }`}
       >
@@ -32,8 +47,10 @@ const Navbar = () => {
           to="/module"
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
-              isActive ? "text-blue-700" : "text-gray-700"
-            } hover:text-blue-500 transition-colors`
+              isActive
+                ? "text-blue-700 dark:text-blue-300"
+                : "text-gray-700 dark:text-gray-300"
+            } hover:text-blue-500 dark:hover:text-blue-400 transition-colors`
           }
         >
           Modules
@@ -42,8 +59,10 @@ const Navbar = () => {
           to="/video-module"
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
-              isActive ? "text-blue-700" : "text-gray-700"
-            } hover:text-blue-500 transition-colors`
+              isActive
+                ? "text-blue-700 dark:text-blue-300"
+                : "text-gray-700 dark:text-gray-300"
+            } hover:text-blue-500 dark:hover:text-blue-400 transition-colors`
           }
         >
           Video
@@ -52,8 +71,10 @@ const Navbar = () => {
           to="/certified"
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
-              isActive ? "text-blue-700" : "text-gray-700"
-            } hover:text-blue-500 transition-colors`
+              isActive
+                ? "text-blue-700 dark:text-blue-300"
+                : "text-gray-700 dark:text-gray-300"
+            } hover:text-blue-500 dark:hover:text-blue-400 transition-colors`
           }
         >
           Certified
@@ -62,8 +83,10 @@ const Navbar = () => {
           to="/blog"
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
-              isActive ? "text-blue-700" : "text-gray-700"
-            } hover:text-blue-500 transition-colors`
+              isActive
+                ? "text-blue-700 dark:text-blue-300"
+                : "text-gray-700 dark:text-gray-300"
+            } hover:text-blue-500 dark:hover:text-blue-400 transition-colors`
           }
         >
           Blogs
@@ -77,26 +100,42 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* User Dropdown for Desktop */}
-      <div className="relative hidden md:block">
+      {/* Theme Toggle and Profile Icons */}
+      <div className="flex items-center gap-1">
+        {/* Theme Toggle */}
         <button
-          className="h-10 w-10 rounded-full"
-          onClick={() => setShowDropdown((prev) => !prev)}
-          aria-label="User menu"
+          onClick={handleThemeToggle}
+          className="p-2 rounded-full focus:outline-none transition-colors"
+          aria-label="Toggle theme"
         >
-          <CgProfile className="w-8 h-8" />
+          {themeMode === "light" ? (
+            <FaSun className="text-yellow-400 w-6 h-6" />
+          ) : (
+            <FaMoon className="text-gray-700 dark:text-gray-300 w-6 h-6" />
+          )}
         </button>
 
-        {showDropdown && (
-          <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md w-32">
-            <button
-              onClick={handleLogout}
-              className="block w-full text-center text-xl px-4 py-2 text-red-500 bg-[#ebac65] rounded-lg hover:bg-[#e59943] transition-all duration-300"
-            >
-              Log Out
-            </button>
-          </div>
-        )}
+        {/* User Dropdown */}
+        <div className="relative">
+          <button
+            className="h-10 w-10 rounded-full"
+            onClick={() => setShowDropdown((prev) => !prev)}
+            aria-label="User"
+          >
+            <CgProfile className="w-8 h-8 dark:text-white" />
+          </button>
+
+          {showDropdown && (
+            <div className="absolute right-0 mt-2 bg-white dark:bg-gray-800 shadow-lg rounded-md w-32">
+              <button
+                onClick={handleLogout}
+                className="block w-full text-center text-xl px-4 py-2 text-red-500 bg-[#ebac65] rounded-lg hover:bg-[#e59943] transition-all duration-300"
+              >
+                Log Out
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Hamburger Menu for Mobile */}
@@ -105,7 +144,7 @@ const Navbar = () => {
         className="md:hidden block p-2"
         aria-label="Toggle menu"
       >
-        <TiThMenu className="h-8 w-8" />
+        <TiThMenu className="h-8 w-8 dark:text-white" />
       </button>
     </nav>
   );
