@@ -1,17 +1,18 @@
 // App.js
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { Navbar, Footer } from "./components/index.js";
-import { HomePage } from "./pages/index.js";
-function App() {
+
+function Layout() {
   return (
     <div className=" min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        <HomePage />
+        <Outlet />
       </main>
       <Footer />
     </div>
   );
 }
 
-export default App;
+export default Layout;
