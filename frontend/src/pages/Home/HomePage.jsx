@@ -75,6 +75,7 @@ const HomePage = () => {
             className="w-48"
           />
         </div>
+
         <div className="w-1/2">
           <h1 className="text-4xl font-semibold ">Varsity Certified</h1>
           <p className="text-gray-500 text-xl mt-8">
@@ -88,6 +89,8 @@ const HomePage = () => {
           </button>
         </div>
       </div>
+      <hr className="m-8 border-gray-300" />
+
       <div className="w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg">
         <h3 className="text-4xl font-semibold py-4">Recent comments</h3>
         <div className="m-10">

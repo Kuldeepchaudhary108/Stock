@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 relative bg-white shadow-md">
+    <nav className=" sticky top-0 left-0 z-30 flex justify-between items-center px-6 py-4  bg-white shadow-md">
       {/* Brand Name */}
       <NavLink to="/" className="text-4xl font-black font-samarkan">
         MerCat

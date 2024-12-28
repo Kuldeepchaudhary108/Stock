@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const videoModules = [
   {
@@ -61,9 +62,17 @@ const VideoModuleCard = ({
   image,
   color,
 }) => {
+  const navigate = useNavigate();
+
+  const handleVideoClick = () => {
+    navigate("/Video-lesson");
+  };
   return (
-    <div className="p-6 border shadow-md rounded-md">
-      <div className="flex items-center mb-4">
+    <div
+      onClick={handleVideoClick}
+      className="p-6 border shadow-md rounded-md  cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg "
+    >
+      <div className="flex items-center mb-4 ">
         <h1 className="text-3xl font-bold">{id}</h1>
         <div className={`w-full h-1 ml-2 ${color}`}></div>
       </div>

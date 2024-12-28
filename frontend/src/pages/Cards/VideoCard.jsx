@@ -3,7 +3,7 @@ import React from "react";
 const VideoCard = ({ title, description, thumbnail, link }) => {
   return (
     <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-      <div className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 hover:shadow-lg">
+      <div className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
         <img src={thumbnail} alt={title} className="w-full h-40 object-cover" />
         <div className="p-4 flex flex-col justify-between flex-grow">
           <h3 className="text-lg font-semibold text-gray-800">{title}</h3>

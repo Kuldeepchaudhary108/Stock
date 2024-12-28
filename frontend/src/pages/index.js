@@ -5,6 +5,8 @@ import VideoGrid from "./Cards/VideoCard";
 import Modules from "./modules/Module";
 import VideoModule from "./modules/VideoModule";
 import BlogList from "./modules/BlogList";
+import VarsityCertified from "./modules/certified";
+import TextModule from "./modules/TextModule";
 
 import VideoLesson from "./Leasson/LessonPage";
 export {
@@ -16,4 +18,6 @@ export {
   VideoModule,
   BlogList,
   VideoLesson,
+  VarsityCertified,
+  TextModule,
 };

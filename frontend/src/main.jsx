@@ -14,6 +14,8 @@ import {
   BlogList,
   HomePage,
   Modules,
+  TextModule,
+  VarsityCertified,
   VideoLesson,
   VideoModule,
 } from "./pages/index.js";
@@ -35,9 +37,11 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<HomePage />} />
           <Route path="/module" element={<Modules />} />
+          <Route path="/module-text" element={<TextModule />} />
           <Route path="/Video-module" element={<VideoModule />} />
           <Route path="/blog" element={<BlogList />} />
           <Route path="/Video-lesson" element={<VideoLesson />} />
+          <Route path="/certified" element={<VarsityCertified />} />
         </Route>
       </>
     )
