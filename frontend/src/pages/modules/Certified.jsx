@@ -2,7 +2,7 @@ import React from "react";
 
 const VarsityCertified = () => {
   return (
-    <div className="max-w-5xl mx-auto p-6 mt-10 bg-gray-50 dark:bg-gray-900 rounded-lg shadow-md transition-colors">
+    <div className="max-w-5xl mx-auto p-6 mt-10 bg-gray-50 dark:bg-zinc-900 rounded-lg shadow-md transition-colors">
       <div className="flex gap-12">
         <img
           src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/certified.svg"
@@ -30,7 +30,7 @@ const VarsityCertified = () => {
         </div>
       </div>
 
-      <div className="flex gap-16">
+      <div className="flex gap-16 dark:bg-zinc-700 mb-10 rounded-xl">
         <div className="m-10">
           <div>
             <h2 className="text-2xl font-bold mb-2 dark:text-white">Format</h2>
@@ -48,8 +48,8 @@ const VarsityCertified = () => {
             </p>
           </div>
         </div>
-        <div className="m-10">
-          <h2 className="text-2xl font-bold mb-2 dark:text-white">
+        <div className="m-10 ">
+          <h2 className="text-2xl font-bold mb-2 dark:text-white ">
             Test topics
           </h2>
           <p className="text-gray-500 dark:text-gray-400 text-xl">
@@ -58,7 +58,7 @@ const VarsityCertified = () => {
           </p>
         </div>
       </div>
-      <div className="w-[75vw] mx-auto h-full border border-gray-300 dark:border-gray-700 rounded-lg flex gap-10 p-4 bg-white dark:bg-gray-800">
+      <div className="w-[75vw] mx-auto h-full border border-gray-300 dark:border-gray-700 rounded-lg flex gap-10 p-4 bg-white dark:bg-zinc-700">
         <img
           src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/certified-video.jpg"
           alt="Certified Video"
@@ -77,7 +77,7 @@ const VarsityCertified = () => {
           </p>
         </div>
       </div>
-      <div className="w-[75vw] flex mx-auto h-full border border-gray-300 dark:border-gray-700 rounded-lg m-10 p-4 bg-white dark:bg-gray-800">
+      <div className="w-[75vw] flex mx-auto h-full border border-gray-300 dark:border-gray-700 rounded-lg m-10 p-4 bg-white dark:bg-zinc-700">
         <div className="w-1/2 flex justify-center items-center">
           <img
             src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/ico-certified.svg"

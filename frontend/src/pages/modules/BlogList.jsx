@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogCard = ({ title, description, author, authorRole, date, image }) => {
   return (
-    <div className="border dark:border-gray-700 rounded-lg shadow-sm p-4 flex flex-col md:flex-row gap-4 md:gap-8 bg-white dark:bg-gray-800 transition-colors">
+    <div className="border dark:border-gray-700 rounded-lg shadow-sm p-4 flex flex-col md:flex-row gap-4 md:gap-8 bg-white dark:bg-zinc-900 transition-colors">
       <div className="flex-shrink-0">
         <img
           src={image}
@@ -65,7 +65,7 @@ const BlogList = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="max-w-4xl mx-auto p-6 bg-gray-50 dark:bg-zinc-900 transition-colors">
       <h1 className="text-2xl font-bold mb-6 dark:text-white">Varsity</h1>
       <div className="flex gap-2 mb-4 text-center dark:text-gray-300">
         Top tags :

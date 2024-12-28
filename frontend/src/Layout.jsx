@@ -23,7 +23,7 @@ function Layout() {
   }, [themeMode]);
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-      <div className=" min-h-screen flex flex-col dark:bg-gray-700">
+      <div className=" min-h-screen flex flex-col dark:bg-zinc-900">
         <Navbar />
         <main className="flex-grow">
           <Outlet />

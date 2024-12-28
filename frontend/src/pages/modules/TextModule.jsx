@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"; // Fixed incorrect import
 
 const TextModule = () => {
   return (
-    <div className="max-w-screen-md mx-auto p-4 mt-10 dark:bg-gray-900 dark:text-gray-100 m-10 rounded-lg">
+    <div className="max-w-screen-md mx-auto p-4 mt-10 dark:bg-zinc-900 dark:text-gray-100 m-10 rounded-lg">
       <header className="mb-8">
         <h1 className="text-5xl md:text-7xl font-bold">1</h1>
         <h2 className="text-3xl md:text-4xl font-semibold mt-2">

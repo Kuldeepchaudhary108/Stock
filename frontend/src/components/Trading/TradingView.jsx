@@ -16,7 +16,7 @@ const TradingViewChart = () => {
       script.innerHTML = `
         {
           "width": "100%",
-          "height": "600",
+          "height": "550",
           "symbol": "NASDAQ:AAPL",
           "interval": "D",
           "timezone": "Etc/UTC",

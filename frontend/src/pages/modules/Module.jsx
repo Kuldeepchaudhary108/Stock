@@ -59,7 +59,7 @@ const ModuleCard = ({ id, title, chapters, description, color }) => {
   };
   return (
     <div
-      className="p-6 border shadow-md rounded-md cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-700"
+      className="p-6 border shadow-md rounded-md cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg bg-white dark:bg-zinc-900 dark:border-gray-700"
       onClick={handleTextModule}
     >
       <div className="flex items-center mb-2">
@@ -84,7 +84,7 @@ const ModuleCard = ({ id, title, chapters, description, color }) => {
 
 const Modules = () => {
   return (
-    <div className="px-10 py-10 bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="px-10 py-10 bg-gray-50 dark:bg-zinc-900 transition-colors">
       <h1 className="text-4xl font-bold mb-8 dark:text-white">Modules</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {modules.map((module) => (

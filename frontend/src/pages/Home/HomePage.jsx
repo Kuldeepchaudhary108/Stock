@@ -31,7 +31,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
+    <div className="bg-white dark:bg-zinc-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
       <div className="flex flex-col lg:flex-row mt-7 p-4 lg:p-10">
         <div className="lg:w-1/2 p-3">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold m-2">
@@ -60,7 +60,7 @@ const HomePage = () => {
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
           Explore MerCet
         </h1>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-10  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {cards.map((card) => (
             <Card
               key={card.id}
@@ -74,7 +74,7 @@ const HomePage = () => {
       <div className="cursor-pointer">
         <VideoGrid />
       </div>
-      <div className="flex flex-col lg:flex-row justify-between items-center m-10">
+      <div className="flex flex-col lg:flex-row justify-between items-center m-10 dark:bg-zinc-600 rounded-lg p-7">
         <div className="lg:w-1/2 flex justify-center items-center">
           <img
             src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/ico-certified.svg"
@@ -171,7 +171,7 @@ const HomePage = () => {
           <hr className="mt-8 border-gray-300" />
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto">
+      <div className="flex flex-col lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto dark:bg-zinc-700 ">
         <div className="mb-4 lg:mb-0">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">
             Don't have a MerCet account?

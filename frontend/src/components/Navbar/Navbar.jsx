@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 left-0 z-30 flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-900 shadow-md transition-colors">
+    <nav className="sticky top-0 left-0 z-30 flex justify-between items-center px-6 py-4 bg-white dark:bg-zinc-800 shadow-md transition-colors">
       {/* Brand Name */}
       <NavLink
         to="/"
@@ -39,7 +39,7 @@ const Navbar = () => {
 
       {/* Desktop and Mobile Menu */}
       <ul
-        className={`absolute md:relative w-full md:w-auto bg-white dark:bg-gray-900 md:bg-transparent top-20 md:top-auto left-0 md:left-auto flex flex-col md:flex-row md:items-center transition-all duration-500 ease-in-out ${
+        className={`absolute md:relative w-full md:w-auto bg-white dark:bg-zinc-800 md:bg-transparent top-20 md:top-auto left-0 md:left-auto flex flex-col md:flex-row md:items-center transition-all duration-500 ease-in-out ${
           showMenu ? "block" : "hidden md:flex"
         }`}
       >
