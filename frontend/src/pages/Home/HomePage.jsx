@@ -42,10 +42,9 @@ const HomePage = () => {
           </h4>
           <p className="text-sm sm:text-base lg:text-lg font-medium text-gray-500 dark:text-gray-400">
             Varsity is an extensive and in-depth collection of stock market and
-            financial lessons created by Karthik Rangappa at Zerodha. It is free
+            financial lessons created by Karthik Rangappa at MerCat. It is free
             and openly accessible to everyone and is one of the largest
-            financial education resources on the web. No signup, no pay-wall, no
-            ads.
+            financial education resources on the web.
           </p>
         </div>
         <div className="lg:w-1/2 flex justify-center items-center">
