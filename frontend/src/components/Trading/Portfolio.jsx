@@ -2,7 +2,7 @@ import React from "react";
 
 const Portfolio = ({ portfolio }) => {
   return (
-    <div className="portfolio p-4 border rounded bg-gray-100">
+    <div className="portfolio p-4 border rounded bg-gray-200 mt-5 dark:bg-zinc-700/80 dark:text-white">
       <h2 className="text-xl font-bold mb-4">Portfolio</h2>
       <table className="w-full">
         <thead>

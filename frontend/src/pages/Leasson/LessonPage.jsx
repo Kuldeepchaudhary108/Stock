@@ -2,13 +2,13 @@ import React from "react";
 
 const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
   return (
-    <div className="w-1/3 bg-gray-50 p-4 rounded-lg shadow-md dark:bg-gray-400">
-      <h2 className="text-lg font-bold mb-4">
+    <div className="w-1/3 bg-gray-50 p-4 rounded-lg shadow-md dark:bg-zinc-800">
+      <h2 className="text-lg font-bold mb-4 dark:text-white">
         Module 1. Introduction to Stock Market (video series)
       </h2>
-      {/* Show progress */}
+
       <div className="mb-4">
-        <p className="text-sm font-medium text-gray-600">
+        <p className="text-sm font-medium text-gray-600 dark:text-white">
           Progress: {completedVideos.length}/{videos.length} videos completed
         </p>
         <div className="w-full bg-gray-200 rounded-full h-2">
@@ -20,7 +20,7 @@ const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
           ></div>
         </div>
       </div>
-      {/* Add a scrollable container */}
+
       <ul className="space-y-2 max-h-[400px] overflow-y-scroll">
         {videos.map((video, index) => (
           <li
@@ -44,7 +44,9 @@ const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
 const VideoPlayer = ({ selectedVideo, markVideoComplete }) => {
   return (
     <div className="w-2/3 p-4">
-      <h3 className="text-xl font-bold mb-2">{selectedVideo.title}</h3>
+      <h3 className="text-2xl font-bold mb-4 dark:text-white">
+        {selectedVideo.title}
+      </h3>
       <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
         <iframe
           src={selectedVideo.url}

@@ -101,7 +101,7 @@ const VideoModuleCard = ({
 
 const VideoModules = () => {
   return (
-    <div className="px-10 py-10 dark:bg-zinc-900">
+    <div className="px-10 py-10 dark:bg-zinc-900 ">
       <h1 className="text-4xl font-bold mb-8 dark:text-white">Video modules</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {videoModules.map((module) => (

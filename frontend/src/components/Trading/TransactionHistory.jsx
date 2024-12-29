@@ -2,7 +2,7 @@ import React from "react";
 
 const TransactionHistory = ({ transactions }) => {
   return (
-    <div className="transaction-history p-4 border rounded bg-gray-100">
+    <div className="transaction-history p-4 border rounded bg-gray-200 dark:bg-zinc-800/80 dark:text-white">
       <h2 className="text-xl font-bold mb-4">Transaction History</h2>
       <table className="w-full">
         <thead>

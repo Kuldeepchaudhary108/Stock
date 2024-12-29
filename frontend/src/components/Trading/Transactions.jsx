@@ -7,7 +7,7 @@ const Transactions = () => {
   ];
 
   return (
-    <div className="transactions p-6">
+    <div className="transactions p-6 dark:bg-zinc-900/80">
       <h1 className="text-2xl font-bold">Transactions</h1>
       <table className="table-auto w-full mt-4 border border-gray-300">
         <thead>

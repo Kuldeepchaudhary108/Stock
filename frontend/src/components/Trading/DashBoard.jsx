@@ -24,11 +24,11 @@ const Dashboard = () => {
       <div className="col-span-2">
         <TradingViewChart />
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1  ">
         <OrderPanel onPlaceOrder={handlePlaceOrder} />
         <Portfolio portfolio={portfolio} />
       </div>
-      <div className="col-span-3">
+      <div className="col-span-3 mt-5">
         <TransactionHistory transactions={transactions} />
       </div>
     </div>

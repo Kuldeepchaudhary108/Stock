@@ -18,7 +18,8 @@ export default function Profile() {
 
   const saveChange = async () => {
     // console.log("zustand userdata", userInfo);
-
+    navigate("/");
+ 
     try {
       console.log(color1);
       const res = await apiCLient.patch(UPDATE_ROUTE, {

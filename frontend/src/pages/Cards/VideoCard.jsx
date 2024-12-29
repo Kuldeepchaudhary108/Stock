@@ -51,9 +51,9 @@ const VideoGrid = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="bg-gray-100 py-12 dark:bg-zinc-800 ">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-3xl font-bold text-center dark:text-white text-gray-800 mb-8">
           Videos
         </h2>
         <div className="flex flex-wrap -mx-4">

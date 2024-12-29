@@ -1,6 +1,5 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-// import { Provider } from "react-redux";
 import "./index.css";
 import {
   createBrowserRouter,
@@ -8,7 +7,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-// import Signup from "./components/Signup.jsx";
 import Layout from "./Layout.jsx";
 import {
   BlogList,
@@ -22,38 +20,28 @@ import {
   VideoModule,
   Profile,
 } from "./pages/index.js";
-import { Trading } from "./components/index.js";
 import {
   Dashboard,
   StockDetails,
   TradingHome,
   Transactions,
 } from "./components/Trading/index.js";
-// import store from "./App/store.js";
-// import Login from "./components/Login.jsx";
-// import About from "./components/About.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function App() {
-  // const [isAuthenticated, isUserAuthenticated] = useState(false);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        {/* <Route path="/signup" element={<Signup />} /> */}
-        {/* <Route
-          path="/login"
-          element={<Login isUserAuthenticated={isUserAuthenticated} />}
-        /> */}
         <Route path="/" element={<Layout />}>
           <Route path="" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/module" element={<Modules />} />
-          <Route path="/module-text" element={<TextModule />} />
+          <Route path="/module-text" element={<PrivateRoute><TextModule /></PrivateRoute>} />
           <Route path="/Video-module" element={<VideoModule />} />
           <Route path="/blog" element={<BlogList />} />
-          <Route path="/Video-lesson" element={<VideoLesson />} />
+          <Route path="/Video-lesson" element={<PrivateRoute><VideoLesson /></PrivateRoute>} />
           <Route path="/certified" element={<VarsityCertified />} />
           {/* <Route path="/trading-chart" element={<Trading />} /> */}
 
