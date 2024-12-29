@@ -13,11 +13,14 @@ import Layout from "./Layout.jsx";
 import {
   BlogList,
   HomePage,
+  Login,
   Modules,
+  Signup,
   TextModule,
   VarsityCertified,
   VideoLesson,
   VideoModule,
+  Profile,
 } from "./pages/index.js";
 import { Trading } from "./components/index.js";
 import {
@@ -43,6 +46,9 @@ function App() {
         /> */}
         <Route path="/" element={<Layout />}>
           <Route path="" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/module" element={<Modules />} />
           <Route path="/module-text" element={<TextModule />} />
           <Route path="/Video-module" element={<VideoModule />} />

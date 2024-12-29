@@ -98,8 +98,11 @@ const HomePage = () => {
       </div>
       <hr className="m-8 border-gray-300 dark:border-gray-700" />
 
-      <div className="w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg dark:bg-gray-600 dark:text-black">
-        <h3 className="text-4xl font-semibold py-4">Recent comments</h3>
+      <div className="w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg bg-white dark:bg-zinc-700 dark:text-black dark:shadow-lg dark:border-none">
+        {" "}
+        <h3 className="text-4xl font-semibold py-4 dark:text-gray-200">
+          Recent comments
+        </h3>
         <div className="m-10">
           <div className="flex gap-10 items-start">
             <img
@@ -108,8 +111,10 @@ const HomePage = () => {
               className="w-16 h-16 rounded-full"
             />
             <div className="text-left">
-              <p className="font-semibold text-lg">Kuldeep Chaudhary</p>
-              <p className="mt-3 text-gray-700 dark:text-black">
+              <p className="font-semibold text-lg dark:text-white">
+                Kuldeep Chaudhary
+              </p>
+              <p className="mt-3 text-gray-700 dark:text-white">
                 Pavit, so it's the difference between the strike and spot, in
                 this case 32-25 and minus the premium paid, i.e. 1.35. I have
                 explained this eventually, wanted to keep it simple at this
@@ -125,8 +130,10 @@ const HomePage = () => {
               className="w-16 h-16 rounded-full"
             />
             <div className="text-left">
-              <p className="font-semibold text-lg">Kuldeep Chaudhary</p>
-              <p className="mt-3 text-gray-700 dark:text-black">
+              <p className="font-semibold text-lg dark:text-white">
+                Kuldeep Chaudhary
+              </p>
+              <p className="mt-3 text-gray-700 dark:text-white">
                 Pavit, so it's the difference between the strike and spot, in
                 this case 32-25 and minus the premium paid, i.e. 1.35. I have
                 explained this eventually, wanted to keep it simple at this
@@ -142,8 +149,10 @@ const HomePage = () => {
               className="w-16 h-16 rounded-full"
             />
             <div className="text-left">
-              <p className="font-semibold text-lg">Kuldeep Chaudhary</p>
-              <p className="mt-3 text-gray-700 dark:text-black">
+              <p className="font-semibold text-lg dark:text-white">
+                Kuldeep Chaudhary
+              </p>
+              <p className="mt-3 text-gray-700 dark:text-white">
                 Pavit, so it's the difference between the strike and spot, in
                 this case 32-25 and minus the premium paid, i.e. 1.35. I have
                 explained this eventually, wanted to keep it simple at this
@@ -159,8 +168,10 @@ const HomePage = () => {
               className="w-16 h-16 rounded-full"
             />
             <div className="text-left">
-              <p className="font-semibold text-lg">Kuldeep Chaudhary</p>
-              <p className="mt-3 text-gray-700 dark:text-black">
+              <p className="font-semibold text-lg dark:text-white">
+                Kuldeep Chaudhary
+              </p>
+              <p className="mt-3 text-gray-700 dark:text-white">
                 Pavit, so it's the difference between the strike and spot, in
                 this case 32-25 and minus the premium paid, i.e. 1.35. I have
                 explained this eventually, wanted to keep it simple at this
@@ -171,7 +182,7 @@ const HomePage = () => {
           <hr className="mt-8 border-gray-300" />
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto dark:bg-zinc-700 ">
+      <div className="flex flex-col rounded-xl lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto dark:bg-zinc-700 ">
         <div className="mb-4 lg:mb-0">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">
             Don't have a MerCet account?

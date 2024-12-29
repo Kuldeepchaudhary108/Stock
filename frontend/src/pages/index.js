@@ -7,6 +7,9 @@ import VideoModule from "./modules/VideoModule";
 import BlogList from "./modules/BlogList";
 import VarsityCertified from "./modules/certified";
 import TextModule from "./modules/TextModule";
+import Login from "./Login/Login";
+import Signup from "./Signup/signup";
+import Profile from "./Signup/profile";
 
 import VideoLesson from "./Leasson/LessonPage";
 export {
@@ -20,4 +23,7 @@ export {
   VideoLesson,
   VarsityCertified,
   TextModule,
+  Login,
+  Signup,
+  Profile,
 };
