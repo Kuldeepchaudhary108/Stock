@@ -73,7 +73,7 @@ The platform consists of the following smart contracts:
 ### Frontend
 1. Navigate to the frontend directory:
    ```bash
-   cd Blockchain_Frontend
+   cd frontend
    ```
 2. Install dependencies:
    ```bash
@@ -87,7 +87,7 @@ The platform consists of the following smart contracts:
 ### Backend
 1. Navigate to the backend directory:
    ```bash
-   cd Blockchain_Backend
+   cd backEnd
    ```
 2. Install dependencies:
    ```bash
@@ -97,15 +97,6 @@ The platform consists of the following smart contracts:
    ```bash
    npm run dev
    ```
-
-### Environment Variables
-Create a `.env` file in the backend directory with the following content:
-```env
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database_name>
-RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID
-PRIVATE_KEY=YOUR_WALLET_PRIVATE_KEY
-PORT=5000
-```
 
 ---
 
