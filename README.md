@@ -108,9 +108,11 @@ The platform consists of the following smart contracts:
 
 ---
 
-## (Created By : Khyati & Kuldeep)
 ## **Contributors**
 We welcome contributions! Feel free to open issues or pull requests to enhance this platform.
+Creators:
+[Khyati Sharma](https://github.com/Khyati-33)
+[Kuldeep Chaudhary](https://github.com/Kuldeepchaudhary108)
 
 ---
 
