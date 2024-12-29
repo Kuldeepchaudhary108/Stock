@@ -23,7 +23,6 @@ const gernateAccessAndRefreshTokens = async (userId) => {
   }
 };
 const signup = asyncHandler(async (req, res) => {
- 
   const { UserName, email, password, about } = req.body;
 
   if ([UserName, email, password].some((field) => field.trim() === "")) {
@@ -36,8 +35,6 @@ const signup = asyncHandler(async (req, res) => {
   if (existUser) {
     throw new ApiError(400, "email is already exist ");
   }
-
- 
 
   const user = await User.create({
     // fullName: FullName,
@@ -153,28 +150,54 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
-  const { email } = req.body;
   const { firstName, surName, color } = req.body;
 
-  if (!firstName || !surName || !color) {
-    throw new ApiError(400, "All fields are required");
+  // Ensure firstName and surName are provided
+  if (!firstName || !surName) {
+    throw new ApiError(400, "First name and surname are required");
   }
 
+  let avatarUrl = ""; // Initialize avatarUrl to an empty string in case no avatar is uploaded
+
+  // Check if avatar file is uploaded
+  if (req.files && req.files.avatar) {
+    const avatarPath = req.files.avatar[0].path; // req.files.avatar is an array of files
+
+    if (!avatarPath) {
+      throw new ApiError(400, "Avatar file is not found");
+    }
+
+    console.log(avatarPath);
+
+    // Upload to Cloudinary (assuming this function exists)
+    avatarUrl = await uploadOnCloudinary(avatarPath); // Assign avatarUrl here
+
+    console.log(avatarUrl);
+    if (!avatarUrl) {
+      throw new ApiError(400, "Avatar file upload failed");
+    }
+  }
+  const updateData = {
+    firstName,
+    surName,
+    color,
+    avatar: avatarUrl || undefined, // If no avatar, do not set avatar field
+  };
+
+  console.log("Update data:", updateData);
+
+  // Update the user document in the database
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
-      $set: {
-        firstName,
-        surName,
-        color,
-      },
+      $set: updateData,
     },
     { new: true }
   ).select("-password");
 
   return res
     .status(200)
-    .json(new ApiResponse(200, user, "Account details update successfully"));
+    .json(new ApiResponse(200, user, "Account details updated successfully"));
 });
 
 const updateUserAvatar = asyncHandler(async (req, res) => {

@@ -110,7 +110,7 @@ const Navbar = () => {
         </li>
         <li
           className="text-xl font-medium cursor-pointer text-red-500 px-6 py-2 md:hidden"
-          onClick={handleLogout}
+          onClick={() => navigate("/user-profile")}
         >
           profile
         </li>
@@ -149,7 +149,10 @@ const Navbar = () => {
               >
                 Log Out
               </button>
-              <button className="block w-full text-center text-xl px-4 py-2   rounded-lg hover:bg-zinc-700  transition-all duration-300">
+              <button
+                onClick={() => navigate("/user-profile")}
+                className="block w-full text-center text-xl px-4 py-2   rounded-lg hover:bg-zinc-700  transition-all duration-300"
+              >
                 profile
               </button>
             </div>

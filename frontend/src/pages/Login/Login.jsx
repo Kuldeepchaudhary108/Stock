@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { apiCLient, LOGIN_ROUTE } from "../../services/api.js";
+import { apiCLient, LOGIN_ROUTE, USER_ROUTE } from "../../services/api.js";
+import { useDispatch } from "react-redux";
+import { login as authLogin } from "../../store/authSlice.js";
 
 const Login = () => {
+  const disPatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -13,9 +16,10 @@ const Login = () => {
     try {
       const res = await apiCLient.post(LOGIN_ROUTE, { email, password });
       if (res.status === 200) {
-        const user = res.data.user;
-        console.log("Navigating to profile...");
-        navigate("/profile");
+        const userData = await apiCLient.get(USER_ROUTE);
+        console.log(userData);
+        if (userData) disPatch(authLogin(userData));
+        navigate("/");
       }
     } catch (error) {
       console.error("Login failed:", error);
