@@ -28,25 +28,25 @@ const VideoGrid = () => {
       title: "Impact cost in futures trading",
       description: "Impact cost and how it can ruin a trade.",
       thumbnail: "https://img.youtube.com/vi/m2HiZG0Fhts/mqdefault.jpg",
-      link: "https://zerodha.com/varsity/chapter/impact-cost-and-how-it-can-ruin-a-trade",
+      link: "/elements/stock1.jpeg",
     },
     {
       title: "5 types of share capital",
       description: "Learn the types of share capital.",
-      thumbnail: "https://img.youtube.com/vi/m2HiZG0Fhts/mqdefault.jpg",
+      thumbnail: "/elements/stock1.jpeg",
       link: "https://zerodha.com/varsity/chapter/share-capital-types",
     },
     {
       title: "How is offer for sale allotment done?",
       description: "Understand the process of OFS allotment.",
-      thumbnail: "https://img.youtube.com/vi/m2HiZG0Fhts/mqdefault.jpg",
+      thumbnail: "/elements/stock1.jpeg",
       link: "https://zerodha.com/varsity/chapter/ofs-allotment",
     },
     {
       title: "How to build a mutual fund portfolio?",
       description: "Building a mutual fund portfolio.",
-      thumbnail: "https://img.youtube.com/vi/m2HiZG0Fhts/mqdefault.jpg",
-      link: "https://zerodha.com/varsity/chapter/mutual-fund-portfolio",
+      thumbnail: "/elements/stock1.jpeg",
+      link: "/elements/stock.jpeg",
     },
   ];
 

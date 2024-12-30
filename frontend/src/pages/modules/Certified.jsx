@@ -3,11 +3,8 @@ import React from "react";
 const VarsityCertified = () => {
   return (
     <div className="max-w-5xl mx-auto p-6 mt-10 bg-gray-50 dark:bg-zinc-900 rounded-lg shadow-md transition-colors">
-      <div className="flex gap-12">
-        <img
-          src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/certified.svg"
-          alt="Certified Icon"
-        />
+      <div className="flex gap-12 mb-10">
+        <img src="/elements/stock9.jpeg" alt="Certified Icon" />
         <div>
           <h1 className="text-6xl font-bold text-center mb-6 dark:text-white">
             Varsity Certified
@@ -80,7 +77,7 @@ const VarsityCertified = () => {
       <div className="w-[75vw] flex mx-auto h-full border border-gray-300 dark:border-gray-700 rounded-lg m-10 p-4 bg-white dark:bg-zinc-700">
         <div className="w-1/2 flex justify-center items-center">
           <img
-            src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/ico-certified.svg"
+            src="/elements/stock9.jpeg"
             alt="Certificates Icon"
             className="w-48"
           />

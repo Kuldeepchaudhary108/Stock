@@ -59,24 +59,32 @@ const ModuleCard = ({ id, title, chapters, description, color }) => {
   };
   return (
     <div
-      className="p-6 border shadow-md rounded-md cursor-pointer transform transition-transform duration-500 hover:scale-105 hover:shadow-lg bg-white dark:bg-zinc-900 dark:border-gray-700"
+      className="p-8 border rounded-lg shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white dark:bg-zinc-900 dark:border-gray-700"
       onClick={handleTextModule}
     >
-      <div className="flex items-center mb-2">
-        <h1 className="text-3xl font-bold dark:text-white">{id}</h1>
-        <div className={`w-full h-1 ml-2 ${color}`}></div>
+      <div className="flex items-center mb-4">
+        <h1 className="text-4xl font-bold dark:text-white">{id}</h1>
+        <div className={`w-16 h-1 ml-3 ${color}`}></div>
       </div>
-      <h2 className="text-xl font-semibold mb-2 cursor-pointer hover:text-blue-700 dark:text-blue-400">
+      <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-3 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
         {title}
       </h2>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
         {chapters}
       </p>
-      <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
-      <div className="flex gap-4 text-blue-500 dark:text-blue-400">
-        <button className="hover:underline">View module</button>
-        <button className="hover:underline">Watch videos</button>
-        <button className="hover:underline">हिंदी</button>
+      <p className="text-gray-800 dark:text-gray-300 mb-5 leading-relaxed">
+        {description}
+      </p>
+      <div className="flex gap-6 text-blue-600 dark:text-blue-400">
+        <button className="text-sm font-medium hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-200">
+          View Module
+        </button>
+        <button className="text-sm font-medium hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-200">
+          Watch Videos
+        </button>
+        <button className="text-sm font-medium hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-200">
+          हिंदी
+        </button>
       </div>
     </div>
   );

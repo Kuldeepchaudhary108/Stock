@@ -12,40 +12,40 @@ const OrderPanel = ({ onPlaceOrder }) => {
   };
 
   return (
-    <div className="order-panel p-4 border rounded bg-gray-100 dark:bg-zinc-800/80 dark:text-white transition-colors">
-      <h2 className="text-xl font-bold mb-4">Place Order</h2>
-      <div className="mb-2">
-        <label>Order Type:</label>
+    <div className="order-panel bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold text-gray-800 mb-4">Place Order</h2>
+      <div className="mb-4">
+        <label className="block text-sm text-gray-600">Order Type:</label>
         <select
           value={orderType}
           onChange={(e) => setOrderType(e.target.value)}
-          className="ml-2 p-1 border bg-white dark:bg-zinc-900/80 dark:border-zinc-700 dark:text-white"
+          className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
         >
           <option value="buy">Buy</option>
           <option value="sell">Sell</option>
         </select>
       </div>
-      <div className="mb-2">
-        <label>Quantity:</label>
+      <div className="mb-4">
+        <label className="block text-sm text-gray-600">Quantity:</label>
         <input
           type="number"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
-          className="ml-2 p-1 border bg-white dark:bg-zinc-900 dark:border-zinc-700 dark:text-white"
+          className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <div className="mb-2">
-        <label>Price:</label>
+      <div className="mb-4">
+        <label className="block text-sm text-gray-600">Price:</label>
         <input
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          className="ml-2 p-1 border bg-white dark:bg-zinc-900 dark:border-zinc-700 dark:text-white"
+          className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
       <button
         onClick={handleOrder}
-        className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+        className="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Submit
       </button>

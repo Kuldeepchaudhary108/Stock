@@ -8,8 +8,7 @@ const videoModules = [
     chapters: "10 chapters",
     description:
       "This video module on Introduction to Stock markets will familiarize you with the fundamentals of the stock market, how to get started, and the various intermediaries in the ecosystem.",
-    image:
-      "https://zerodha.com/varsity/wp-content/uploads/2015/11/Module-1.png",
+    image: "/elements/stock4.png",
     color: "bg-green-500",
   },
   {
@@ -18,8 +17,7 @@ const videoModules = [
     chapters: "12 chapters",
     description:
       "Technical Analysis (TA) plays an important role in developing a point of view. Like every other research, TA also has its own attributes. In this module, we discover all those complex attributes of TA, study various patterns, indicators, and theories that will help you as a trader to find upright trading opportunities in the market.",
-    image:
-      "https://zerodha.com/varsity/wp-content/uploads/2015/11/Module-2.png",
+    image: "/elements/stock6.jpeg",
     color: "bg-blue-500",
   },
   {
@@ -28,8 +26,7 @@ const videoModules = [
     chapters: "10 chapters",
     description:
       "Fundamental Analysis (FA) is a holistic approach to study a business. If you are an investor that is looking for long-term investments, this module will help you understand Equity research, help you in reading the financial statements, annual reports, calculation of Financial Ratios, and more.",
-    image:
-      "https://zerodha.com/varsity/wp-content/uploads/2015/11/Module-3.png",
+    image: "/elements/stock5.jpeg",
     color: "bg-yellow-500",
   },
   {

@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 
-const StockDetails = ({ match }) => {
+const StockDetails = ({ match = "" }) => {
   const [quantity, setQuantity] = useState(0);
 
   const handleBuy = () => {
-    alert(`Bought ${quantity} shares of ${match.params.symbol}`);
+    // alert(`Bought ${quantity} shares of ${match.params.symbol}`);
   };
 
   const handleSell = () => {
-    alert(`Sold ${quantity} shares of ${match.params.symbol}`);
+    // alert(`Sold ${quantity} shares of ${match.params.symbol}`);
   };
 
   return (
     <div className="stock-details p-6">
-      <h1 className="text-2xl font-bold">
-        Stock Details: {match.params.symbol}
-      </h1>
+      <h1 className="text-2xl font-bold">Stock Details: {}</h1>
       <p className="mt-4 text-lg">Current Price: $150</p>
       <div className="mt-4">
         <input

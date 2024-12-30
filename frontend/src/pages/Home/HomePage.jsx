@@ -1,8 +1,10 @@
 // pages/HomePage.jsx
 import React from "react";
 import { Card, VideoGrid } from "../index.js";
+import { useNavigate } from "react-router";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const cards = [
     {
       id: 1,
@@ -32,6 +34,23 @@ const HomePage = () => {
 
   return (
     <div className="bg-white dark:bg-zinc-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
+      <section className="bg-gradient-to-b from-black to-gray-800 text-white text-center py-16">
+        <h1 className="text-4xl font-bold mb-4">
+          Unlock Your Trading Potential with MerCat Trading Group
+        </h1>
+        <p className="mb-8">
+          Join a community of successful traders and get funded to trade with
+          the best tools and support.
+        </p>
+        <div className="space-x-4">
+          <button className="bg-orange-500 px-6 py-3 rounded-lg hover:bg-orange-600">
+            Start Free Trial
+          </button>
+          <button className="bg-gray-700 px-6 py-3 rounded-lg hover:bg-gray-600">
+            Learn More
+          </button>
+        </div>
+      </section>
       <div className="flex flex-col lg:flex-row mt-7 p-4 lg:p-10">
         <div className="lg:w-1/2 p-3">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold m-2">
@@ -49,12 +68,53 @@ const HomePage = () => {
         </div>
         <div className="lg:w-1/2 flex justify-center items-center">
           <img
-            src="https://zerodha.com/varsity/wp-content/themes/varsity2//images/landing.png"
+            src="/elements/stock3.jpeg"
             alt="Landing Image"
             className="w-full max-w-[500px]"
           />
         </div>
       </div>
+      <section className="py-16 bg-white text-black dark:bg-zinc-800/80 dark:text-white ">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          How It Works?
+        </h2>
+        <div className="flex justify-center space-x-12">
+          <div
+            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl "
+            onClick={() => navigate("/video-module")}
+          >
+            <div className="mb-4 text-orange-500 text-4xl">📋</div>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+              Assessment
+            </h3>
+            <p className="text-gray-600 dark:text-white">
+              Learn by our MerCat.
+            </p>
+          </div>
+          <div className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl ">
+            <div className="mb-4 text-orange-500 text-4xl ">📈</div>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+              Apply
+            </h3>
+            <p className="text-gray-600 dark:text-white">
+              Prove your trading skills with our evaluations.
+            </p>
+          </div>
+          <div
+            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl "
+            onClick={() => navigate("/trading-chart")}
+          >
+            <div className="mb-4 text-orange-500 text-4xl">🚀</div>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+              Trade & Grow
+            </h3>
+            <p className="text-gray-600 dark:text-white">
+              Grow your profits with our tools and support.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <div className="p-4 lg:p-8 mt-10">
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
           Explore MerCet
@@ -76,7 +136,7 @@ const HomePage = () => {
       <div className="flex flex-col lg:flex-row justify-between items-center m-10 dark:bg-zinc-600 rounded-lg p-7">
         <div className="lg:w-1/2 flex justify-center items-center">
           <img
-            src="https://zerodha.com/varsity/wp-content/themes/varsity2/images/ico-certified.svg"
+            src="/elements/stock9.jpeg"
             alt="Certificates"
             className="w-48"
           />
