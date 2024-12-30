@@ -28,7 +28,7 @@ import {
   TradingHome,
   Transactions,
   UserProfile,
-} from "./components/Trading/index.js";
+} from "./Trading/index.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function App() {
