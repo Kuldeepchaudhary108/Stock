@@ -39,19 +39,17 @@ const UserSchema = new Schema(
       type: Number,
       required: false,
     },
-    profileSetup: { 
-      type: Boolean,
-      default: false,
-    },
+
     password: {
       type: String,
       required: [true, "password is required"],
     },
-    refreshToken: {
-      type: String,
-      required: false,
+    tokens: { type: Number, default: 0 },
+    Account: {
+      type: Number,
+      default: 0,
     },
-    about: {
+    refreshToken: {
       type: String,
       required: false,
     },
