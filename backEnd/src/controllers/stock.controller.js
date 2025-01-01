@@ -1,5 +1,5 @@
-import { Stock } from "../models/stock.model";
-import { ApiError, ApiResponse, asyncHandler } from "../utils/index";
+import { Stock } from "../models/stock.model.js";
+import { ApiError, ApiResponse, asyncHandler } from "../utils/index.js";
 
 const stockCreated = asyncHandler(async (req, res) => {
   try {
@@ -48,7 +48,7 @@ const getAllStock = asyncHandler(async (req, res) => {
 const getStockById = asyncHandler(async (req, res) => {
   try {
     const getStockById = await Stock.findById(req.params.id);
-    if (!stock) {
+    if (!getStockById) {
       return res.status(404).json({ message: "Stock not found" });
     }
     res

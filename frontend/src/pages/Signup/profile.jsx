@@ -13,11 +13,11 @@ export default function Profile() {
 
   const saveChange = async () => {
     try {
-      const res = await apiCLient.post(UPDATE_ROUTE, {
+      const res = await apiCLient.patch(UPDATE_ROUTE, {
         firstName,
         surName,
         color1,
-        image,
+        // image,
       });
       if (res.status === 200) {
         console.log("Account details updated successfully:", res.data._doc);
