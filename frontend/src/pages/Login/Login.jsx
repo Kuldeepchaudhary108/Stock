@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { apiCLient, LOGIN_ROUTE, USER_ROUTE } from "../../services/api.js";
+import { apiCLient, GET_USER_ROUTE, LOGIN_ROUTE } from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "../../store/authSlice.js";
 
@@ -16,7 +16,7 @@ const Login = () => {
     try {
       const res = await apiCLient.post(LOGIN_ROUTE, { email, password });
       if (res.status === 200) {
-        const userData = await apiCLient.get(USER_ROUTE);
+        const userData = await apiCLient.get(GET_USER_ROUTE);
         console.log(userData);
         if (userData) disPatch(authLogin(userData.data.user));
         navigate("/");

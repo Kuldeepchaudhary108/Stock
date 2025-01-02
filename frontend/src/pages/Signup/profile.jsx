@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { colors, GetColor } from "../../utils/GetColor.jsx";
-import { apiCLient, UPDATE_ROUTE, USER_ROUTE } from "../../services/api.js";
+import {
+  apiCLient,
+  GET_USER_ROUTE,
+  UPDATE_ROUTE,
+  USER_ROUTE,
+} from "../../services/api.js";
 import { useDispatch, useSelector } from "react-redux";
 import { login as authLogin } from "../../store/authSlice.js";
 
@@ -31,7 +36,7 @@ export default function Profile() {
       });
       if (res.status === 200) {
         console.log("Account details updated successfully:", res.data._doc);
-        const Data = await apiCLient.get(USER_ROUTE);
+        const Data = await apiCLient.get(GET_USER_ROUTE);
         console.log(Data);
         if (Data) {
           disPatch(authLogin(Data.data.user));
