@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { colors, GetColor } from "../../utils/GetColor.jsx";
-import { apiCLient, UPDATE_ROUTE } from "../../services/api.js";
+import { apiCLient, UPDATE_ROUTE, USER_ROUTE } from "../../services/api.js";
+import { useDispatch, useSelector } from "react-redux";
+import { login as authLogin } from "../../store/authSlice.js";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -10,7 +12,15 @@ export default function Profile() {
   const [image, setImage] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [surName, setSurName] = useState("");
+  const disPatch = useDispatch();
 
+  const userData = useSelector((state) => state.auth.userData);
+
+  // useEffect(() => {
+  //   if (userData) {
+  //     localStorage.setItem("data", JSON.stringify(userData));
+  //   }
+  // }, [userData]);
   const saveChange = async () => {
     try {
       const res = await apiCLient.patch(UPDATE_ROUTE, {
@@ -21,8 +31,16 @@ export default function Profile() {
       });
       if (res.status === 200) {
         console.log("Account details updated successfully:", res.data._doc);
+        const Data = await apiCLient.get(USER_ROUTE);
+        console.log(Data);
+        if (Data) {
+          disPatch(authLogin(Data.data.user));
+        }
+
         navigate("/");
       }
+
+      console.log(userData);
     } catch (error) {
       console.log("Error updating account details:", error);
     }

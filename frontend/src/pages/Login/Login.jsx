@@ -18,7 +18,7 @@ const Login = () => {
       if (res.status === 200) {
         const userData = await apiCLient.get(USER_ROUTE);
         console.log(userData);
-        if (userData) disPatch(authLogin(userData));
+        if (userData) disPatch(authLogin(userData.data.user));
         navigate("/");
       }
     } catch (error) {
