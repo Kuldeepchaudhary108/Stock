@@ -2,6 +2,16 @@
 import React from "react";
 import { Card, VideoGrid } from "../index.js";
 import { useNavigate } from "react-router";
+import {
+  FaChartBar,
+  FaWallet,
+  FaBox,
+  FaBullseye,
+  FaBinoculars,
+  FaSyncAlt,
+  FaChartLine,
+} from "react-icons/fa";
+import image2 from "/elements/stock11.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -29,6 +39,44 @@ const HomePage = () => {
       title: "Certified",
       bgColor: "#D6A3FB",
       icon: "https://zerodha.com/varsity/wp-content/themes/varsity2/images/ico-certified.svg",
+    },
+  ];
+  const features = [
+    {
+      icon: <FaChartBar size={40} className="text-teal-600 mx-auto" />,
+      title: "Trading is an Art and Science",
+      description:
+        "Just like any skilled profession, successful trading requires practice and experience. It's a journey of continuous learning and strategy refinement.",
+    },
+    {
+      icon: <FaWallet size={40} className="text-teal-600 mx-auto" />,
+      title: "Cost of Learning",
+      description:
+        "Gaining real-world trading experience comes with financial risk. Many aspiring traders lose money in the process of learning, which is a significant barrier.",
+    },
+    {
+      icon: <FaBox size={40} className="text-teal-600 mx-auto" />,
+      title: "Risk-Free Practice",
+      description:
+        "Neostox offers a unique solution – a virtual trading platform where you can practice with real-time market data without risking a single rupee.",
+    },
+    {
+      icon: <FaBullseye size={40} className="text-teal-600 mx-auto" />,
+      title: "Build Confidence",
+      description:
+        "Trade with up to ₹1 Crore in virtual money, allowing you to experiment and learn in a real-market environment without the fear of financial loss.",
+    },
+    {
+      icon: <FaBinoculars size={40} className="text-teal-600 mx-auto" />,
+      title: "Become an Expert",
+      description:
+        "Our platform is designed to help traders at all levels – from beginners to seasoned professionals – to hone their strategies and improve their market acumen.",
+    },
+    {
+      icon: <FaSyncAlt size={40} className="text-teal-600 mx-auto" />,
+      title: "Learn, Analyze, Trade, Repeat",
+      description:
+        "With advanced AI analytics and a suite of trading tools, Neostox empowers you to practice, analyze your strategies, and refine your trading decisions.",
     },
   ];
 
@@ -72,6 +120,93 @@ const HomePage = () => {
             alt="Landing Image"
             className="w-full max-w-[500px]"
           />
+        </div>
+      </div>
+      <section className="bg-teal-50 py-16 px-8 flex gap-36  dark:bg-zinc-700/80">
+        <div className="w-[30%]">
+          <img className="w-full" src="/elements/stock10.jpeg" alt="error" />
+        </div>
+        <div className=" w-[60%] mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            Why Paper Trading Should Be Your First Step Before You Invest Real
+          </h2>
+          <p className="text-center text-lg mb-12">
+            Tempting as it may be to dive headfirst into the exciting world of
+            stock trading, seasoned investors and newbies alike agree:{" "}
+            <span className="font-semibold">
+              paper trading is your secret weapon for success
+            </span>
+            . Before risking your hard-earned cash, put your skills to the test
+            in a risk-free virtual trading environment. Think of it as a
+            training ground where you can learn, experiment, and build
+            confidence without losing a single penny.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+              <h3 className="font-bold text-lg">Master the Mechanics</h3>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+              <h3 className="font-bold text-lg">Discipline Your Emotions</h3>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+              <h3 className="font-bold text-lg">Fine-Tune Your Techniques</h3>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+              <h3 className="font-bold text-lg">
+                Build Confidence and Momentum
+              </h3>
+            </div>
+          </div>
+          <div className="text-center">
+            <button className="bg-teal-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-teal-700 transition">
+              Read More..
+            </button>
+          </div>
+        </div>
+      </section>
+      <section className="bg-teal-50 py-16 px-8 dark:bg-zinc-900">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            Practice is Pivotal in Trading: Minimize Risk, Maximise Skills
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-md rounded-lg p-6 text-center dark:bg-zinc-700/80"
+              >
+                {feature.icon}
+                <h3 className="font-bold text-lg mt-4">{feature.title}</h3>
+                <p className="mt-2 text-gray-600 dark:text-teal-50">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <div className="mt-12 w-full bg-green-100 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center px-4">
+          <div>
+            <p className="font-bold text-green-700">
+              Authorized Practice Partners
+            </p>
+            <p className="text-gray-600">for IITs, IIMs and Premier Colleges</p>
+          </div>
+          <div>
+            <p className="font-bold text-green-700">15 Million+</p>
+            <p className="text-gray-600">Orders Processed Everyday</p>
+          </div>
+          <div>
+            <p className="font-bold text-green-700">1000+</p>
+            <p className="text-gray-600">
+              Contests hosted for Educational Institutions
+            </p>
+          </div>
+          <div>
+            <p className="font-bold text-green-700">5000+</p>
+            <p className="text-gray-600">Videos on YouTube made by our users</p>
+          </div>
         </div>
       </div>
       <section className="py-16 bg-white text-black dark:bg-zinc-800/80 dark:text-white ">
@@ -157,6 +292,37 @@ const HomePage = () => {
       </div>
       <hr className="m-8 border-gray-300 dark:border-gray-700" />
 
+      <div className=" bg-white dark:bg-zinc-900 py-16 px-8">
+        <div className="flex gap-4 justify-center dark:bg-zinc-800 rounded-lg p-3">
+          <div className="flex justify-center items-center">
+            <img className="w-96" src="/elements/stock11.png" alt="" />
+          </div>
+
+          {/* Right Section: Text Content */}
+          <div className="mt-8 md:mt-0 md:ml-8 text-gray-800 dark:text-gray-200">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Creating Smart & Profitable Traders
+            </h2>
+            <ul className="list-disc ml-6 space-y-2">
+              <li>Trade with virtual money up to ₹1 Crore</li>
+              <li>
+                Trading environment with near real-time tick-by-tick price data
+              </li>
+              <li>Trade equities, futures, and options</li>
+              <li>
+                Smart tools and analytics to help you every step of the way
+              </li>
+              <li>
+                Basket Orders, Hedge Trading, Options Chain, Screeners, and much
+                more
+              </li>
+              <li>Easy-to-use platform to help you learn faster</li>
+              <li>Test Your Strategies in Real-Market with Virtual Money</li>
+              <li>No Fear of Losing Money</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg bg-white dark:bg-zinc-700 dark:text-black dark:shadow-lg dark:border-none">
         {" "}
         <h3 className="text-4xl font-semibold py-4 dark:text-gray-200">
@@ -241,6 +407,7 @@ const HomePage = () => {
           <hr className="mt-8 border-gray-300" />
         </div>
       </div>
+
       <div className="flex flex-col rounded-xl lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto dark:bg-zinc-700 ">
         <div className="mb-4 lg:mb-0">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">

@@ -24,9 +24,9 @@ import {
 } from "./pages/index.js";
 import {
   Dashboard,
-  StockDetails,
+  // StockDetails,
   TradingHome,
-  Transactions,
+  // Transactions,
   UserProfile,
 } from "./Trading/index.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
@@ -65,8 +65,7 @@ function App() {
 
           <Route path="/trading-chart" element={<TradingHome />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/stock/:symbol" element={<StockDetails />} />
-          <Route path="/transactions" element={<Transactions />} />
+          {/* <Route path="/transactions" element={<Transactions />} /> */}
         </Route>
       </>
     )

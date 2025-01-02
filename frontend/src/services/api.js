@@ -2,13 +2,18 @@ import axios from "axios";
 
 export const Host = "http://localhost:3000";
 export const USER_ROUTE = "/api/v1/users";
-export const TRADE_ROUTE ="/api/v1/stock"
-export const SIGNUP_ROUTE = `${AUTH_ROUTE}/signup`;
-export const LOGIN_ROUTE = `${AUTH_ROUTE}/login`;
-export const LOGOUT_ROUTE = `${AUTH_ROUTE}/logout`;
-export const UPDATE_ROUTE = `${AUTH_ROUTE}/update-userdetails`;
-export const AVTAR_ROUTE = `${AUTH_ROUTE}/change/avatarImage`;
-export const GET_USER_ROUTE = `${AUTH_ROUTE}/current-user`;
+// export const PORTFOLIO_ROUTE=""
+export const TRADE_ROUTE = "/api/v1/stock";
+export const SIGNUP_ROUTE = `${USER_ROUTE}/signup`;
+export const LOGIN_ROUTE = `${USER_ROUTE}/login`;
+export const LOGOUT_ROUTE = `${USER_ROUTE}/logout`;
+export const UPDATE_ROUTE = `${USER_ROUTE}/update-userdetails`;
+export const AVTAR_ROUTE = `${USER_ROUTE}/change/avatarImage`;
+export const GET_USER_ROUTE = `${USER_ROUTE}/current-user`;
+
+export const NEW_STOCK = `${TRADE_ROUTE}/newstocks`;
+export const GET_STOCK = `${TRADE_ROUTE}/getstocks`;
+// export const UPDATE_STOCK_ROUTE=`${TRADE_ROUTE}  `
 
 export const apiCLient = axios.create({
   baseURL: Host,
