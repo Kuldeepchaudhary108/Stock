@@ -13,6 +13,8 @@ export const GET_USER_ROUTE = `${USER_ROUTE}/current-user`;
 
 export const NEW_STOCK = `${TRADE_ROUTE}/newstocks`;
 export const GET_STOCK = `${TRADE_ROUTE}/getstocks`;
+export const GET_HOLDING = `${TRADE_ROUTE}/holding`;
+
 // export const UPDATE_STOCK_ROUTE=`${TRADE_ROUTE}  `
 
 export const apiCLient = axios.create({

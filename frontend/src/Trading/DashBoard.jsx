@@ -5,18 +5,36 @@ import Portfolio from "./Portfolio";
 import TransactionHistory from "./TransactionHistory";
 
 const Dashboard = () => {
+  // Portfolio state to hold an array of holdings (stocks with quantity)
   const [portfolio, setPortfolio] = useState([]);
   const [transactions, setTransactions] = useState([]);
 
+  // Handle placing an order and updating the portfolio
   const handlePlaceOrder = (order) => {
     const transaction = {
       ...order,
-      symbol: "AAPL",
       time: new Date().toLocaleString(),
     };
+
+    // Add the transaction to transaction history
     setTransactions((prev) => [...prev, transaction]);
 
-    // Update portfolio logic here...
+    // Update portfolio: either add new stock or update quantity if already owned
+    setPortfolio((prevPortfolio) => {
+      const stockIndex = prevPortfolio.findIndex(
+        (holding) => holding.symbol === order.symbol
+      );
+
+      if (stockIndex === -1) {
+        // If stock is not in the portfolio, add it
+        return [...prevPortfolio, { ...order, quantity: order.quantity }];
+      } else {
+        // If stock is already in portfolio, update the quantity
+        const updatedPortfolio = [...prevPortfolio];
+        updatedPortfolio[stockIndex].quantity += order.quantity;
+        return updatedPortfolio;
+      }
+    });
   };
 
   return (

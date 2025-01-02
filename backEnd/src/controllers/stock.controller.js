@@ -1,40 +1,53 @@
 import { Stock } from "../models/stock.model.js";
 import { ApiError, ApiResponse, asyncHandler } from "../utils/index.js";
 
-const stockCreated = asyncHandler(async (req, res) => {
+const registerStock = asyncHandler(async (req, res) => {
   try {
-    const { tickerSymbol, companyName, tradeType, quantity, averagePrice } =
+    const { Symbol, companyName, quantity, lastDayTraderPrice, currentPrice } =
       req.body;
 
-    if (
-      [tickerSymbol, companyName, tradeType, quantity, averagePrice].some(
-        (field) => field.trim() === ""
-      )
-    ) {
-      throw new ApiError(400, "All Field is required");
+    // Validate input
+    // if (
+    //   [Symbol, companyName, quantity, lastDayTraderPrice, currentPrice].some(
+    //     (field) => typeof field !== "string" || field.trim() === ""
+    //   )
+    // ) {
+    //   throw new ApiError(400, "All fields are required");
+    // }
+
+    // Check if stock already exists
+    const existingStock = await Stock.findOne({ Symbol });
+    if (existingStock) {
+      throw new ApiError(400, "Stock already exists");
     }
 
-    const stock = await Stock.create({
-      tickerSymbol,
+    // Create new stock
+    const newStock = await Stock.create({
+      Symbol,
       companyName,
-      tradeType,
+      lastDayTraderPrice,
+      currentPrice,
       quantity,
-      averagePrice,
     });
 
-    const createdStock = await Stock.findById(stock._id);
+    const createdStock = await Stock.findById(newStock._id);
 
     if (!createdStock) {
-      throw new ApiError(505, "Something went wrong while generated the stock");
+      throw new ApiError(
+        500,
+        "Something went wrong while generating the stock"
+      );
     }
 
     return res
-      .status(202)
-      .json(new ApiResponse(200, createdStock, "stock created succefully"));
+      .status(201) // 201 is the appropriate status for resource creation
+      .json(new ApiResponse(201, createdStock, "Stock created successfully"));
   } catch (error) {
-    throw new ApiError(400, "error while created stock");
+    console.error(error); // Log the actual error
+    throw new ApiError(400, error.message || "Error while creating stock");
   }
 });
+
 const getAllStock = asyncHandler(async (req, res) => {
   try {
     const getstocks = await Stock.find();
@@ -88,4 +101,4 @@ const deleteStock = async (req, res) => {
   }
 };
 
-export { stockCreated, getAllStock, getStockById, updateStock, deleteStock };
+export { registerStock, getAllStock, getStockById, updateStock, deleteStock };

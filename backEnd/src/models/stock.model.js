@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const StockSchema = new mongoose.Schema(
   {
-    tickerSymbol: {
+    Symbol: {
       type: String,
       required: true,
       uppercase: true,
@@ -11,20 +11,19 @@ const StockSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    tradeType: {
-      type: String,
-      required: true,
-      enum: ["buy", "sell"], // Restrict trade type to "buy" or "sell"
-    },
+
     quantity: {
       type: Number,
       required: true,
       min: 0,
     },
-    averagePrice: {
+    lastDayTraderPrice: {
       type: Number,
       required: true,
-      min: 0,
+    },
+    currentPrice: {
+      type: Number,
+      require: true,
     },
   },
   { timestamps: true }

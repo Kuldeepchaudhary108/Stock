@@ -24,6 +24,7 @@ import {
 } from "./pages/index.js";
 import {
   Dashboard,
+  Holding,
   // StockDetails,
   TradingHome,
   // Transactions,
@@ -65,7 +66,7 @@ function App() {
 
           <Route path="/trading-chart" element={<TradingHome />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* <Route path="/transactions" element={<Transactions />} /> */}
+          <Route path="/holding" element={<Holding />} />
         </Route>
       </>
     )

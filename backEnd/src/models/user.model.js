@@ -45,9 +45,9 @@ const UserSchema = new Schema(
       required: [true, "password is required"],
     },
     tokens: { type: Number, default: 0 },
-    Account: {
+    balance: {
       type: Number,
-      default: 0,
+      default: 10000000,
     },
     refreshToken: {
       type: String,
