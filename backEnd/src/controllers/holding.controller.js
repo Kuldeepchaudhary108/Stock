@@ -5,13 +5,15 @@ import { User } from "../models/user.model.js";
 import { ApiError, ApiResponse, asyncHandler } from "../utils/index.js";
 
 const buyStock = asyncHandler(async (req, res) => {
-  const { stock_id, quantity, buyPrice } = req.body;
+  const { stock_id, quantity } = req.body;
 
   if ([stock_id, quantity, buyPrice].some((field) => field.trim() === "")) {
     throw new ApiError(404, "All field are required ");
   }
 
   try {
+    const stock = await Stock.findById(stock_id);
+    const buyPrice = stock.currentPrice;
     const totalPrice = quantity * buyPrice;
 
     const currentUser = await User.findById(req.user._id);
@@ -79,7 +81,7 @@ const sellStock = asyncHandler(async (req, res) => {
 
     holding.quantity -= quantity;
     if (holding.quantity <= 0) {
-      await holding.remove();
+      await Holding.findByIdAndDelete(holdingId);
     } else {
       await holding.save();
     }

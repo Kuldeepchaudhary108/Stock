@@ -2,7 +2,7 @@ import { Order } from "../models/Order.model.js";
 
 import { ApiError, ApiResponse, asyncHandler } from "../utils/index.js";
 
-const getOrder = asyncHandler(async (res, req) => {
+const getOrder = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id })
     .sort({ createdAt: -1 })
     .populate("user stock");

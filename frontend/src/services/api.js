@@ -14,6 +14,9 @@ export const GET_USER_ROUTE = `${USER_ROUTE}/current-user`;
 export const NEW_STOCK = `${TRADE_ROUTE}/newstocks`;
 export const GET_STOCK = `${TRADE_ROUTE}/getstocks`;
 export const GET_HOLDING = `${TRADE_ROUTE}/holding`;
+export const GET_ORDER = `${TRADE_ROUTE}/order`;
+export const SELL_ORDER = `${TRADE_ROUTE}/sell-stock`;
+export const BUY_ORDER = `${TRADE_ROUTE}/BUY-stock`;
 
 // export const UPDATE_STOCK_ROUTE=`${TRADE_ROUTE}  `
 

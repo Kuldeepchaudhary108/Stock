@@ -49,6 +49,10 @@ const UserSchema = new Schema(
       type: Number,
       default: 10000000,
     },
+    token: {
+      type: Number,
+      default: 10,
+    },
     refreshToken: {
       type: String,
       required: false,

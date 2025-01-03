@@ -13,8 +13,8 @@ const Holdings = () => {
   useEffect(() => {
     const fetchHoldings = async () => {
       try {
-        const { data } = await apiCLient.get(GET_HOLDING); // Replace with your backend endpoint
-        const userHoldings = data.user || []; // Assuming the response contains holdings in 'data.user'
+        const data = await apiCLient.get(GET_HOLDING); // Replace with your backend endpoint
+        const userHoldings = data.data.user || []; // Assuming the response contains holdings in 'data.user'
 
         // Calculate summary data
         const current = userHoldings.reduce(

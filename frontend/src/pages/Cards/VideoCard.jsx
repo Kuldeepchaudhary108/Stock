@@ -33,19 +33,19 @@ const VideoGrid = () => {
     {
       title: "5 types of share capital",
       description: "Learn the types of share capital.",
-      thumbnail: "/elements/stock1.jpeg",
+      thumbnail: "/elements/stock10.jpeg",
       link: "https://zerodha.com/varsity/chapter/share-capital-types",
     },
     {
       title: "How is offer for sale allotment done?",
       description: "Understand the process of OFS allotment.",
-      thumbnail: "/elements/stock1.jpeg",
+      thumbnail: "/elements/stock4.png",
       link: "https://zerodha.com/varsity/chapter/ofs-allotment",
     },
     {
       title: "How to build a mutual fund portfolio?",
       description: "Building a mutual fund portfolio.",
-      thumbnail: "/elements/stock1.jpeg",
+      thumbnail: "/elements/stock13.png",
       link: "/elements/stock.jpeg",
     },
   ];

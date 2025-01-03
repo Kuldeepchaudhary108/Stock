@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { apiCLient, GET_ORDER } from "../services/api";
 
-const TransactionHistory = ({ transactions }) => {
+const TransactionHistory = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const response = await apiCLient.get(GET_ORDER);
+        const fetchedTransactions = response.data.user;
+        console.log(response.data.user);
+
+        setTransactions(fetchedTransactions);
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
   return (
     <div className="transaction-history p-4 border rounded bg-gray-200 dark:bg-zinc-800/80 dark:text-white">
       <h2 className="text-xl text-center font-bold mb-4">
@@ -14,7 +33,7 @@ const TransactionHistory = ({ transactions }) => {
                 Type
               </th>
               <th className="p-2 border border-gray-300 dark:border-gray-700 text-left">
-                Symbol
+                Stock
               </th>
               <th className="p-2 border border-gray-300 dark:border-gray-700 text-left">
                 Quantity
@@ -28,20 +47,21 @@ const TransactionHistory = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction, index) => (
+            {transactions.map((transaction) => (
               <tr
-                key={index}
+                key={transaction._id}
                 className={`${
-                  index % 2 === 0
+                  transaction._id % 2 === 0
                     ? "bg-gray-100 dark:bg-gray-800"
                     : "bg-white dark:bg-gray-900"
                 }`}
               >
                 <td className="p-2 border border-gray-300 dark:border-gray-700">
-                  {transaction.type}
+                  {transaction.type || "N/A"}
                 </td>
                 <td className="p-2 border border-gray-300 dark:border-gray-700">
-                  {transaction.symbol}
+                  {transaction.stock?.companyName || "Unknown"}{" "}
+                  {/* Assuming stock has a name property */}
                 </td>
                 <td className="p-2 border border-gray-300 dark:border-gray-700">
                   {transaction.quantity}
@@ -50,7 +70,7 @@ const TransactionHistory = ({ transactions }) => {
                   {transaction.price}
                 </td>
                 <td className="p-2 border border-gray-300 dark:border-gray-700">
-                  {transaction.time}
+                  {new Date(transaction.createdAt).toLocaleString()}
                 </td>
               </tr>
             ))}

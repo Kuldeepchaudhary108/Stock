@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaChartBar,
   FaWallet,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 const TradingHome = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: <FaChartBar size={40} className="text-teal-600 mx-auto" />,
@@ -80,10 +81,16 @@ const TradingHome = () => {
             </div>
 
             <div className=" p-6 gap-5 flex  w-80">
-              <button className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700">
+              <button
+                onClick={() => navigate("/login")}
+                className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
+              >
                 Login
               </button>
-              <button className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700">
+              <button
+                onClick={() => navigate("/login")}
+                className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
+              >
                 Signup
               </button>
               <p className="text-center text-sm text-gray-500 mt-2">

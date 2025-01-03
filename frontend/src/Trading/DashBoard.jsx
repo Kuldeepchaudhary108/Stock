@@ -1,63 +1,51 @@
 import React, { useState } from "react";
-import TradingViewChart from "./TradingView";
+import { TradingViewChart } from "./TradingView";
 import OrderPanel from "./OrderPanel";
-import Portfolio from "./Portfolio";
+import Holdings from "./Holding";
 import TransactionHistory from "./TransactionHistory";
 
 const Dashboard = () => {
-  // Portfolio state to hold an array of holdings (stocks with quantity)
-  const [portfolio, setPortfolio] = useState([]);
+  // State for transaction history
   const [transactions, setTransactions] = useState([]);
+  const [exportedSymbol, setExportedSymbol] = useState("");
 
-  // Handle placing an order and updating the portfolio
+  // Function to handle placing orders
   const handlePlaceOrder = (order) => {
     const transaction = {
       ...order,
       time: new Date().toLocaleString(),
     };
 
-    // Add the transaction to transaction history
+    // Add the transaction to the transaction history
     setTransactions((prev) => [...prev, transaction]);
-
-    // Update portfolio: either add new stock or update quantity if already owned
-    setPortfolio((prevPortfolio) => {
-      const stockIndex = prevPortfolio.findIndex(
-        (holding) => holding.symbol === order.symbol
-      );
-
-      if (stockIndex === -1) {
-        // If stock is not in the portfolio, add it
-        return [...prevPortfolio, { ...order, quantity: order.quantity }];
-      } else {
-        // If stock is already in portfolio, update the quantity
-        const updatedPortfolio = [...prevPortfolio];
-        updatedPortfolio[stockIndex].quantity += order.quantity;
-        return updatedPortfolio;
-      }
-    });
   };
 
   return (
-    <div className="dashboard p-8 bg-gray-50 dark:bg-zinc-900 min-h-screen">
-      <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-10">
+    <div className="dashboard flex flex-col items-center bg-gray-50 dark:bg-zinc-900 min-h-screen p-4">
+      <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
         Trading Dashboard
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Trading Chart */}
-        <div className="col-span-2 lg:col-span-2 bg-white rounded-lg shadow-lg">
+
+      {/* Trading Chart */}
+      <div className="w-full mb-6">
+        <div className="bg-white rounded-lg shadow-lg">
           <TradingViewChart />
         </div>
+      </div>
 
-        {/* Order Panel and Portfolio */}
-        <div className="col-span-1 bg-white rounded-lg shadow-lg p-6">
-          <OrderPanel onPlaceOrder={handlePlaceOrder} />
-        </div>
-        <div className="col-span-1 bg-white rounded-lg shadow-lg p-6">
-          <Portfolio portfolio={portfolio} />
+      {/* Panels */}
+      <div className="w-full flex flex-col items-center space-y-6">
+        <div className="w-11/12 flex flex-col md:flex-row md:justify-between md:space-x-6">
+          <div className="flex-1 bg-white rounded-lg shadow-lg p-6 mb-6 md:mb-0 dark:bg-zinc-800/80">
+            <OrderPanel onPlaceOrder={handlePlaceOrder} />
+          </div>
+          <div className="flex-1 bg-white rounded-lg shadow-lg p-6 dark:bg-zinc-800/80">
+            <Holdings />
+          </div>
         </div>
 
         {/* Transaction History */}
-        <div className="col-span-1 lg:col-span-3 mt-6 bg-white rounded-lg shadow-lg p-6">
+        <div className="w-11/12 bg-white rounded-lg shadow-lg p-6 dark:bg-zinc-800/80">
           <TransactionHistory transactions={transactions} />
         </div>
       </div>

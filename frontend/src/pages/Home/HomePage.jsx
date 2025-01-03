@@ -9,7 +9,7 @@ import {
   FaBullseye,
   FaBinoculars,
   FaSyncAlt,
-  FaChartLine,
+  // FaChartLine,
 } from "react-icons/fa";
 import image2 from "/elements/stock11.png";
 
@@ -122,7 +122,7 @@ const HomePage = () => {
           />
         </div>
       </div>
-      <section className="bg-teal-50 py-16 px-8 flex gap-36  dark:bg-zinc-700/80">
+      <section className=" py-16 px-8 flex gap-36  dark:bg-zinc-700/80">
         <div className="w-[30%]">
           <img className="w-full" src="/elements/stock10.jpeg" alt="error" />
         </div>
@@ -164,7 +164,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className="bg-teal-50 py-16 px-8 dark:bg-zinc-900">
+      <section className="bg-teal-50/50 py-16 px-8 dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8">
             Practice is Pivotal in Trading: Minimize Risk, Maximise Skills

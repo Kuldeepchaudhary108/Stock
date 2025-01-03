@@ -18,7 +18,7 @@ const PortfolioSchema = new Schema(
     balance: {
       type: Number,
       required: true,
-      default: 100000,
+      default: 1000000,
       min: 0,
     },
   },

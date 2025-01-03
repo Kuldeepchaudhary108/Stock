@@ -10,13 +10,13 @@ import {
   registerStock,
 } from "../controllers/stock.controller.js";
 
-import {
-  createPortfolio,
-  getPortfolioByUserId,
-  addStockToPortfolio,
-  removeStockFromPortfolio,
-  updatePortfolioBalance,
-} from "../controllers/portfolio.controller.js";
+// import {
+//   createPortfolio,
+//   getPortfolioByUserId,
+//   addStockToPortfolio,
+//   removeStockFromPortfolio,
+//   updatePortfolioBalance,
+// } from "../controllers/portfolio.controller.js";
 import {
   buyStock,
   getAllHolding,
@@ -40,10 +40,10 @@ router.route("/holding").get(verifyJWT, getAllHolding);
 router.route("/order").get(verifyJWT, getOrder);
 
 /* Portfolio Routes */
-router.post("/portfolios", createPortfolio);
-router.get("/portfolios/:userId", getPortfolioByUserId);
-router.post("/portfolios/add-stock", addStockToPortfolio);
-router.post("/portfolios/remove-stock", removeStockFromPortfolio);
-router.put("/portfolios/update-balance", updatePortfolioBalance);
+// router.post("/portfolios", createPortfolio);
+// router.get("/portfolios/:userId", getPortfolioByUserId);
+// router.post("/portfolios/add-stock", addStockToPortfolio);
+// router.post("/portfolios/remove-stock", removeStockFromPortfolio);
+// router.put("/portfolios/update-balance", updatePortfolioBalance);
 
 export default router;

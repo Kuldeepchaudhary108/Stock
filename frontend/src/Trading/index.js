@@ -3,9 +3,9 @@ import Dashboard from "./DashBoard";
 import TradingHome from "./TradingHome";
 // import Transactions from "./Transactions";
 import OrderPanel from "./OrderPanel";
-import Portfolio from "./Portfolio";
+// import Portfolio from "./Portfolio";
 import TransactionHistory from "./TransactionHistory";
-import TradingViewChart from "./TradingView";
+import { TradingViewChart } from "./TradingView";
 import UserProfile from "./UserProfile";
 import Holding from "./Holding";
 export {
@@ -15,7 +15,7 @@ export {
   TradingHome,
   // Transactions,
   TransactionHistory,
-  Portfolio,
+  // Portfolio,
   OrderPanel,
   UserProfile,
   TradingViewChart,

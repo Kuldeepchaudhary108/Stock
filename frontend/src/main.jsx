@@ -31,6 +31,7 @@ import {
   UserProfile,
 } from "./Trading/index.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import { AuthRoute } from "./components/AuthRoute.jsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -38,8 +39,22 @@ function App() {
       <>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/login"
+            element={
+              <AuthRoute>
+                <Login />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <AuthRoute>
+                <Signup />
+              </AuthRoute>
+            }
+          />
           <Route path="/profile" element={<Profile />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/module" element={<Modules />} />
