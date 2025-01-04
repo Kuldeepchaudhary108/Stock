@@ -13,8 +13,8 @@ const Holdings = () => {
   useEffect(() => {
     const fetchHoldings = async () => {
       try {
-        const data = await apiCLient.get(GET_HOLDING); // Replace with your backend endpoint
-        const userHoldings = data.data.user || []; // Assuming the response contains holdings in 'data.user'
+        const data = await apiCLient.get(GET_HOLDING); 
+        const userHoldings = data.data.user || []; 
 
         // Calculate summary data
         const current = userHoldings.reduce(
@@ -52,7 +52,7 @@ const Holdings = () => {
   return (
     <div className="bg-gray-900 text-white p-4 rounded-md shadow-md max-w-lg mx-auto">
       <div className="border-b border-gray-700 pb-4">
-        <h3 className="text-lg font-semibold">Holdings</h3>
+        <h3 className="text-lg font-semibold">Holdings({holdings.length})</h3>
         <div className="flex justify-between mt-2">
           <div>
             <span className="text-gray-400 text-sm block">Current</span>

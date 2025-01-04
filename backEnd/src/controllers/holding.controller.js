@@ -52,7 +52,9 @@ const buyStock = asyncHandler(async (req, res) => {
 const sellStock = asyncHandler(async (req, res) => {
   const { holdingId, quantity } = req.body;
 
-  if ([holdingId, quantity].some((field) => field.trim() === "")) {
+  console.log(holdingId, quantity);
+
+  if ([holdingId, quantity].some((field) => field === "")) {
     throw new ApiError(400, "All Field is required");
   }
 
@@ -81,28 +83,30 @@ const sellStock = asyncHandler(async (req, res) => {
     } else {
       await holding.save();
     }
+    console.log("yahan tk chizen thik hain 1");
 
-    const order = new Order({
-      user: holding.user,
+    const order = await Order.create({
+      user: req.user._id,
       stock: holding.stock,
       quantity,
-      price: holding.currentPrice,
+      price: selPrice,
       type: "sell",
       remainingBalance: currentUser.balance,
     });
-
-    await order.save();
+    console.log("yahan tk chizen thik hain 2");
 
     return res
       .status(202)
-      .jSON(new ApiResponse(202, {}, "Stock sold Successfully"));
+      .json(new ApiResponse(202, {}, "STock sell succefully"));
   } catch (error) {
-    throw new ApiError(404, "failed to buy stock");
+    console.error("Error in sellStock: ", error); // log the error
+    throw new ApiError(500, "Failed to sell stock due to server error");
   }
 });
 
 const getAllHolding = asyncHandler(async (req, res) => {
   //   console.log("holding user", req.user);
+  // const { userId } = req.body;
   const holding = await Holding.find({ user: req.user._id }).populate("stock");
   //   console.log(holding);
   return res

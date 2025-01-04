@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { symbol as stateSymbol } from "../store/authSlice.js";
-import { apiCLient, BUY_ORDER, GET_STOCK, SELL_ORDER } from "../services/api";
+import {
+  apiCLient,
+  BUY_ORDER,
+  GET_HOLDING,
+  GET_STOCK,
+  SELL_ORDER,
+} from "../services/api";
 
 const OrderPanel = () => {
   const [orderType, setOrderType] = useState("buy");
@@ -21,16 +27,26 @@ const OrderPanel = () => {
     try {
       const response = await apiCLient.get(GET_STOCK);
       const stock = response.data?.user;
-      console.log("stock", response.data.user);
 
       const matchingStock = stock.find((stock) => stock.symbol === symbol);
-      // console.log(matchingStock._id);
 
       if (matchingStock) {
         setCompanyName(matchingStock.companyName || "Unknown Company");
-        // console.log(matchingStock._id);
-
         setStockId(matchingStock._id);
+
+        const response = await apiCLient.get(GET_HOLDING);
+        const holdingData = response.data?.user;
+
+        const matchingStockId = holdingData.find(
+          (stock) => stock.stock._id === matchingStock._id
+        );
+
+        if (matchingStockId) {
+          setHoldingId(matchingStockId._id);
+        } else {
+          console.warn("User holding not found.");
+        }
+
         console.log("Stock details fetched successfully:");
       } else {
         console.warn(
@@ -57,23 +73,34 @@ const OrderPanel = () => {
 
   const handleOrder = async () => {
     if (orderType === "buy") {
-      const buyStock = await apiCLient.post(BUY_ORDER, {
-        stock_id: stockId,
-        quantity,
-        buyPrice: price,
-      });
+      try {
+        const buyStock = await apiCLient.post(BUY_ORDER, {
+          stock_id: stockId,
+          quantity,
+          buyPrice: price,
+        });
 
-      alert("stock add successfully");
-      if (buyStock.status === 202) {
+        if (buyStock.status === 202) {
+          alert("Stock added successfully");
+          setPrice("");
+        }
+      } catch (error) {
+        setError("Failed to execute buy order.");
       }
     }
     if (orderType === "sell") {
-      const sellStock = await apiCLient.post(SELL_ORDER, {
-        holdingId,
-        quantity,
-      });
-      if (sellStock.status === "202") {
-        alert("stack your holding successFull");
+      try {
+        const sellStock = await apiCLient.post(SELL_ORDER, {
+          holdingId,
+          quantity,
+        });
+
+        if (sellStock.status === 202) {
+          alert("Successfully sold your holding");
+          setPrice("");
+        }
+      } catch (error) {
+        setError("Failed to execute sell order.");
       }
     }
   };
