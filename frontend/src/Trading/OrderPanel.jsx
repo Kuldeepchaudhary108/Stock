@@ -1,72 +1,93 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
-import { setSymbol } from "../store/authSlice.js";
-import axios from "axios";
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { symbol as stateSymbol } from "../store/authSlice.js";
+import { apiCLient, BUY_ORDER, GET_STOCK, SELL_ORDER } from "../services/api";
 
 const OrderPanel = () => {
   const [orderType, setOrderType] = useState("buy");
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [stockId, setStockId] = useState("");
+  const [holdingId, setHoldingId] = useState("");
+  const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
-  const { symbol: tickerSymbol } = useSelector((state) => state.auth);
+  const symbol = useSelector((state) => state.auth.symbol);
 
-  console.log("check", tickerSymbol);
+  const fetchStockDetails = useCallback(async () => {
+    if (!symbol) return;
 
-  // Fetch ticker symbol from localStorage on initial render if not in Redux
-  useEffect(() => {
-    if (!tickerSymbol) {
-      const storedUserData = localStorage.getItem("symbol");
-      console.log("check", storedUserData);
+    try {
+      const response = await apiCLient.get(GET_STOCK);
+      const stock = response.data?.user;
+      console.log("stock", response.data.user);
 
-      if (storedUserData) {
-        const parsedSymbol = JSON.parse(storedUserData);
-        dispatch(setSymbol(parsedSymbol));
+      const matchingStock = stock.find((stock) => stock.symbol === symbol);
+      // console.log(matchingStock._id);
+
+      if (matchingStock) {
+        setCompanyName(matchingStock.companyName || "Unknown Company");
+        // console.log(matchingStock._id);
+
+        setStockId(matchingStock._id);
+        console.log("Stock details fetched successfully:");
+      } else {
+        console.warn(
+          "Symbol mismatch or stock details not found in the array."
+        );
       }
+    } catch (error) {
+      console.error("Error while fetching stock details:", error.message);
+      setError("Failed to fetch stock details. Please try again later.");
     }
-  }, [dispatch]);
+  }, [symbol]);
 
-  // Fetch company name based on ticker symbol
   useEffect(() => {
-    if (tickerSymbol) {
-      // Replace with your API call to fetch company data
-      axios
-        .get(`https://api.example.com/stock/${tickerSymbol}`)
-        .then((response) => {
-          setCompanyName(response.data.companyName); // Assuming the response contains company name
-        })
-        .catch((error) => {
-          console.error("Error fetching company name", error);
-        });
+    const storedSymbol = localStorage.getItem("symbol");
+    if (!symbol && storedSymbol) {
+      const parsedSymbol = JSON.parse(storedSymbol);
+      dispatch(stateSymbol(parsedSymbol));
     }
-  }, [tickerSymbol]);
+  }, [symbol, dispatch]);
+
+  useEffect(() => {
+    fetchStockDetails();
+  }, [fetchStockDetails]);
 
   const handleOrder = async () => {
-    // Implement the logic for handling the order submission
-    if (!price || !quantity || !orderType) {
-      alert("Please fill in all fields.");
-      return;
+    if (orderType === "buy") {
+      const buyStock = await apiCLient.post(BUY_ORDER, {
+        stock_id: stockId,
+        quantity,
+        buyPrice: price,
+      });
+
+      alert("stock add successfully");
+      if (buyStock.status === 202) {
+      }
     }
-    // Make an API call or any other operation to submit the order
-    console.log("Order submitted:", {
-      orderType,
-      quantity,
-      price,
-      tickerSymbol,
-      companyName,
-    });
+    if (orderType === "sell") {
+      const sellStock = await apiCLient.post(SELL_ORDER, {
+        holdingId,
+        quantity,
+      });
+      if (sellStock.status === "202") {
+        alert("stack your holding successFull");
+      }
+    }
   };
 
   return (
     <div className="order-panel bg-white p-6 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold text-gray-800 mb-4">Place Order</h2>
+      {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
       <div className="mb-4">
         <label className="block text-sm text-gray-600">Ticker Symbol:</label>
         <input
           type="text"
-          value={tickerSymbol}
-          disabled // Make the symbol input field read-only as it's derived from Redux
+          value={symbol || ""}
+          disabled
           className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -75,7 +96,7 @@ const OrderPanel = () => {
         <input
           type="text"
           value={companyName}
-          disabled // Make the company name read-only as it's fetched automatically
+          disabled
           className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>

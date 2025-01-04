@@ -19,11 +19,11 @@ const authSlice = createSlice({
       state.status = false;
       state.userData = null;
     },
-    setSymbol: (state, action) => {
+    symbol: (state, action) => {
       state.symbol = action.payload;
       localStorage.setItem("symbol", JSON.stringify(action.payload));
     },
   },
 });
-export const { login, logout, setSymbol } = authSlice.actions;
+export const { login, logout, symbol } = authSlice.actions;
 export default authSlice.reducer;

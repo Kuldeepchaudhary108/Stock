@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const StockSchema = new mongoose.Schema(
   {
-    Symbol: {
+    symbol: {
       type: String,
       required: true,
       uppercase: true,

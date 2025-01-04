@@ -1,15 +1,22 @@
 import React, { useEffect, useState, useRef, memo } from "react";
-import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
-import { setSymbol } from "../store/authSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { symbol as setSymbol } from "../store/authSlice.js"; // Updated import
 
 function TradingViewWidget({ onSymbolExport }) {
   const dispatch = useDispatch();
-  const { symbol: tickerSymbol } = useSelector((state) => state.auth);
+  const tickerSymbol = useSelector((state) => state.auth.symbol);
   const container = useRef();
-  const [symbol, setSymbol] = useState("NASDAQ:AAPL");
+
+  const [symbol, setSymbolState] = useState(tickerSymbol || "NASDAQ:AAPL");
 
   useEffect(() => {
-    // Clear the container to ensure the script is added only once
+    // Sync local state with Redux state when Redux changes
+    if (tickerSymbol !== symbol) {
+      setSymbolState(tickerSymbol);
+    }
+  }, [tickerSymbol]);
+
+  useEffect(() => {
     container.current.innerHTML = "";
 
     const script = document.createElement("script");
@@ -48,13 +55,12 @@ function TradingViewWidget({ onSymbolExport }) {
         }`;
 
     container.current.appendChild(script);
-  }, [symbol]); // Depend on the symbol to update the widget when it changes
+  }, [symbol]);
 
   const handleSymbolChange = (event) => {
     const newSymbol = event.target.value;
-    console.log(newSymbol);
-    setSymbol(newSymbol);
-    dispatch(setSymbol(newSymbol));
+    setSymbolState(newSymbol);
+    dispatch(setSymbol(newSymbol)); // Dispatch the action
   };
 
   return (
@@ -69,16 +75,16 @@ function TradingViewWidget({ onSymbolExport }) {
           onChange={handleSymbolChange}
           style={{ padding: "5px", fontSize: "14px" }}
         >
-          <option value="NASDAQ:AAPL">Apple (AAPL)</option>
-          <option value="NASDAQ:TSLA">Tesla (TSLA)</option>
-          <option value="NASDAQ:NVDA">NVIDIA (NVDA)</option>
-          <option value="NASDAQ:AMZN">Amazon (AMZN)</option>
-          <option value="NASDAQ:MSFT">Microsoft (MSFT)</option>
-          <option value="NASDAQ:META">Meta (META)</option>
-          <option value="NASDAQ:GOOGL">Google (GOOGL)</option>
-          <option value="NASDAQ:NFLX">Netflix (NFLX)</option>
-          <option value="NASDAQ:ADBE">Adobe (ADBE)</option>
-          <option value="NASDAQ:INTC">Intel (INTC)</option>
+          <option value="AAPL">Apple (AAPL)</option>
+          <option value="TSLA">Tesla (TSLA)</option>
+          <option value="NVDA">NVIDIA (NVDA)</option>
+          <option value="AMZN">Amazon (AMZN)</option>
+          <option value="MSFT">Microsoft (MSFT)</option>
+          <option value="META">Meta (META)</option>
+          <option value="GOOGL">Google (GOOGL)</option>
+          <option value="NFLX">Netflix (NFLX)</option>
+          <option value="ADBE">Adobe (ADBE)</option>
+          <option value="INTC">Intel (INTC)</option>
         </select>
       </div>
 

@@ -5,15 +5,15 @@ import { User } from "../models/user.model.js";
 import { ApiError, ApiResponse, asyncHandler } from "../utils/index.js";
 
 const buyStock = asyncHandler(async (req, res) => {
-  const { stock_id, quantity } = req.body;
+  const { stock_id, quantity, buyPrice } = req.body;
 
-  if ([stock_id, quantity, buyPrice].some((field) => field.trim() === "")) {
+  if ([stock_id, quantity, buyPrice].some((field) => field === "")) {
     throw new ApiError(404, "All field are required ");
   }
 
   try {
-    const stock = await Stock.findById(stock_id);
-    const buyPrice = stock.currentPrice;
+    // const stock = await Stock.findById(stock_id);
+    // const buyPrice = stock.currentPrice;
     const totalPrice = quantity * buyPrice;
 
     const currentUser = await User.findById(req.user._id);
@@ -41,7 +41,6 @@ const buyStock = asyncHandler(async (req, res) => {
       type: "buy",
       remainingBalance: currentUser.balance,
     });
-    console.log("yahan tk sab thik hain 2");
 
     return res
       .status(202)
@@ -58,9 +57,6 @@ const sellStock = asyncHandler(async (req, res) => {
   }
 
   try {
-    console.log(req);
-    console.log(req.user);
-
     const holding = await Holding.findById(holdingId);
     if (!holding) {
       throw new ApiError(404, "Holding not found");
