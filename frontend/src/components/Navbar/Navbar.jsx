@@ -1,30 +1,27 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { CgProfile } from "react-icons/cg";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ThemeContext } from "../../contexts/theme"; // Import the Theme Context
+import { ThemeContext } from "../../contexts/theme";
+import { apiCLient, LOGOUT_ROUTE } from "../../services/api";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-
-  const { themeMode, darkTheme, lightTheme } = useContext(ThemeContext); // Access the theme context
+  const { themeMode, darkTheme, lightTheme } = useContext(ThemeContext);
 
   const handleThemeToggle = () => {
-    if (themeMode === "light") {
-      darkTheme();
-    } else {
-      lightTheme();
-    }
+    themeMode === "light" ? darkTheme() : lightTheme();
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await apiCLient.post(LOGOUT_ROUTE);
     sessionStorage.clear();
     localStorage.clear();
     console.log("Session storage cleared, user logged out");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -37,6 +34,7 @@ const Navbar = () => {
         MerCat
       </NavLink>
 
+      {/* Hamburger Menu and Links */}
       <ul
         className={`absolute md:relative w-full md:w-auto bg-white dark:bg-zinc-800 md:bg-transparent top-20 md:top-auto left-0 md:left-auto flex flex-col md:flex-row md:items-center transition-all duration-500 ease-in-out ${
           showMenu ? "block" : "hidden md:flex"
@@ -102,6 +100,8 @@ const Navbar = () => {
         >
           Papertrading
         </NavLink>
+
+        {/* Logout and Profile Links (only visible on mobile) */}
         <li
           className="text-xl font-medium cursor-pointer text-red-500 px-6 py-2 md:hidden"
           onClick={handleLogout}
@@ -112,13 +112,12 @@ const Navbar = () => {
           className="text-xl font-medium cursor-pointer text-red-500 px-6 py-2 md:hidden"
           onClick={() => navigate("/user-profile")}
         >
-          profile
+          Profile
         </li>
       </ul>
 
-      {/* Theme Toggle and Profile Icons */}
-      <div className="flex items-center gap-1">
-        {/* Theme Toggle */}
+      {/* Theme Toggle Button */}
+      <div className="flex items-center gap-4">
         <button
           onClick={handleThemeToggle}
           className="p-2 rounded-full focus:outline-none transition-colors"
@@ -131,12 +130,12 @@ const Navbar = () => {
           )}
         </button>
 
-        {/* User Dropdown */}
+        {/* Profile Dropdown */}
         <div className="relative">
           <button
             className="h-10 w-10 rounded-full"
             onClick={() => setShowDropdown((prev) => !prev)}
-            aria-label="User"
+            aria-label="User Profile"
           >
             <CgProfile className="w-8 h-8 dark:text-white" />
           </button>
@@ -145,22 +144,22 @@ const Navbar = () => {
             <div className="absolute right-0 mt-2 bg-white dark:bg-gray-600 shadow-lg rounded-md w-32">
               <button
                 onClick={handleLogout}
-                className="block w-full text-center text-xl px-4 py-2  rounded-lg hover:bg-zinc-700  transition-all duration-300"
+                className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-700 transition-all duration-300"
               >
                 Log Out
               </button>
               <button
                 onClick={() => navigate("/user-profile")}
-                className="block w-full text-center text-xl px-4 py-2   rounded-lg hover:bg-zinc-700  transition-all duration-300"
+                className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-700 transition-all duration-300"
               >
-                profile
+                Profile
               </button>
             </div>
           )}
         </div>
       </div>
 
-      {/* Hamburger Menu for Mobile */}
+      {/* Hamburger Menu Button */}
       <button
         onClick={() => setShowMenu((prev) => !prev)}
         className="md:hidden block p-2"

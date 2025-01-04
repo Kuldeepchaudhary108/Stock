@@ -21,6 +21,7 @@ import {
   VideoLesson,
   VideoModule,
   Profile,
+  AdsPage,
 } from "./pages/index.js";
 import {
   Dashboard,
@@ -56,7 +57,15 @@ function App() {
             }
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/user-profile" element={<UserProfile />} />
+          <Route
+            path="/user-profile"
+            element={
+              <PrivateRoute>
+                <UserProfile />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/ads" element={<AdsPage />} />
           <Route path="/module" element={<Modules />} />
           <Route
             path="/module-text"

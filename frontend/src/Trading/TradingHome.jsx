@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaChartBar,
@@ -8,9 +9,14 @@ import {
   FaBinoculars,
   FaSyncAlt,
 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { login as authLogin } from "../store/authSlice.js";
 
 const TradingHome = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector((state) => state.auth.status);
   const features = [
     {
       icon: <FaChartBar size={40} className="text-teal-600 mx-auto" />,
@@ -49,6 +55,30 @@ const TradingHome = () => {
         "With advanced AI analytics and a suite of trading tools, Neostox empowers you to practice, analyze your strategies, and refine your trading decisions.",
     },
   ];
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      const storedUserData = localStorage.getItem("userData");
+      if (storedUserData) {
+        dispatch(authLogin(JSON.parse(storedUserData)));
+      }
+    }
+  }, [isLoggedIn, dispatch]);
+  const handleLogin = () => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const handleSignup = () => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    } else {
+      navigate("/signup");
+    }
+  };
   return (
     <div className="home-page text-center mt-10 dark:text-white ">
       {/* <h1 className="text-4xl font-bold">Welcome to Paper Trading</h1>
@@ -82,13 +112,13 @@ const TradingHome = () => {
 
             <div className=" p-6 gap-5 flex  w-80">
               <button
-                onClick={() => navigate("/login")}
+                onClick={() => handleLogin()}
                 className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
               >
                 Login
               </button>
               <button
-                onClick={() => navigate("/login")}
+                onClick={() => handleSignup()}
                 className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
               >
                 Signup

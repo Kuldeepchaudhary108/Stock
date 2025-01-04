@@ -10,6 +10,7 @@ import TextModule from "./modules/TextModule";
 import Login from "./Login/Login";
 import Signup from "./Signup/signup";
 import Profile from "./Signup/profile";
+import AdsPage from "./adds/AdsPage";
 
 import VideoLesson from "./Leasson/LessonPage";
 export {
@@ -26,4 +27,5 @@ export {
   Login,
   Signup,
   Profile,
+  AdsPage,
 };

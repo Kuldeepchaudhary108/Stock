@@ -83,6 +83,7 @@ const OrderPanel = () => {
         if (buyStock.status === 202) {
           alert("Stock added successfully");
           setPrice("");
+          window.location.reload();
         }
       } catch (error) {
         setError("Failed to execute buy order.");
@@ -98,6 +99,7 @@ const OrderPanel = () => {
         if (sellStock.status === 202) {
           alert("Successfully sold your holding");
           setPrice("");
+          window.location.reload();
         }
       } catch (error) {
         setError("Failed to execute sell order.");

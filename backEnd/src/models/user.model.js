@@ -44,15 +44,12 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "password is required"],
     },
-    tokens: { type: Number, default: 0 },
+    tokens: { type: Number, default: 10 },
     balance: {
       type: Number,
       default: 10000000,
     },
-    token: {
-      type: Number,
-      default: 10,
-    },
+
     refreshToken: {
       type: String,
       required: false,

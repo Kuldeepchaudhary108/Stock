@@ -11,7 +11,6 @@ import {
   FaSyncAlt,
   // FaChartLine,
 } from "react-icons/fa";
-import image2 from "/elements/stock11.png";
 
 const HomePage = () => {
   const navigate = useNavigate();

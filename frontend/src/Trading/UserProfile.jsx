@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice.js";
+import { FaCoins } from "react-icons/fa"; // Importing React Icon for the button
 
 const UserProfile = () => {
-  const { status } = useSelector((state) => state.auth);
   const userData = useSelector((state) => state.auth.userData);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   if (!userData) {
     const storedUserData = localStorage.getItem("userData");
@@ -14,9 +16,13 @@ const UserProfile = () => {
     }
   }
 
+  const handleGetMoreTokens = () => {
+    navigate("/ads");
+  };
+
   return (
-    <div className=" p-6 max-w-4xl mx-auto mt-5 bg-white shadow-md rounded-lg dark:bg-zinc-800/70 dark:text-white">
-      <div className=" flex items-center mb-6 gap-10">
+    <div className="p-6 max-w-4xl mx-auto mt-5 bg-white shadow-md rounded-lg dark:bg-zinc-800/70 dark:text-white">
+      <div className="flex items-center mb-6 gap-10">
         <img
           src="/elements/sun5.jpg"
           alt="User Avatar"
@@ -27,12 +33,9 @@ const UserProfile = () => {
             {userData.firstName}
           </h2>
           <p className="text-gray-600 dark:text-white">
-            {" "}
-            email:{userData.email}
+            Email: {userData.email}
           </p>
-          <p className="text-gray-600 dark:text-white">
-            {userData.firstName}: December 2024
-          </p>
+          <p className="text-gray-600 dark:text-white">Joined: December 2024</p>
         </div>
       </div>
 
@@ -40,25 +43,38 @@ const UserProfile = () => {
       <div className="trading-stats mb-6">
         <h3 className="text-xl font-semibold mb-4">Trading Statistics</h3>
         <div className="grid grid-cols-3 gap-4">
-          <div className="stat bg-gray-100  dark:bg-zinc-500/40 p-4 rounded text-center">
+          <div className="stat bg-gray-100 dark:bg-zinc-500/40 p-4 rounded text-center">
             <p className="text-2xl font-bold dark:text-black">
-              {userData.Account}
+              {userData.balance}
             </p>
             <p className="text-gray-600 dark:text-white">Total Balance</p>
           </div>
           <div className="stat bg-gray-100 p-4 rounded text-center dark:bg-zinc-500/40">
-            <p className="text-2xl font-bold  dark:text-black ">₹25,000</p>
-            <p className="text-gray-600  dark:text-white">Profit/Loss</p>
+            <p className="text-2xl font-bold dark:text-black">₹25,000</p>
+            <p className="text-gray-600 dark:text-white">Profit/Loss</p>
           </div>
           <div className="stat bg-gray-100 p-4 rounded text-center dark:bg-zinc-500/40">
             <p className="text-2xl font-bold dark:text-black">56</p>
             <p className="text-gray-600 dark:text-white">Total Trades</p>
           </div>
           <div className="stat bg-gray-100 p-4 rounded text-center dark:bg-zinc-500/40">
-            <p className="text-2xl font-bold dark:text-black">101</p>
-            <p className="text-gray-600 dark:text-white">Test Token</p>
+            <p className="text-2xl font-bold dark:text-black">
+              {userData.tokens}
+            </p>
+            <p className="text-gray-600 dark:text-white">Test Tokens</p>
           </div>
         </div>
+      </div>
+
+      {/* Get More Test Tokens */}
+      <div className="get-more-tokens mb-6 flex justify-center">
+        <button
+          onClick={handleGetMoreTokens}
+          className="flex items-center gap-2 p-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md"
+        >
+          <FaCoins size={20} /> {/* React Icon */}
+          Get More Tokens
+        </button>
       </div>
 
       {/* Account Settings */}
@@ -96,7 +112,7 @@ const UserProfile = () => {
             />
           </div>
         </div>
-        <button className="mt-4 p-2 bg-blue-500 text-white rounded">
+        <button className="mt-4 p-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
           Save Changes
         </button>
       </div>
