@@ -13,8 +13,8 @@ const Holdings = () => {
   useEffect(() => {
     const fetchHoldings = async () => {
       try {
-        const data = await apiCLient.get(GET_HOLDING); 
-        const userHoldings = data.data.user || []; 
+        const data = await apiCLient.get(GET_HOLDING);
+        const userHoldings = data.data.user || [];
 
         // Calculate summary data
         const current = userHoldings.reduce(
