@@ -90,7 +90,7 @@ const HomePage = () => {
           the best tools and support.
         </p>
         <div className="space-x-4">
-          <button className="bg-orange-500 px-6 py-3 rounded-lg hover:bg-orange-600">
+          <button className="bg-orange-500 px-6 py-3 rounded-lg hover:bg-blue-950">
             Start Free Trial
           </button>
           <button className="bg-gray-700 px-6 py-3 rounded-lg hover:bg-gray-600">
@@ -225,7 +225,10 @@ const HomePage = () => {
               Learn by our MerCat.
             </p>
           </div>
-          <div className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl ">
+          <div
+            onClick={() => navigate("/loan")}
+            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl "
+          >
             <div className="mb-4 text-orange-500 text-4xl ">📈</div>
             <h3 className="text-xl font-bold text-gray-800 dark:text-white">
               Apply

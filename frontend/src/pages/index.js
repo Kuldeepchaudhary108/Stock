@@ -11,6 +11,7 @@ import Login from "./Login/Login";
 import Signup from "./Signup/signup";
 import Profile from "./Signup/profile";
 import AdsPage from "./adds/AdsPage";
+import Loan from "./loan/Loan";
 
 import VideoLesson from "./Leasson/LessonPage";
 export {
@@ -28,4 +29,5 @@ export {
   Signup,
   Profile,
   AdsPage,
+  Loan,
 };

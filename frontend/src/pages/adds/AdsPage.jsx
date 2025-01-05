@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { ethers } from "ethers";
+import { apiCLient, BLOCK_ROUTE, COMP_BLOCK } from "../../services/api";
 
 const AdsPage = () => {
   const topPicks = [
@@ -46,8 +48,63 @@ const AdsPage = () => {
     },
   ];
 
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState("");
+  const [complete, setComplete] = useState(false);
+
+  const handleConnectWallet = async () => {
+    try {
+      if (!window.ethereum) {
+        alert("MetaMask is not installed. Please install it to proceed.");
+        return;
+      }
+
+      // Request wallet connection
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const accounts = await provider.send("eth_requestAccounts", []);
+      const userAddress = accounts[0];
+
+      setWalletConnected(true);
+      setWalletAddress(userAddress);
+
+      console.log("Wallet connected:", userAddress);
+    } catch (error) {
+      console.error("Error connecting wallet:", error.message);
+      alert("Failed to connect wallet. Please try again.");
+    }
+  };
+
+  const handleReward = async () => {
+    if (!walletConnected) {
+      alert("Please connect your wallet first.");
+      return;
+    }
+
+    try {
+      console.log("Attempting to reward:", walletAddress);
+      const rewardAmount = "0.001";
+      setComplete(true);
+
+      const response = await apiCLient.post(COMP_BLOCK, {
+        userAddress: walletAddress,
+        rewardAmount,
+      });
+
+      if (response) {
+        console.log("Reward successfully claimed:", response.data);
+        alert("Reward added successfully");
+      }
+    } catch (error) {
+      console.error(
+        "Error claiming reward:",
+        error.response?.data || error.message
+      );
+      alert("Failed to claim the reward. Please try again.");
+    }
+  };
+
   return (
-    <div className="bg-zinc-900 text-white min-h-screen p-6 ">
+    <div className="bg-zinc-900 text-white min-h-screen p-6">
       {/* Header */}
       <header className="text-center mb-12">
         <h1 className="text-4xl font-extrabold mb-6 text-zinc-100">
@@ -57,9 +114,19 @@ const AdsPage = () => {
           <span>$ First reward in 8 seconds</span> &nbsp;|&nbsp;{" "}
           <span>$ Over 3,500 offers available</span>
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white py-3 px-8 rounded-lg text-lg shadow-md hover:shadow-lg">
-          Start Earning Now
-        </button>
+        {!walletConnected ? (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white py-3 px-8 rounded-lg text-lg shadow-md hover:shadow-lg"
+            onClick={handleConnectWallet}
+          >
+            Connect Wallet
+          </button>
+        ) : (
+          <div className="text-green-400">
+            <p>Wallet Connected:</p>
+            <p className="text-sm">{walletAddress}</p>
+          </div>
+        )}
       </header>
 
       {/* Top Picks Section */}
@@ -71,11 +138,12 @@ const AdsPage = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {topPicks.map((ad) => (
             <div
               key={ad.id}
-              className="bg-zinc-800 p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300 ease-in-out relative"
+              className="bg-zinc-800 p-6 rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition duration-300 ease-in-out relative"
+              onClick={() => handleReward()}
             >
               <img
                 src={ad.img}

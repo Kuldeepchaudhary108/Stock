@@ -34,8 +34,20 @@ const Dashboard = () => {
           <TransactionHistory />
         </div>
       </div>
+
+      {/* Google Pop Ads Space */}
+      <div className="w-11/12 bg-gray-200 rounded-lg shadow-lg p-6 mt-6 flex items-center justify-center dark:bg-zinc-700">
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-300">
+            Ad Space Placeholder
+          </p>
+          <p className="text-sm text-gray-400 dark:text-gray-500">
+            (Insert Google Ad script here)
+          </p>
+        </div>
+      </div>
     </div>
-  );
+  );  
 };
 
 export default Dashboard;

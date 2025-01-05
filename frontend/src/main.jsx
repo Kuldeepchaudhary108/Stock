@@ -22,6 +22,7 @@ import {
   VideoModule,
   Profile,
   AdsPage,
+  Loan,
 } from "./pages/index.js";
 import {
   Dashboard,
@@ -33,6 +34,7 @@ import {
 } from "./Trading/index.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import { AuthRoute } from "./components/AuthRoute.jsx";
+import SmartApp from "./Smart/Smartconfig/Smart.jsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -67,6 +69,8 @@ function App() {
           />
           <Route path="/ads" element={<AdsPage />} />
           <Route path="/module" element={<Modules />} />
+          <Route path="/loan" element={<Loan />} />
+          <Route path="/block" element={<SmartApp />} />
           <Route
             path="/module-text"
             element={
