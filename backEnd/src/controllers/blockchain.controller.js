@@ -1,5 +1,5 @@
 // import { rewardUserForTask, fetchUserBalance } from "../service/blockChain.js";
-
+import { ApiResponse } from "../utils/ApiResponse.js";
 // Controller: Complete Task
 import { rewardUserForTask, fetchUserBalance } from "../service/blockChain.js";
 
@@ -18,14 +18,17 @@ export const completeTask = async (req, res) => {
     console.log(`Updated Balance: ${updatedBalance} tokens`);
 
     // Respond to the client
-    res.status(200).json({
-      success: true,
-      transactionHash,
-      updatedBalance, // Include the updated balance in the response if needed
-    });
+    res.status(200).json(
+      new ApiResponse(202, {
+        success: true,
+        transactionHash,
+        updatedBalance, // Include the updated balance in the response if needed
+      }),
+      "rewards grant successfully "
+    );
   } catch (error) {
     console.error("Error completing task:", error.message);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json(new ApiResponse(404, error.message));
   }
 };
 
