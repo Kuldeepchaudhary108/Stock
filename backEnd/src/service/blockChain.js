@@ -14,14 +14,8 @@ const earningManagerContract = new ethers.Contract(
 );
 const network = await provider.getNetwork();
 console.log("Connected network:", network.chainId);
-// const chainId = 656476(0xa045c);
-// console.log("Expected network:", chainId);
-// if (network.chainId !== chainId) {
-//   throw new Error("Connected to the wrong network.");
-// }
-console.log("earning manager address", config.contracts.earningManager.address);
-console.log("Contract address:", earningManagerContract.target);
-console.log("Contract address:", earningManagerContract.getRealTokenBalance);
+
+
 
 // Service: Reward User for Completing Task
 export const rewardUserForTask = async (userAddress, rewardAmount) => {

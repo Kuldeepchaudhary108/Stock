@@ -68,6 +68,7 @@ const AdsPage = () => {
       setWalletAddress(userAddress);
 
       console.log("Wallet connected:", userAddress);
+      alert("Wallet connect succefully");
     } catch (error) {
       console.error("Error connecting wallet:", error.message);
       alert("Failed to connect wallet. Please try again.");
@@ -85,6 +86,7 @@ const AdsPage = () => {
       const rewardAmount = "0.001";
       setComplete(true);
 
+      alert("Reward added successfully");
       const response = await apiCLient.post(COMP_BLOCK, {
         userAddress: walletAddress,
         rewardAmount,
@@ -92,14 +94,13 @@ const AdsPage = () => {
 
       if (response) {
         console.log("Reward successfully claimed:", response.data);
-        alert("Reward added successfully");
       }
     } catch (error) {
       console.error(
         "Error claiming reward:",
         error.response?.data || error.message
       );
-      alert("Failed to claim the reward. Please try again.");
+      // alert("Failed to claim the reward. Please try again.");
     }
   };
 
