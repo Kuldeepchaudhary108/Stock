@@ -10,7 +10,4 @@ const router = express.Router();
 router.post("/complete-task", completeTask);
 router.post("/balance", getBalance);
 
-// Route to fetch the user's token balance
-// router.get("/balance", getBalance);
-
 export default router;

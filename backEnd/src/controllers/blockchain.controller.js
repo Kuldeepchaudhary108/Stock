@@ -1,7 +1,8 @@
-// import { rewardUserForTask, fetchUserBalance } from "../service/blockChain.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-// Controller: Complete Task
-import { rewardUserForTask, fetchUserBalance } from "../service/blockChain.js";
+import {
+  rewardUserForTask,
+  getRealTokenBalance,
+} from "../service/earning.service.js";
 
 export const completeTask = async (req, res) => {
   try {
@@ -11,7 +12,7 @@ export const completeTask = async (req, res) => {
     const transactionHash = await rewardUserForTask(userAddress, rewardAmount);
 
     // Fetch the updated balance
-    const updatedBalance = await fetchUserBalance(userAddress);
+    const updatedBalance = await getRealTokenBalance(userAddress);
 
     // Log the updated balance to the console
     console.log(`User Address: ${userAddress}`);
@@ -38,7 +39,7 @@ export const getBalance = async (req, res) => {
     const { userAddress } = req.body;
     // console.log(userAddress);
 
-    const balance = await fetchUserBalance(userAddress);
+    const balance = await getRealTokenBalance(userAddress);
     res.status(200).json({ success: true, balance });
   } catch (error) {
     console.error("Error fetching balance:", error.message);

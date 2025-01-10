@@ -12,10 +12,6 @@ const earningManagerContract = new ethers.Contract(
   config.contracts.earningManager.abi,
   signer
 );
-const network = await provider.getNetwork();
-console.log("Connected network:", network.chainId);
-
-
 
 // Service: Reward User for Completing Task
 export const rewardUserForTask = async (userAddress, rewardAmount) => {

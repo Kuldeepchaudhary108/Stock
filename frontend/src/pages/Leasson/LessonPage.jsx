@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { ethers } from "ethers";
+import { COMP_BLOCK } from "../../services/api";
+// Ensure to import or define apiClient and COMP_BLOCK if used externally
 
 const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
   return (
@@ -55,7 +58,7 @@ const VideoPlayer = ({ selectedVideo, markVideoComplete }) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="w-full h-[440px]"
-          onLoad={markVideoComplete} // Mark video as complete when loaded
+          onLoad={markVideoComplete}
         ></iframe>
       </div>
     </div>
@@ -89,35 +92,13 @@ const VideoLesson = () => {
       duration: "00:07:07",
       url: "https://www.youtube.com/embed/example5",
     },
-    {
-      title: "How does a trading platform work?",
-      duration: "00:07:07",
-      url: "https://www.youtube.com/embed/example5",
-    },
-    {
-      title: "How does a trading platform work?",
-      duration: "00:07:07",
-      url: "https://www.youtube.com/embed/example5",
-    },
-    {
-      title: "How does a trading platform work?",
-      duration: "00:07:07",
-      url: "https://www.youtube.com/embed/example5",
-    },
-    {
-      title: "How does a trading platform work?",
-      duration: "00:07:07",
-      url: "https://www.youtube.com/embed/example5",
-    },
-    {
-      title: "How does a trading platform work?",
-      duration: "00:07:07",
-      url: "https://www.youtube.com/embed/example5",
-    },
   ];
 
-  const [selectedVideoIndex, setSelectedVideoIndex] = React.useState(0);
-  const [completedVideos, setCompletedVideos] = React.useState([]);
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
+  const [completedVideos, setCompletedVideos] = useState([]);
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState("");
+  const [rewardPending, setRewardPending] = useState(false); // New state to handle pending rewards
 
   const handleVideoSelect = (index) => {
     setSelectedVideoIndex(index);
@@ -129,18 +110,98 @@ const VideoLesson = () => {
     }
   };
 
+  useEffect(() => {
+    if (completedVideos.length === videos.length) {
+      if (walletConnected) {
+        handleReward();
+      } else {
+        setRewardPending(true); // Mark reward as pending if the wallet is not connected
+        alert("Please connect your wallet to claim your reward.");
+      }
+    }
+  }, [completedVideos]);
+
+  useEffect(() => {
+    if (walletConnected && rewardPending) {
+      handleReward();
+      setRewardPending(false); // Clear pending reward flag after processing
+    }
+  }, [walletConnected]);
+
+  const handleConnectWallet = async () => {
+    try {
+      if (!window.ethereum) {
+        alert("MetaMask is not installed. Please install it to proceed.");
+        return;
+      }
+
+      // Request wallet connection
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const accounts = await provider.send("eth_requestAccounts", []);
+      const userAddress = accounts[0];
+
+      setWalletConnected(true);
+      setWalletAddress(userAddress);
+
+      console.log("Wallet connected:", userAddress);
+      alert("Wallet connected successfully.");
+    } catch (error) {
+      console.error("Error connecting wallet:", error.message);
+      alert("Failed to connect wallet. Please try again.");
+    }
+  };
+
+  const handleReward = async () => {
+    try {
+      console.log("Attempting to reward:", walletAddress);
+      const rewardAmount = "0.001";
+
+      alert("Reward added successfully.");
+      const response = await apiClient.post(COMP_BLOCK, {
+        userAddress: walletAddress,
+        rewardAmount,
+      });
+
+      if (response) {
+        console.log("Reward successfully claimed:", response.data);
+        setCompletedVideos([]);
+      }
+    } catch (error) {
+      console.error(
+        "Error claiming reward:",
+        error.response?.data || error.message
+      );
+      alert("Failed to claim reward. Please try again.");
+    }
+  };
+
   return (
-    <div className="max-w-6xl mx-auto p-6 flex gap-4">
-      <VideoList
-        videos={videos}
-        onVideoSelect={handleVideoSelect}
-        completedVideos={completedVideos}
-      />
-      <VideoPlayer
-        selectedVideo={videos[selectedVideoIndex]}
-        markVideoComplete={markVideoComplete}
-      />
-    </div>
+    <>
+      {!walletConnected ? (
+        <button
+          className="bg-blue-500 hover:bg-blue-700 relative top-2 left-1/2 text-white py-3 px-8 rounded-lg text-lg shadow-md"
+          onClick={handleConnectWallet}
+        >
+          Connect Wallet
+        </button>
+      ) : (
+        <div className="text-green-400 text-center">
+          <p>Wallet Connected:</p>
+          <p className="text-sm">{walletAddress}</p>
+        </div>
+      )}
+      <div className="max-w-6xl mx-auto p-6 flex gap-4">
+        <VideoList
+          videos={videos}
+          onVideoSelect={handleVideoSelect}
+          completedVideos={completedVideos}
+        />
+        <VideoPlayer
+          selectedVideo={videos[selectedVideoIndex]}
+          markVideoComplete={markVideoComplete}
+        />
+      </div>
+    </>
   );
 };
 
