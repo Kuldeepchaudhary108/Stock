@@ -4,7 +4,7 @@ import { apiCLient, COMP_BLOCK } from "../../../services/api.js";
 
 const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
   return (
-    <div className="w-1/3 bg-gray-50 p-4 rounded-lg shadow-md dark:bg-zinc-800">
+    <div className="w-full sm:w-1/3 bg-gray-50 p-4 rounded-lg shadow-md dark:bg-zinc-800">
       <h2 className="text-lg font-bold mb-4 dark:text-white">
         Module 1. Introduction to Stock Market (video series)
       </h2>
@@ -45,7 +45,7 @@ const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
 
 const VideoPlayer = ({ selectedVideo, markVideoComplete }) => {
   return (
-    <div className="w-2/3 p-4">
+    <div className="w-full sm:w-2/3 p-4">
       <h3 className="text-2xl font-bold mb-4 dark:text-white">
         {selectedVideo.title}
       </h3>
@@ -98,7 +98,7 @@ const VideoLesson = () => {
   const [completedVideos, setCompletedVideos] = useState([]);
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
-  const [rewardPending, setRewardPending] = useState(false); // New state to handle pending rewards
+  const [rewardPending, setRewardPending] = useState(false);
 
   const handleVideoSelect = (index) => {
     setSelectedVideoIndex(index);
@@ -115,7 +115,7 @@ const VideoLesson = () => {
       if (walletConnected) {
         handleReward();
       } else {
-        setRewardPending(true); // Mark reward as pending if the wallet is not connected
+        setRewardPending(true);
         alert("Please connect your wallet to claim your reward.");
       }
     }
@@ -135,7 +135,6 @@ const VideoLesson = () => {
         return;
       }
 
-      // Request wallet connection
       const provider = new ethers.BrowserProvider(window.ethereum);
       const accounts = await provider.send("eth_requestAccounts", []);
       const userAddress = accounts[0];
@@ -190,7 +189,7 @@ const VideoLesson = () => {
           <p className="text-sm">{walletAddress}</p>
         </div>
       )}
-      <div className="max-w-6xl mx-auto p-6 flex gap-4">
+      <div className="max-w-6xl mx-auto p-6 flex flex-col sm:flex-row gap-4">
         <VideoList
           videos={videos}
           onVideoSelect={handleVideoSelect}

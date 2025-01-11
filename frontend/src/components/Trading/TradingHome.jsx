@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaChartBar,
@@ -64,6 +63,7 @@ const TradingHome = () => {
       }
     }
   }, [isLoggedIn, dispatch]);
+
   const handleLogin = () => {
     if (isLoggedIn) {
       navigate("/dashboard");
@@ -79,91 +79,74 @@ const TradingHome = () => {
       navigate("/signup");
     }
   };
+
   return (
-    <div className="home-page text-center mt-10 dark:text-white ">
-      {/* <h1 className="text-4xl font-bold">Welcome to Paper Trading</h1>
-      <p className="mt-4 text-lg">Practice trading without real money!</p>
-      <Link to="/dashboard">
-        <button className="mt-6 px-6 py-3 mb-5 bg-blue-600 text-white rounded-lg">
-          Go to Dashboard
-        </button>
-      </Link> */}
+    <div className="home-page text-center mt-10 dark:text-white">
+      <div className="bg-white flex flex-col sm:flex-row gap-5 font-sans dark:bg-zinc-900 p-4 items-center rounded-lg">
+        <div className="w-full sm:w-1/2 p-6">
+          <div className="text-left p-8">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-green-700">
+              Paper Trading Platform with AI Analytics
+            </h1>
+            <p className="text-lg sm:text-xl font-semibold text-gray-800 mt-2">
+              Master the Art of Trading!
+            </p>
+            <p className="text-md sm:text-lg text-red-600 mt-1">
+              Experience the Thrill of Live Trading with Zero Risk!
+            </p>
+            <p className="text-green-600 font-medium">
+              Practice Trading {">"} Equities | Options | Futures
+            </p>
+            <p className="text-red-500 font-semibold mt-1">
+              Solely for educational purpose
+            </p>
+          </div>
 
-      <div className="bg-white flex gap-5  font-sans dark:bg-zinc-900 ">
-        <div className="w-[95%] flex p-4 items-center rounded-lg dark:bg-zinc-800 m-auto">
-          <div className="w-[47%] ">
-            <div className="text-left p-8">
-              <h1 className="text-3xl font-bold text-green-700">
-                Paper Trading Platform <br /> with AI Analytics
-              </h1>
-              <p className="text-xl font-semibold text-gray-800 mt-2">
-                Master the Art of Trading!
-              </p>
-              <p className="text-lg text-red-600 mt-1">
-                Experience the Thrill of Live Trading with Zero Risk!
-              </p>
-              <p className="text-green-600 font-medium">
-                Practice Trading &gt; Equities | Options | Futures
-              </p>
-              <p className="text-red-500 font-semibold mt-1">
-                Solely for educational purpose
-              </p>
-            </div>
+          <div className="p-6 gap-5 flex w-full sm:w-80">
+            <button
+              onClick={() => handleLogin()}
+              className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => handleSignup()}
+              className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
+            >
+              Signup
+            </button>
+            <p className="text-center text-sm text-gray-500 mt-2">It's Free</p>
+          </div>
 
-            <div className=" p-6 gap-5 flex  w-80">
-              <button
-                onClick={() => handleLogin()}
-                className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => handleSignup()}
-                className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
-              >
-                Signup
-              </button>
-              <p className="text-center text-sm text-gray-500 mt-2">
-                It's Free
-              </p>
-            </div>
-            {/* <button className=" mt-4 flex text-center m-auto items-center justify-center bg-white border dark:text-black border-gray-300 py-2 rounded-lg shadow hover:shadow-lg">
+          {/* Download Section */}
+          <div className="mt-10">
+            <a
+              href="#"
+              className="flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
+            >
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt="Google"
-                className="w-5 h-5 mr-2"
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Google Play"
+                className="w-24 m-auto"
               />
-              Sign in with Google
-            </button> */}
-
-            {/* Download Section */}
-            <div className="mt-10">
-              <a
-                href="#"
-                className="flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
-              >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                  alt="Google Play"
-                  className="w-24 m-auto"
-                />
-              </a>
-            </div>
+            </a>
           </div>
-          <div className="w-[47%]">
-            <img
-              className="rounded-lg"
-              src="/elements/stock13.png"
-              alt="error"
-            />
-          </div>
+        </div>
+        <div className="w-full sm:w-1/2">
+          <img
+            className="rounded-lg w-full"
+            src="/elements/stock13.png"
+            alt="error"
+          />
         </div>
       </div>
-      <section className="bg-teal-50 py-16 px-8 flex gap-36 mt-10  dark:bg-zinc-800/80">
-        <div className="w-[30%]">
+
+      {/* Section 2 */}
+      <section className=" py-16 px-8 md:flex gap-36  dark:bg-zinc-700/80">
+        <div className=" w-full md:w-[30%]">
           <img className="w-full" src="/elements/stock10.jpeg" alt="error" />
         </div>
-        <div className=" w-[60%] mx-auto">
+        <div className="w-full md:w-[60%] mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8">
             Why Paper Trading Should Be Your First Step Before You Invest Real
           </h2>
@@ -201,8 +184,10 @@ const TradingHome = () => {
           </div>
         </div>
       </section>
+
+      {/* Authorized Practice Partners Section */}
       <div className="mt-12 w-full bg-green-100 py-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center px-4">
           <div>
             <p className="font-bold text-green-700">
               Authorized Practice Partners
@@ -225,12 +210,14 @@ const TradingHome = () => {
           </div>
         </div>
       </div>
-      <section className="bg-teal-50 py-16 px-8  dark:bg-zinc-900">
+
+      {/* Features Section */}
+      <section className="bg-teal-50 py-16 px-8 dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
             Practice is Pivotal in Trading: Minimize Risk, Maximise Skills
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -246,14 +233,19 @@ const TradingHome = () => {
           </div>
         </div>
       </section>
-      <div className=" bg-white dark:bg-zinc-900 py-16 px-8">
-        <div className="flex gap-4 justify-center dark:bg-zinc-800 rounded-lg p-3">
-          <div className="flex justify-center items-center">
-            <img className="w-96" src="/elements/stock11.png" alt="" />
+      <div className="bg-white dark:bg-zinc-900 py-16 px-8">
+        <div className="flex flex-col md:flex-row gap-8 justify-center dark:bg-zinc-800 rounded-lg p-3">
+          {/* Left Section: Image */}
+          <div className="flex justify-center items-center w-full md:w-auto">
+            <img
+              className="w-full md:w-96"
+              src="/elements/stock11.png"
+              alt=""
+            />
           </div>
 
           {/* Right Section: Text Content */}
-          <div className="mt-8 md:mt-0 md:ml-8 text-gray-800 dark:text-gray-200">
+          <div className="mt-8 md:mt-0 md:ml-8 text-gray-800 dark:text-gray-200 w-full md:w-auto">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Creating Smart & Profitable Traders
             </h2>

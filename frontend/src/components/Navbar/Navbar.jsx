@@ -40,8 +40,18 @@ const Navbar = () => {
           showMenu ? "block" : "hidden md:flex"
         }`}
       >
+        <li
+          className="text-xl font-medium cursor-pointer px-6 py-2 md:hidden"
+          onClick={() => {
+            navigate("/user-profile");
+            setShowMenu(false);
+          }}
+        >
+          Profile
+        </li>
         <NavLink
           to="/module"
+          onClick={() => setShowMenu(false)} // Changed onclick to onClick
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
               isActive
@@ -52,8 +62,10 @@ const Navbar = () => {
         >
           Modules
         </NavLink>
+
         <NavLink
           to="/video-module"
+          onClick={() => setShowMenu(false)}
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
               isActive
@@ -66,6 +78,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/certified"
+          onClick={() => setShowMenu(false)}
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
               isActive
@@ -78,6 +91,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/blog"
+          onClick={() => setShowMenu(false)}
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
               isActive
@@ -90,6 +104,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/trading-chart"
+          onClick={() => setShowMenu(false)}
           className={({ isActive }) =>
             `text-xl font-medium px-6 py-2 md:px-4 md:py-0 cursor-pointer ${
               isActive
@@ -108,19 +123,13 @@ const Navbar = () => {
         >
           Logout
         </li>
-        <li
-          className="text-xl font-medium cursor-pointer text-red-500 px-6 py-2 md:hidden"
-          onClick={() => navigate("/user-profile")}
-        >
-          Profile
-        </li>
       </ul>
 
       {/* Theme Toggle Button */}
-      <div className="flex items-center gap-4">
+      <div className="md:flex md:items-center md:gap-4 ">
         <button
           onClick={handleThemeToggle}
-          className="p-2 rounded-full focus:outline-none transition-colors"
+          className="p-2 rounded-full focus:outline-none transition-colors absolute right-16 top-5"
           aria-label="Toggle theme"
         >
           {themeMode === "light" ? (
@@ -129,9 +138,7 @@ const Navbar = () => {
             <FaMoon className="text-gray-700 dark:text-gray-300 w-6 h-6" />
           )}
         </button>
-
-        {/* Profile Dropdown */}
-        <div className="relative">
+        <div className="md:block hidden ">
           <button
             className="h-10 w-10 rounded-full"
             onClick={() => setShowDropdown((prev) => !prev)}
@@ -143,13 +150,19 @@ const Navbar = () => {
           {showDropdown && (
             <div className="absolute right-0 mt-2 bg-white dark:bg-gray-600 shadow-lg rounded-md w-32">
               <button
-                onClick={handleLogout}
+                onClick={() => {
+                  handleLogout();
+                  setShowDropdown(false);
+                }}
                 className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-700 transition-all duration-300"
               >
                 Log Out
               </button>
               <button
-                onClick={() => navigate("/user-profile")}
+                onClick={() => {
+                  navigate("/user-profile");
+                  setShowDropdown(false);
+                }}
                 className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-700 transition-all duration-300"
               >
                 Profile

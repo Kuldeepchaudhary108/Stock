@@ -121,11 +121,11 @@ const HomePage = () => {
           />
         </div>
       </div>
-      <section className=" py-16 px-8 flex gap-36  dark:bg-zinc-700/80">
-        <div className="w-[30%]">
+      <section className=" py-16 px-8 md:flex gap-36  dark:bg-zinc-700/80">
+        <div className=" w-full md:w-[30%]">
           <img className="w-full" src="/elements/stock10.jpeg" alt="error" />
         </div>
-        <div className=" w-[60%] mx-auto">
+        <div className="w-full md:w-[60%] mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8">
             Why Paper Trading Should Be Your First Step Before You Invest Real
           </h2>
@@ -141,16 +141,16 @@ const HomePage = () => {
             confidence without losing a single penny.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+            <div className="bg-white shadow-md rounded-lg p-4 text-center hover:scale-105 hover:shadow-2xl  dark:bg-zinc-600/80">
               <h3 className="font-bold text-lg">Master the Mechanics</h3>
             </div>
-            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+            <div className="bg-white shadow-md rounded-lg p-4 text-center hover:scale-105 hover:shadow-2xl  dark:bg-zinc-600/80">
               <h3 className="font-bold text-lg">Discipline Your Emotions</h3>
             </div>
-            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+            <div className="bg-white shadow-md rounded-lg p-4 text-center  hover:scale-105 hover:shadow-2xl dark:bg-zinc-600/80">
               <h3 className="font-bold text-lg">Fine-Tune Your Techniques</h3>
             </div>
-            <div className="bg-white shadow-md rounded-lg p-4 text-center  dark:bg-zinc-600/80">
+            <div className="bg-white shadow-md rounded-lg p-4 text-center hover:scale-105 hover:shadow-2xl  dark:bg-zinc-600/80">
               <h3 className="font-bold text-lg">
                 Build Confidence and Momentum
               </h3>
@@ -163,6 +163,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
       <section className="bg-teal-50/50 py-16 px-8 dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8">
@@ -208,13 +209,13 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <section className="py-16 bg-white text-black dark:bg-zinc-800/80 dark:text-white ">
+      <section className="py-16 bg-white text-black dark:bg-zinc-800/80 dark:text-white">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           How It Works?
         </h2>
-        <div className="flex justify-center space-x-12">
+        <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-12 gap-8 sm:gap-12">
           <div
-            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl "
+            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl"
             onClick={() => navigate("/video-module")}
           >
             <div className="mb-4 text-orange-500 text-4xl">📋</div>
@@ -227,9 +228,9 @@ const HomePage = () => {
           </div>
           <div
             onClick={() => navigate("/loan")}
-            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl "
+            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl"
           >
-            <div className="mb-4 text-orange-500 text-4xl ">📈</div>
+            <div className="mb-4 text-orange-500 text-4xl">📈</div>
             <h3 className="text-xl font-bold text-gray-800 dark:text-white">
               Apply
             </h3>
@@ -238,7 +239,7 @@ const HomePage = () => {
             </p>
           </div>
           <div
-            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl "
+            className="text-center cursor-pointer bg-gray-300/70 dark:bg-zinc-600 p-8 rounded-xl"
             onClick={() => navigate("/trading-chart")}
           >
             <div className="mb-4 text-orange-500 text-4xl">🚀</div>
@@ -251,7 +252,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       <div className="p-4 lg:p-8 mt-10">
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
           Explore MerCet
@@ -293,15 +293,19 @@ const HomePage = () => {
         </div>
       </div>
       <hr className="m-8 border-gray-300 dark:border-gray-700" />
-
-      <div className=" bg-white dark:bg-zinc-900 py-16 px-8">
-        <div className="flex gap-4 justify-center dark:bg-zinc-800 rounded-lg p-3">
-          <div className="flex justify-center items-center">
-            <img className="w-96" src="/elements/stock11.png" alt="" />
+      <div className="bg-white dark:bg-zinc-900 py-16 px-8">
+        <div className="flex flex-col md:flex-row gap-8 justify-center dark:bg-zinc-800 rounded-lg p-3">
+          {/* Left Section: Image */}
+          <div className="flex justify-center items-center w-full md:w-auto">
+            <img
+              className="w-full md:w-96"
+              src="/elements/stock11.png"
+              alt=""
+            />
           </div>
 
           {/* Right Section: Text Content */}
-          <div className="mt-8 md:mt-0 md:ml-8 text-gray-800 dark:text-gray-200">
+          <div className="mt-8 md:mt-0 md:ml-8 text-gray-800 dark:text-gray-200 w-full md:w-auto">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Creating Smart & Profitable Traders
             </h2>
@@ -325,91 +329,41 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg bg-white dark:bg-zinc-700 dark:text-black dark:shadow-lg dark:border-none">
-        {" "}
-        <h3 className="text-4xl font-semibold py-4 dark:text-gray-200">
-          Recent comments
+      <div className="w-full md:w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg bg-white dark:bg-zinc-700 dark:text-black dark:shadow-lg dark:border-none">
+        <h3 className="text-4xl font-semibold py-6 dark:text-gray-200">
+          Recent Comments
         </h3>
-        <div className="m-10">
-          <div className="flex gap-10 items-start">
-            <img
-              src="/vite.svg"
-              alt="userProfile"
-              className="w-16 h-16 rounded-full"
-            />
-            <div className="text-left">
-              <p className="font-semibold text-lg dark:text-white">
-                Kuldeep Chaudhary
-              </p>
-              <p className="mt-3 text-gray-700 dark:text-white">
-                Pavit, so it's the difference between the strike and spot, in
-                this case 32-25 and minus the premium paid, i.e. 1.35. I have
-                explained this eventually, wanted to keep it simple at this
-                stage :) ...
-              </p>
+
+        <div className="space-y-8 px-8 md:px-16">
+          {/** Comment Section */}
+          {[
+            "Kuldeep Chaudhary",
+            "Kuldeep Chaudhary",
+            "Kuldeep Chaudhary",
+            "Kuldeep Chaudhary",
+          ].map((name, index) => (
+            <div
+              key={index}
+              className="flex gap-6 md:gap-10 items-start border-b pb-8 dark:border-gray-600 hover:shadow-lg transition-shadow"
+            >
+              <img
+                src="/vite.svg"
+                alt="userProfile"
+                className="w-16 h-16 rounded-full"
+              />
+              <div className="text-left">
+                <p className="font-semibold text-lg dark:text-white">{name}</p>
+                <p className="mt-3 text-gray-700 dark:text-white">
+                  Pavit, so it's the difference between the strike and spot, in
+                  this case 32-25 and minus the premium paid, i.e. 1.35. I have
+                  explained this eventually, wanted to keep it simple at this
+                  stage :) ...
+                </p>
+              </div>
             </div>
-          </div>
-          <hr className="m-8 border-gray-300" />
-          <div className="flex gap-10 items-start">
-            <img
-              src="/vite.svg"
-              alt="userProfile"
-              className="w-16 h-16 rounded-full"
-            />
-            <div className="text-left">
-              <p className="font-semibold text-lg dark:text-white">
-                Kuldeep Chaudhary
-              </p>
-              <p className="mt-3 text-gray-700 dark:text-white">
-                Pavit, so it's the difference between the strike and spot, in
-                this case 32-25 and minus the premium paid, i.e. 1.35. I have
-                explained this eventually, wanted to keep it simple at this
-                stage :) ...
-              </p>
-            </div>
-          </div>
-          <hr className="m-8 border-gray-300" />
-          <div className="flex gap-10 items-start">
-            <img
-              src="/vite.svg"
-              alt="userProfile"
-              className="w-16 h-16 rounded-full"
-            />
-            <div className="text-left">
-              <p className="font-semibold text-lg dark:text-white">
-                Kuldeep Chaudhary
-              </p>
-              <p className="mt-3 text-gray-700 dark:text-white">
-                Pavit, so it's the difference between the strike and spot, in
-                this case 32-25 and minus the premium paid, i.e. 1.35. I have
-                explained this eventually, wanted to keep it simple at this
-                stage :) ...
-              </p>
-            </div>
-          </div>
-          <hr className="m-8 border-gray-300" />
-          <div className="flex gap-10 items-start">
-            <img
-              src="/vite.svg"
-              alt="userProfile"
-              className="w-16 h-16 rounded-full"
-            />
-            <div className="text-left">
-              <p className="font-semibold text-lg dark:text-white">
-                Kuldeep Chaudhary
-              </p>
-              <p className="mt-3 text-gray-700 dark:text-white">
-                Pavit, so it's the difference between the strike and spot, in
-                this case 32-25 and minus the premium paid, i.e. 1.35. I have
-                explained this eventually, wanted to keep it simple at this
-                stage :) ...
-              </p>
-            </div>
-          </div>
-          <hr className="mt-8 border-gray-300" />
+          ))}
         </div>
       </div>
-
       <div className="flex flex-col rounded-xl lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto dark:bg-zinc-700 ">
         <div className="mb-4 lg:mb-0">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">

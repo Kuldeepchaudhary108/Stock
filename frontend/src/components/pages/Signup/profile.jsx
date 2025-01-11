@@ -61,7 +61,6 @@ export default function Profile() {
       const reader = new FileReader();
 
       reader.onload = () => {
-        console.log("File content as Data URL:", reader.result); // Log inside onload
         setImage2(reader.result); // Set image here
       };
 
