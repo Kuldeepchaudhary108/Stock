@@ -8,7 +8,7 @@ export const BLOCK_ROUTE = "/api/v1/blockchain";
 export const SIGNUP_ROUTE = `${USER_ROUTE}/signup`;
 export const LOGIN_ROUTE = `${USER_ROUTE}/login`;
 export const LOGOUT_ROUTE = `${USER_ROUTE}/logout`;
-export const UPDATE_ROUTE = `${USER_ROUTE}/update-userdetails`;
+export const UPDATE_ROUTE = `${USER_ROUTE}/update-userdetails`; 
 export const AVTAR_ROUTE = `${USER_ROUTE}/change/avatarImage`;
 export const GET_USER_ROUTE = `${USER_ROUTE}/current-user`;
 

@@ -1,7 +1,7 @@
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-// import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { User } from "../models/user.model.js";
 
 const gernateAccessAndRefreshTokens = async (userId) => {
@@ -168,6 +168,33 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
   if (!firstName || !surName) {
     throw new ApiError(400, "All fields are required");
   }
+  let avatar = "";
+  if (!req.file) {
+    console.log("file is not coming ");
+  }
+  if (req.file) {
+    console.log("file is coming ");
+
+    try {
+      if (!req.file) {
+        throw new ApiError(400, "1 Avatar file is missing");
+      }
+
+      const avatarLocalPath = req.file?.path;
+
+      if (!avatarLocalPath) {
+        throw new ApiError(400, "2 Avatar file is missing");
+      }
+
+      avatar = await uploadOnCloudinary(avatarLocalPath);
+
+      if (!avatar.url) {
+        throw new ApiError(400, "Error while uploading on avatar");
+      }
+    } catch (error) {
+      console.log("error", error.message);
+    }
+  }
 
   const user = await User.findByIdAndUpdate(
     req.user?._id,
@@ -176,11 +203,11 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
         firstName: firstName,
         surName: surName,
         color: color1,
-        // avatar: avatar.url,
+        avatar: avatar.url,
       },
     },
     { new: true }
-  ).select("-password");
+  ).select("-password -refreshToken");
 
   return res
     .status(200)
@@ -191,6 +218,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
   if (!req.file) {
     throw new ApiError(400, "1 Avatar file is missing");
   }
+  console.log(req.file);
+
   const avatarLocalPath = req.file?.path;
 
   if (!avatarLocalPath) {
@@ -202,6 +231,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
   if (!avatar.url) {
     throw new ApiError(400, "Error while uploading on avatar");
   }
+  console.log("url:", avatar.url);
+
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {

@@ -42,7 +42,7 @@ const UserProfile = () => {
     <div className="p-6 max-w-4xl mx-auto mt-5 bg-white shadow-md rounded-lg dark:bg-zinc-800/70 dark:text-white">
       <div className="flex items-center mb-6 gap-10">
         <img
-          src="/elements/sun5.jpg"
+          src={userData.avatar}
           alt="User Avatar"
           className="w-24 h-24 rounded-full mr-6"
         />

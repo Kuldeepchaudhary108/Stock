@@ -14,6 +14,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const [color1, setColors] = useState(0);
   const [image, setImage] = useState(null);
+  const [image2, setImage2] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [surName, setSurName] = useState("");
   const disPatch = useDispatch();
@@ -27,23 +28,27 @@ export default function Profile() {
   // }, [userData]);
   const saveChange = async () => {
     try {
-      const res = await apiCLient.patch(UPDATE_ROUTE, {
-        firstName,
-        surName,
-        color1,
-        // image,
+      const formData = new FormData();
+      formData.append("firstName", firstName);
+      formData.append("surName", surName);
+      formData.append("color1", color1);
+      if (image) {
+        formData.append("avatar", image); // Attach the image file
+      }
+      const res = await apiCLient.post(UPDATE_ROUTE, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
       if (res.status === 200) {
-               const Data = await apiCLient.get(GET_USER_ROUTE);
-        
+        const Data = await apiCLient.get(GET_USER_ROUTE);
+
         if (Data) {
           disPatch(authLogin(Data.data.user));
         }
 
         navigate("/");
       }
-
- 
     } catch (error) {
       console.log("Error updating account details:", error);
     }
@@ -52,8 +57,18 @@ export default function Profile() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setImage(file);
       const reader = new FileReader();
-      reader.onload = () => setImage(reader.result);
+
+      reader.onload = () => {
+        console.log("File content as Data URL:", reader.result); // Log inside onload
+        setImage2(reader.result); // Set image here
+      };
+
+      reader.onerror = () => {
+        console.error("Error reading file:", reader.error);
+      };
+
       reader.readAsDataURL(file);
     }
   };
@@ -70,7 +85,7 @@ export default function Profile() {
           <div className="relative h-32 w-32 md:h-48 md:w-48 rounded-full overflow-hidden shadow-lg bg-gray-700 flex items-center justify-center">
             {image ? (
               <img
-                src={image}
+                src={image2}
                 alt="Profile"
                 className="object-cover w-full h-full"
               />
