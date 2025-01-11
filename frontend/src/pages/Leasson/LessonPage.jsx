@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { COMP_BLOCK } from "../../services/api";
-// Ensure to import or define apiClient and COMP_BLOCK if used externally
 
 const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
   return (
@@ -95,6 +94,8 @@ const VideoLesson = () => {
   ];
 
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
+ 
+ 
   const [completedVideos, setCompletedVideos] = useState([]);
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
@@ -124,7 +125,7 @@ const VideoLesson = () => {
   useEffect(() => {
     if (walletConnected && rewardPending) {
       handleReward();
-      setRewardPending(false); // Clear pending reward flag after processing
+      setRewardPending(false); 
     }
   }, [walletConnected]);
 

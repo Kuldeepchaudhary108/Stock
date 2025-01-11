@@ -76,6 +76,7 @@ const AdsPage = () => {
   };
 
   const handleReward = async () => {
+    
     if (!walletConnected) {
       alert("Please connect your wallet first.");
       return;

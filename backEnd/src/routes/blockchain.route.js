@@ -1,4 +1,6 @@
 import express from "express";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
+
 import {
   completeTask,
   getBalance,
@@ -7,7 +9,7 @@ import {
 const router = express.Router();
 
 // Route to reward a user for completing a task
-router.post("/complete-task", completeTask);
-router.post("/balance", getBalance);
+router.route("/complete-task").post(verifyJWT, completeTask);
+router.route("/balance").post(verifyJWT, getBalance);
 
 export default router;

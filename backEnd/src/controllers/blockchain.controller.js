@@ -3,27 +3,27 @@ import {
   rewardUserForTask,
   getRealTokenBalance,
 } from "../service/earning.service.js";
+import { User } from "../models/user.model.js";
 
 export const completeTask = async (req, res) => {
   try {
     const { userAddress, rewardAmount } = req.body;
 
-    // Reward the user for completing the task
     const transactionHash = await rewardUserForTask(userAddress, rewardAmount);
 
-    // Fetch the updated balance
-    const updatedBalance = await getRealTokenBalance(userAddress);
+    const user = await User.findById(req.user?._id);
+    user.tokens += 0.01;
+    await user.save({ validateBeforeSave: false });
 
-    // Log the updated balance to the console
+    // const updatedBalance = await getRealTokenBalance(userAddress);
+
     console.log(`User Address: ${userAddress}`);
-    console.log(`Updated Balance: ${updatedBalance} tokens`);
+    console.log(`Updated Balance: ${user.tokens} tokens`);
 
-    // Respond to the client
     res.status(200).json(
       new ApiResponse(202, {
         success: true,
         transactionHash,
-        updatedBalance, // Include the updated balance in the response if needed
       }),
       "rewards grant successfully "
     );
