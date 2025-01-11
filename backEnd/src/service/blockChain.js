@@ -6,7 +6,7 @@ const provider = new ethers.JsonRpcProvider(
 );
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
-// EarningManager Contract
+
 const earningManagerContract = new ethers.Contract(
   config.contracts.earningManager.address,
   config.contracts.earningManager.abi,

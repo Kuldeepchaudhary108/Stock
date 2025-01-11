@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-const StockSchema = new mongoose.Schema(
+const StockSchema = new Schema(
   {
     symbol: {
       type: String,

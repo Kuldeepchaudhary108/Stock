@@ -10,7 +10,7 @@ import {
   FaSyncAlt,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { login as authLogin } from "../store/authSlice.js";
+import { login as authLogin } from "../../store/authSlice.js";
 
 const TradingHome = () => {
   const navigate = useNavigate();

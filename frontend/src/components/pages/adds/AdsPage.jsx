@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
-import { apiCLient, BLOCK_ROUTE, COMP_BLOCK } from "../../services/api";
+import { apiCLient, COMP_BLOCK } from "../../../services/api.js";
 
 const AdsPage = () => {
   const topPicks = [
@@ -76,7 +76,6 @@ const AdsPage = () => {
   };
 
   const handleReward = async () => {
-    
     if (!walletConnected) {
       alert("Please connect your wallet first.");
       return;

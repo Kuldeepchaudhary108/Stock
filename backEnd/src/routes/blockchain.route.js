@@ -8,7 +8,7 @@ import {
 
 const router = express.Router();
 
-// Route to reward a user for completing a task
+
 router.route("/complete-task").post(verifyJWT, completeTask);
 router.route("/balance").post(verifyJWT, getBalance);
 

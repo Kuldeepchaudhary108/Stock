@@ -23,7 +23,7 @@ import {
   Profile,
   AdsPage,
   Loan,
-} from "./pages/index.js";
+} from "./components/pages/index.js";
 import {
   Dashboard,
   Holding,
@@ -31,7 +31,7 @@ import {
   TradingHome,
   // Transactions,
   UserProfile,
-} from "./Trading/index.js";
+} from "./components/Trading/index.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import { AuthRoute } from "./components/AuthRoute.jsx";
 import SmartApp from "./Smart/Smartconfig/Smart.jsx";

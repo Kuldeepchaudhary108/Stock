@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { symbol as setSymbol } from "../store/authSlice.js"; // Updated import
+import { symbol as setSymbol } from "../../store/authSlice.js"; // Updated import
 
 function TradingViewWidget({ onSymbolExport }) {
   const dispatch = useDispatch();

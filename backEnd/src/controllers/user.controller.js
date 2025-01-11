@@ -1,7 +1,7 @@
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
+// import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { User } from "../models/user.model.js";
 
 const gernateAccessAndRefreshTokens = async (userId) => {
@@ -99,7 +99,6 @@ const loginUser = asyncHandler(async (req, res) => {
     "-password -refreshToken"
   );
   console.log("user login succefully");
-  console.log(loggedInUser);
   const options = { secure: true };
   return res
     .status(200)
@@ -170,9 +169,6 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     throw new ApiError(400, "All fields are required");
   }
 
-  console.log(surName, firstName, color1);
-
-  // Update the user document in the database
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {

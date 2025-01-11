@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiCLient, GET_ORDER } from "../services/api";
+import { apiCLient, GET_ORDER } from "../../services/api";
 
 const TransactionHistory = () => {
   const [transactions, setTransactions] = useState([]);
@@ -9,8 +9,6 @@ const TransactionHistory = () => {
       try {
         const response = await apiCLient.get(GET_ORDER);
         const fetchedTransactions = response.data.user;
-        console.log(response.data.user);
-
         setTransactions(fetchedTransactions);
       } catch (error) {
         console.error("Error fetching transactions:", error);

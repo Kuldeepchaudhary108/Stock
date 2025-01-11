@@ -1,43 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { apiCLient, SIGNUP_ROUTE } from "../../services/api.js";
-// import { useAppStore } from "../store/store.js";
-// import { userInfo } from "os";
+import {
+  apiCLient,
+  GET_USER_ROUTE,
+  LOGIN_ROUTE,
+} from "../../../services/api.js";
+import { useDispatch } from "react-redux";
+import { login as authLogin } from "../../../store/authSlice.js";
 
-const Signup = () => {
+const Login = () => {
+  const disPatch = useDispatch();
   const navigate = useNavigate();
-  //   const { setUserInfo, userInfo } = useAppStore();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [UserName, setUserName] = useState("");
-  const [FullName, setFullName] = useState("");
 
-  const HandleSignUp = async () => {
+  const handleLogin = async () => {
     try {
-      const response = await apiCLient.post(SIGNUP_ROUTE, {
-        email,
-        password,
-        UserName,
-        // FullName,
-      });
-      console.log(response.status);
-      //   navigate("/profile");
-
-      if (response.status === 201) {
-        const user = response.data.user;
-        console.log("data from backend", user);
-        // setUserInfo(user);
-        // console.log(userInfo);
-        console.log("Navigating to profile...");
-        navigate("/profile");
-        console.log("dekhte hain ");
+      const res = await apiCLient.post(LOGIN_ROUTE, { email, password });
+      if (res.status === 200) {
+        const userData = await apiCLient.get(GET_USER_ROUTE);
+        if (userData) disPatch(authLogin(userData.data.user));
+        navigate("/");
       }
     } catch (error) {
-      console.log("error while signup:", error);
+      console.error("Login failed:", error);
     }
   };
+
   return (
     <div className="flex justify-center items-center min-h-screen dark:bg-zinc-900">
       <Box
@@ -64,7 +55,7 @@ const Signup = () => {
             mb: 1,
           }}
         >
-          Welcome!!
+          Welcome back!!
         </Typography>
         <Typography
           variant="body1"
@@ -79,37 +70,10 @@ const Signup = () => {
         <form style={{ width: "100%" }} noValidate>
           <TextField
             fullWidth
-            label="UserName"
-            value={UserName}
-            onChange={(e) => setUserName(e.target.value)}
-            variant="outlined"
-            sx={{
-              mb: 2,
-              "& .MuiInputLabel-root": { color: "#000" },
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: "#6A11CB",
-                },
-                "&:hover fieldset": {
-                  borderColor: "#2575FC",
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#2575FC",
-                },
-                "& .MuiOutlinedInput-input": {
-                  color: "#000",
-                },
-              },
-            }}
-          />
-
-          <TextField
-            fullWidth
             label="Email"
-            type="email"
+            variant="outlined"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            variant="outlined"
             sx={{
               mb: 2,
               "& .MuiInputLabel-root": { color: "#000" },
@@ -155,10 +119,11 @@ const Signup = () => {
               },
             }}
           />
+
           <Button
             fullWidth
-            onClick={() => HandleSignUp()}
             variant="contained"
+            onClick={() => handleLogin()}
             sx={{
               py: 1.5,
               background: "linear-gradient(to right, #6A11CB, #2575FC)",
@@ -169,24 +134,23 @@ const Signup = () => {
               fontWeight: "bold",
             }}
           >
-            Sign Up
+            Login
           </Button>
         </form>
-
         <Typography
           variant="body2"
           sx={{ mt: 2, color: "#000", fontWeight: 500 }}
         >
-          Already have an account?{" "}
+          Don't have an account?{" "}
           <Link
-            to="/login"
+            to="/signup"
             style={{
-              color: "#6A11CB",
+              color: "#000",
               textDecoration: "none",
               fontWeight: "bold",
             }}
           >
-            Login
+            SignUp
           </Link>
         </Typography>
       </Box>
@@ -194,4 +158,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

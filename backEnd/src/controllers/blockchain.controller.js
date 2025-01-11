@@ -1,4 +1,4 @@
-import { ApiResponse } from "../utils/ApiResponse.js";
+import { ApiResponse, ApiError } from "../utils/index.js";
 import {
   rewardUserForTask,
   getRealTokenBalance,
@@ -15,34 +15,33 @@ export const completeTask = async (req, res) => {
     user.tokens += 0.01;
     await user.save({ validateBeforeSave: false });
 
-    // const updatedBalance = await getRealTokenBalance(userAddress);
-
     console.log(`User Address: ${userAddress}`);
     console.log(`Updated Balance: ${user.tokens} tokens`);
 
     res.status(200).json(
-      new ApiResponse(202, {
-        success: true,
-        transactionHash,
-      }),
-      "rewards grant successfully "
+      new ApiResponse(
+        202,
+        {
+          success: true,
+          transactionHash,
+        },
+        "rewards grant successfully "
+      )
     );
   } catch (error) {
     console.error("Error completing task:", error.message);
-    res.status(500).json(new ApiResponse(404, error.message));
+    res.status(500).json(new ApiError(404, error.message));
   }
 };
 
-// Controller: Get User Balance
 export const getBalance = async (req, res) => {
   try {
     const { userAddress } = req.body;
-    // console.log(userAddress);
 
     const balance = await getRealTokenBalance(userAddress);
-    res.status(200).json({ success: true, balance });
+    res.status(200).json(new ApiResponse(404, { balance }, error.message));
   } catch (error) {
     console.error("Error fetching balance:", error.message);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json(new ApiError(404, error.message));
   }
 };

@@ -45,6 +45,8 @@ const UserSchema = new Schema(
       required: [true, "password is required"],
     },
     tokens: { type: Number, default: 10 },
+    trades: { type: Number, default: 0 },
+    returns: { type: Number, default: 0 },
     balance: {
       type: Number,
       default: 10000000,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { COMP_BLOCK } from "../../services/api";
+import { apiCLient, COMP_BLOCK } from "../../../services/api.js";
 
 const VideoList = ({ videos, onVideoSelect, completedVideos }) => {
   return (
@@ -94,8 +94,7 @@ const VideoLesson = () => {
   ];
 
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
- 
- 
+
   const [completedVideos, setCompletedVideos] = useState([]);
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
@@ -125,7 +124,7 @@ const VideoLesson = () => {
   useEffect(() => {
     if (walletConnected && rewardPending) {
       handleReward();
-      setRewardPending(false); 
+      setRewardPending(false);
     }
   }, [walletConnected]);
 
@@ -158,7 +157,7 @@ const VideoLesson = () => {
       const rewardAmount = "0.001";
 
       alert("Reward added successfully.");
-      const response = await apiClient.post(COMP_BLOCK, {
+      const response = await apiCLient.post(COMP_BLOCK, {
         userAddress: walletAddress,
         rewardAmount,
       });

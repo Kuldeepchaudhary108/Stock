@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPlus, FaTrash } from "react-icons/fa";
-import { colors, GetColor } from "../../utils/GetColor.jsx";
+import { colors, GetColor } from "../../../utils/GetColor.jsx";
 import {
   apiCLient,
   GET_USER_ROUTE,
   UPDATE_ROUTE,
-  USER_ROUTE,
-} from "../../services/api.js";
+} from "../../../services/api.js";
 import { useDispatch, useSelector } from "react-redux";
-import { login as authLogin } from "../../store/authSlice.js";
+import { login as authLogin } from "../../../store/authSlice.js";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -35,9 +34,8 @@ export default function Profile() {
         // image,
       });
       if (res.status === 200) {
-        console.log("Account details updated successfully:", res.data._doc);
-        const Data = await apiCLient.get(GET_USER_ROUTE);
-        console.log(Data);
+               const Data = await apiCLient.get(GET_USER_ROUTE);
+        
         if (Data) {
           disPatch(authLogin(Data.data.user));
         }
@@ -45,7 +43,7 @@ export default function Profile() {
         navigate("/");
       }
 
-      console.log(userData);
+ 
     } catch (error) {
       console.log("Error updating account details:", error);
     }

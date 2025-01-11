@@ -72,7 +72,7 @@ const getStockById = asyncHandler(async (req, res) => {
   }
 });
 
-// Update a stock
+
 const updateStock = async (req, res) => {
   try {
     const stock = await Stock.findByIdAndUpdate(req.params.id, req.body, {
@@ -88,7 +88,7 @@ const updateStock = async (req, res) => {
   }
 };
 
-// Delete a stock
+
 const deleteStock = async (req, res) => {
   try {
     const stock = await Stock.findByIdAndDelete(req.params.id);

@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { symbol as stateSymbol } from "../store/authSlice.js";
+import { symbol as stateSymbol } from "../../store/authSlice.js";
 import {
   apiCLient,
   BUY_ORDER,
   GET_HOLDING,
   GET_STOCK,
   SELL_ORDER,
-} from "../services/api";
+} from "../../services/api";
 
 const OrderPanel = () => {
   const [orderType, setOrderType] = useState("buy");

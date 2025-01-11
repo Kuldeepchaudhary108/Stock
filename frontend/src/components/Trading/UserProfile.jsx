@@ -1,16 +1,34 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login as authLogin } from "../store/authSlice.js";
-import { FaCoins } from "react-icons/fa"; // Importing React Icon for the button
+import { login as authLogin } from "../../store/authSlice.js";
+import { FaCoins } from "react-icons/fa";
+import { apiCLient, GET_USER_ROUTE } from "../../services/api.js";
 
 const UserProfile = () => {
   const userData = useSelector((state) => state.auth.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const fetchUserData = async () => {
+    try {
+      const response = await apiCLient.get(GET_USER_ROUTE);
+
+      if (response && response.data && response.data.user) {
+        const updatedData = response.data.user;
+
+        dispatch(authLogin(updatedData));
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
   if (!userData) {
+    fetchUserData();
+
     const storedUserData = localStorage.getItem("userData");
+
     if (storedUserData) {
       dispatch(authLogin(JSON.parse(storedUserData)));
     }
@@ -50,11 +68,15 @@ const UserProfile = () => {
             <p className="text-gray-600 dark:text-white">Total Balance</p>
           </div>
           <div className="stat bg-gray-100 p-4 rounded text-center dark:bg-zinc-500/40">
-            <p className="text-2xl font-bold dark:text-black">₹25,000</p>
+            <p className="text-2xl font-bold dark:text-black">
+              {userData.returns}
+            </p>
             <p className="text-gray-600 dark:text-white">Profit/Loss</p>
           </div>
           <div className="stat bg-gray-100 p-4 rounded text-center dark:bg-zinc-500/40">
-            <p className="text-2xl font-bold dark:text-black">56</p>
+            <p className="text-2xl font-bold dark:text-black">
+              {userData.trades}
+            </p>
             <p className="text-gray-600 dark:text-white">Total Trades</p>
           </div>
           <div className="stat bg-gray-100 p-4 rounded text-center dark:bg-zinc-500/40">

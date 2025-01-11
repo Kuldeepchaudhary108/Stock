@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { apiCLient, GET_HOLDING } from "../services/api";
+import { apiCLient, GET_HOLDING, GET_USER_ROUTE } from "../../services/api";
+import { useDispatch } from "react-redux";
+import { login as authLogin } from "../../store/authSlice.js";
 
 const Holdings = () => {
   const [holdings, setHoldings] = useState([]);
@@ -9,6 +11,8 @@ const Holdings = () => {
     totalReturns: 0,
     dayReturns: 0,
   });
+  // const userData = useSelector((state) => state.auth.userData);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchHoldings = async () => {
@@ -31,7 +35,6 @@ const Holdings = () => {
           0
         );
 
-        // Set summary state
         setSummary({
           current,
           invested,
@@ -41,6 +44,17 @@ const Holdings = () => {
 
         // Set holdings state
         setHoldings(userHoldings);
+
+        const response = await apiCLient.get(GET_USER_ROUTE);
+
+        if (response && response.data && response.data.user) {
+          const updatedData = response.data.user;
+          updatedData.trades = userHoldings.length;
+          updatedData.returns = totalReturns;
+
+          console.log("Fetched user data:", updatedData);
+          dispatch(authLogin(updatedData));
+        }
       } catch (error) {
         console.error("Error fetching holdings:", error);
       }
