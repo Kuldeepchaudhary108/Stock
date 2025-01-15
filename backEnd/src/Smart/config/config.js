@@ -1,8 +1,18 @@
-import rewardTokenAbi from "../contracts/abis/RewardToken.json" assert { type: "json" };
-import learningManagerAbi from "../contracts/abis/LearningManager.json" assert { type: "json" };
-import tradingManagerAbi from "../contracts/abis/TradingManager.json" assert { type: "json" };
-import loanManagerAbi from "../contracts/abis/LoanManager.json " assert { type: "json" };
-import earningManagerAbi from "../contracts/abis/EarningManager.json" assert { type: "json" };
+const rewardTokenAbi = await import("../contracts/abis/RewardToken.json").then(
+  (module) => module.default
+);
+const learningManagerAbi = await import(
+  "../contracts/abis/LearningManager.json"
+).then((module) => module.default);
+const tradingManagerAbi = await import(
+  "../contracts/abis/TradingManager.json"
+).then((module) => module.default);
+const loanManagerAbi = await import("../contracts/abis/LoanManager.json").then(
+  (module) => module.default
+);
+const earningManagerAbi = await import(
+  "../contracts/abis/EarningManager.json"
+).then((module) => module.default);
 
 const config = {
   contracts: {
