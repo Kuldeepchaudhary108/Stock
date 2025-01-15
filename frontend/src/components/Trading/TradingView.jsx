@@ -7,10 +7,9 @@ function TradingViewWidget({ onSymbolExport }) {
   const tickerSymbol = useSelector((state) => state.auth.symbol);
   const container = useRef();
 
-  const [symbol, setSymbolState] = useState(tickerSymbol || "NASDAQ:AAPL");
+  const [symbol, setSymbolState] = useState(tickerSymbol || "AAPL");
 
   useEffect(() => {
-    // Sync local state with Redux state when Redux changes
     if (tickerSymbol !== symbol) {
       setSymbolState(tickerSymbol);
     }

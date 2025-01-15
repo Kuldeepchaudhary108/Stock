@@ -42,17 +42,16 @@ const Holdings = () => {
           dayReturns,
         });
 
-        // Set holdings state
         setHoldings(userHoldings);
 
         const response = await apiCLient.get(GET_USER_ROUTE);
-
+        // console.log(response);
         if (response && response.data && response.data.user) {
           const updatedData = response.data.user;
           updatedData.trades = userHoldings.length;
           updatedData.returns = totalReturns;
 
-          console.log("Fetched user data:", updatedData);
+          // console.log("Fetched user data:", updatedData);
           dispatch(authLogin(updatedData));
         }
       } catch (error) {

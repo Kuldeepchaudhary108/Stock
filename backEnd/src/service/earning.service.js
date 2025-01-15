@@ -15,16 +15,13 @@ const earningManagerContract = new ethers.Contract(
 
 export const rewardUserForTask = async (userAddress, rewardAmount) => {
   try {
-    // const rewardInWei = ethers.parseUnits(rewardAmount.toString(), 18);
-    // const tx = await earningManagerContract.completeTask(
-    //   userAddress,
-    //   rewardInWei
-    // );
-    // await tx.wait();
-    // return tx.hash;
-    if (userAddress && rewardAmount) {
-      console.log("yea all things are working ");
-    }
+    const rewardInWei = ethers.parseUnits(rewardAmount.toString(), 18);
+    const tx = await earningManagerContract.completeTask(
+      userAddress,
+      rewardInWei
+    );
+    await tx.wait();
+    return tx.hash;
   } catch (error) {
     console.error("Error in rewardUserForTask:", error.message);
     throw new ApiError(404, "Failed to reward user for task.");
