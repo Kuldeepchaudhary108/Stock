@@ -1,8 +1,8 @@
-import rewardTokenAbi from "../contracts/abis/RewardToken.json" ;
-import learningManagerAbi from "../contracts/abis/LearningManager.json" ;
-import tradingManagerAbi from "../contracts/abis/TradingManager.json" ;
-import loanManagerAbi from "../contracts/abis/LoanManager.json ";
-import earningManagerAbi from "../contracts/abis/EarningManager.json";
+import rewardTokenAbi from "../contracts/abis/RewardToken.json" assert { type: "json" };
+import learningManagerAbi from "../contracts/abis/LearningManager.json" assert { type: "json" };
+import tradingManagerAbi from "../contracts/abis/TradingManager.json" assert { type: "json" };
+import loanManagerAbi from "../contracts/abis/LoanManager.json " assert { type: "json" };
+import earningManagerAbi from "../contracts/abis/EarningManager.json" assert { type: "json" };
 
 const config = {
   contracts: {
