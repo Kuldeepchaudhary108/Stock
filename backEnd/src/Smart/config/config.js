@@ -1,38 +1,8 @@
-import fs from "fs";
-import path from "path";
-
-const __dirname = path.resolve();
-
-const rewardTokenAbi = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "src/Smart/contracts/abis/RewardToken.json"),
-    "utf8"
-  )
-);
-const learningManagerAbi = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "src/Smart/contracts/abis/LearningManager.json"),
-    "utf8"
-  )
-);
-const tradingManagerAbi = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "src/Smart/contracts/abis/TradingManager.json"),
-    "utf8"
-  )
-);
-const loanManagerAbi = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "src/Smart/contracts/abis/LoanManager.json"),
-    "utf8"
-  )
-);
-const earningManagerAbi = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "src/Smart/contracts/abis/EarningManager.json"),
-    "utf8"
-  )
-);
+import rewardTokenAbi from "../contracts/abis/RewardToken.json" assert { type: "json" };
+import learningManagerAbi from "../contracts/abis/LearningManager.json" assert { type: "json" };
+import tradingManagerAbi from "../contracts/abis/TradingManager.json" assert { type: "json" };
+import loanManagerAbi from "../contracts/abis/LoanManager.json " assert { type: "json" };
+import earningManagerAbi from "../contracts/abis/EarningManager.json" assert { type: "json" };
 
 const config = {
   contracts: {
