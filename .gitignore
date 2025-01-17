@@ -17,7 +17,7 @@ backEnd/node_modules/
 
 
 frontend/.env
-backend/.env
+backEnd/.env
 
 # Editor directories and files
 .vscode/*
