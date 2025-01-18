@@ -99,7 +99,7 @@ const loginUser = asyncHandler(async (req, res) => {
     "-password -refreshToken"
   );
   console.log("user login succefully");
-  const options = { secure: true, httpOnly: true };
+  const options = { secure: true, httpOnly: true, sameSite: "none" };
   return res
     .status(200)
     .cookie("accessToken", accessToken, options)
