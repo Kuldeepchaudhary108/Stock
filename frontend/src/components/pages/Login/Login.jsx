@@ -19,10 +19,18 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await apiCLient.post(LOGIN_ROUTE, { email, password });
-      const userData = await apiCLient.get(GET_USER_ROUTE);
-      if (userData?.data?.user) {
-        disPatch(authLogin(userData.data.user));
-        navigate("/");
+      // console.log("res data ", res.data.user.user);
+      console.log("ohk");
+
+      if (res.status === 200) {
+        console.log("just testing 200");
+
+        const userData = res.data.user.user;
+        // const userData = await apiCLient.get(GET_USER_ROUTE);
+        if (userData) {
+          disPatch(authLogin(userData));
+          navigate("/");
+        }
       }
     } catch (error) {
       console.error("Login failed:", error);

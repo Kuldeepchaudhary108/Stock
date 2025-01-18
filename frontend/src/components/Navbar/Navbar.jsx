@@ -17,9 +17,9 @@ const Navbar = () => {
   };
 
   const handleLogout = async () => {
-    await apiCLient.post(LOGOUT_ROUTE);
     sessionStorage.clear();
     localStorage.clear();
+    await apiCLient.post(LOGOUT_ROUTE);
     console.log("Session storage cleared, user logged out");
     navigate("/");
   };
