@@ -61,7 +61,7 @@ const signup = asyncHandler(async (req, res) => {
     "-password -refreshToken"
   );
 
-  const options = { secure: true };
+  const options = { secure: true, httpOnly: true, sameSite: "none" };
 
   return res
     .status(201)
@@ -128,10 +128,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     { new: true }
   );
 
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
+  const options = { secure: true, httpOnly: true, sameSite: "none" };
 
   return res
     .status(200)
@@ -272,10 +269,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
       throw new ApiError(401, "Refresh token is expired or used");
     }
 
-    const options = {
-      httpOnly: true,
-      secure: true,
-    };
+    const options = { secure: true, httpOnly: true, sameSite: "none" };
+
 
     const { accessToken, newRefreshToken } =
       await gernateAccessAndRefreshTokens(user._id);

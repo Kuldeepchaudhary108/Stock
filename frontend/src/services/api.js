@@ -24,7 +24,7 @@ export const COMP_BLOCK = `${BLOCK_ROUTE}/complete-task`;
 export const BALA_BLOCK = `${BLOCK_ROUTE}/balance`;
 // export const UPDATE_STOCK_ROUTE=`${TRADE_ROUTE}  `
 
-export const apiCLient = axios.create({
+export const apiClient = axios.create({
   baseURL: Host,
   withCredentials: true,
   headers: {
