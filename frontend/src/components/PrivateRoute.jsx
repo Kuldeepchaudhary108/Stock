@@ -1,10 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { getCookie } from "../utils/GetCookie";
 
 const PrivateRoute = ({ children }) => {
-    const accessToken = getCookie("accessToken")
+  const storedUserData = localStorage.getItem("userData");
 
-    return accessToken ? children : <Navigate to="/login" />;
+  return storedUserData ? children : <Navigate to="/login" />;
 };
 
-export default PrivateRoute; 
+export default PrivateRoute;

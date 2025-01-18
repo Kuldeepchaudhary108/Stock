@@ -15,7 +15,7 @@ const TradingHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isLoggedIn = useSelector((state) => state.auth.status);
+  let isLoggedIn = false;
   const features = [
     {
       icon: <FaChartBar size={40} className="text-teal-600 mx-auto" />,
@@ -60,6 +60,7 @@ const TradingHome = () => {
       const storedUserData = localStorage.getItem("userData");
       if (storedUserData) {
         dispatch(authLogin(JSON.parse(storedUserData)));
+        isLoggedIn = true;
       }
     }
   }, [isLoggedIn, dispatch]);

@@ -19,9 +19,9 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await apiCLient.post(LOGIN_ROUTE, { email, password });
-      const userData = await apiClient.get(GET_USER_ROUTE);
+      const userData = await apiCLient.get(GET_USER_ROUTE);
       if (userData?.data?.user) {
-        dispatch(authLogin(userData.data.user));
+        disPatch(authLogin(userData.data.user));
         navigate("/");
       }
     } catch (error) {
