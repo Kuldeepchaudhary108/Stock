@@ -6,7 +6,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow requests from your frontend origin
+    origin: [
+      "http://localhost:5173",
+      "https://mercat-ten.vercel.app",
+      "https://papertrading-2u5c.onrender.com",
+    ], 
     credentials: true,
   })
 );
