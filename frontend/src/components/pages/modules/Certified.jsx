@@ -73,7 +73,7 @@ const VarsityCertified = () => {
         />
         <div>
           <h1 className="text-3xl sm:text-4xl text-center dark:text-white">
-            Why Varsity Certified?
+            Why Mercat Certified?
           </h1>
           <p className="text-base sm:text-lg mt-4 text-gray-600 dark:text-gray-300">
             Finance is a crucial subject we cannot afford to neglect. We all
@@ -96,7 +96,7 @@ const VarsityCertified = () => {
         </div>
         <div className="w-full sm:w-1/2">
           <h1 className="text-3xl sm:text-4xl font-semibold dark:text-white">
-            Varsity Certified
+            Mercat Certified
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-base sm:text-xl mt-6 sm:mt-8">
             An online certification program designed to test your market

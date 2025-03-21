@@ -9,7 +9,6 @@ const videoModules = [
     description:
       "This video module on Introduction to Stock markets will familiarize you with the fundamentals of the stock market, how to get started, and the various intermediaries in the ecosystem.",
     image: "/elements/stock4.png",
-    color: "bg-green-500",
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const videoModules = [
     description:
       "Technical Analysis (TA) plays an important role in developing a point of view. Like every other research, TA also has its own attributes. In this module, we discover all those complex attributes of TA, study various patterns, indicators, and theories that will help you as a trader to find upright trading opportunities in the market.",
     image: "/elements/stock6.jpeg",
-    color: "bg-blue-500",
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ const videoModules = [
     description:
       "Fundamental Analysis (FA) is a holistic approach to study a business. If you are an investor that is looking for long-term investments, this module will help you understand Equity research, help you in reading the financial statements, annual reports, calculation of Financial Ratios, and more.",
     image: "/elements/stock5.jpeg",
-    color: "bg-yellow-500",
   },
   {
     id: 4,
@@ -37,7 +34,6 @@ const videoModules = [
       "Fundamental Analysis (FA) is a holistic approach to study a business. If you are an investor that is looking for long-term investments, this module will help you understand Equity research, help you in reading the financial statements, annual reports, calculation of Financial Ratios, and more.",
     image:
       "https://zerodha.com/varsity/wp-content/uploads/2015/11/Module-3.png",
-    color: "bg-yellow-500",
   },
   {
     id: 5,
@@ -47,7 +43,6 @@ const videoModules = [
       "This video module on Introduction to Stock markets will familiarize you with the fundamentals of the stock market, how to get started, and the various intermediaries in the ecosystem.",
     image:
       "https://zerodha.com/varsity/wp-content/uploads/2015/11/Module-1.png",
-    color: "bg-green-500",
   },
 ];
 
@@ -71,7 +66,7 @@ const VideoModuleCard = ({
     >
       <div className="flex items-center mb-4">
         <h1 className="text-3xl font-bold dark:text-white">{id}</h1>
-        <div className={`w-full h-1 ml-2 ${color}`}></div>
+        <div className={`w-full h-1 ml-2 bg-zinc-900 dark:bg-white`}></div>
       </div>
       <div className="mb-4">
         <img
@@ -87,10 +82,10 @@ const VideoModuleCard = ({
         {chapters}
       </p>
       <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
-      <div className="flex gap-4 text-blue-500 dark:text-blue-400">
-        <button className="hover:underline">View module</button>
-        <button className="hover:underline">Watch videos</button>
-        <button className="hover:underline">हिंदी</button>
+      <div className="flex gap-4 font-semibold text-zinc-800 dark:text-blue-400">
+        <button className="hover:underline hover:text-lg ">View module</button>
+        <button className="hover:underline hover:text-lg">Watch videos</button>
+        <button className="hover:underline hover:text-lg">हिंदी</button>
       </div>
     </div>
   );

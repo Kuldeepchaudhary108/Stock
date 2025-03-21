@@ -7,64 +7,60 @@ const modules = [
     title: "Introduction to Stock Markets",
     chapters: "15 chapters",
     description:
-      "The stock market can play a pivotal role in ensuring your financial security. In this module, you will learn how to get started in the stock market, its fundamentals, how it functions, and the various intermediaries that appertain it.",
-    color: "bg-green-500",
+      "Learn the basics of stock markets, how they function, and key intermediaries.",
   },
   {
     id: 2,
     title: "Technical Analysis",
     chapters: "22 chapters",
     description:
-      "Technical Analysis (TA) helps in developing a point of view. In this module, we will discover the complex attributes, various patterns, indicators, and theories of TA that will help you as a trader to find upright trading opportunities in the market.",
-    color: "bg-blue-500",
+      "Explore patterns, indicators, and theories to make informed trading decisions.",
   },
   {
     id: 3,
     title: "Fundamental Analysis",
     chapters: "16 chapters",
     description:
-      "The Fundamental Analysis (FA) module explores Equity research by reading financial statements and annual reports, calculating and analyzing Financial Ratios, and evaluating the intrinsic value of a stock to find long-term investing opportunities.",
-    color: "bg-yellow-500",
+      "Analyze financial statements and evaluate the intrinsic value of stocks.",
   },
   {
     id: 4,
     title: "Futures Trading",
     chapters: "13 chapters",
     description:
-      "Futures Trading is a segment of the derivatives market. This module covers the various intricacies involved in undergoing a futures trade, including margins, leverages, pricing, etc. It also discusses the use of derivatives for hedging purposes.",
-    color: "bg-pink-500",
+      "Learn about futures trading concepts, including margins, leverage, and hedging.",
   },
   {
     id: 5,
     title: "Options Theory for Professional Trading",
     chapters: "25 chapters",
     description:
-      "Options Trading is a segment of the derivatives segment. Options contracts grant the buyer the right to buy/sell the underlying without a compulsory obligation. This module helps understand options theory for professional trading.",
-    color: "bg-orange-500",
+      "Understand options contracts, rights, and obligations for professional trading.",
   },
   {
     id: 6,
     title: "Option Strategies",
     chapters: "14 chapters",
     description:
-      "A trader can use options strategies to monetize their views on volatility, sentiment, and timing. This module explores various options strategies that can be built with a multi-dimensional approach involving Option Greeks, Risk-Return, etc.",
-    color: "bg-purple-500",
+      "Explore option strategies and apply risk-return analysis using Option Greeks.",
   },
 ];
 
-const ModuleCard = ({ id, title, chapters, description, color }) => {
+const ModuleCard = ({ id, title, chapters, description }) => {
   const navigate = useNavigate();
   const handleTextModule = () => {
     navigate("/module-text");
   };
+
   return (
     <div
-      className="p-8 border rounded-lg shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white dark:bg-zinc-900 dark:border-gray-700"
+      className="p-6 rounded-xl shadow-md border border-gray-300 hover:shadow-lg transition-shadow bg-white dark:bg-zinc-800 dark:border-zinc-600"
       onClick={handleTextModule}
     >
-      <div className="flex items-center mb-4">
-        <h1 className="text-4xl font-bold dark:text-white">{id}</h1>
-        <div className={`w-16 h-1 ml-3 ${color}`}></div>
+      <div className="flex items-center justify-center mb-4">
+        <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
+          {id}
+        </h1>
       </div>
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-3 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
         {title}
@@ -76,13 +72,13 @@ const ModuleCard = ({ id, title, chapters, description, color }) => {
         {description}
       </p>
       <div className="flex gap-6 text-blue-600 dark:text-blue-400">
-        <button className="text-sm font-medium hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-200">
+        <button className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600">
           View Module
         </button>
-        <button className="text-sm font-medium hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-200">
+        <button className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600">
           Watch Videos
         </button>
-        <button className="text-sm font-medium hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-200">
+        <button className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600">
           हिंदी
         </button>
       </div>

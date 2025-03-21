@@ -24,12 +24,12 @@ const VideoCard = ({ title, description, thumbnail, link }) => {
 
 const VideoGrid = () => {
   const videos = [
-    {
-      title: "Impact cost in futures trading",
-      description: "Impact cost and how it can ruin a trade.",
-      thumbnail: "https://img.youtube.com/vi/m2HiZG0Fhts/mqdefault.jpg",
-      link: "/elements/stock1.jpeg",
-    },
+    // {
+    //   title: "Impact cost in futures trading",
+    //   description: "Impact cost and how it can ruin a trade.",
+    //   thumbnail: "https://img.youtube.com/vi/m2HiZG0Fhts/mqdefault.jpg",
+    //   link: "/elements/stock1.jpeg",
+    // },
     {
       title: "5 types of share capital",
       description: "Learn the types of share capital.",

@@ -14,7 +14,7 @@ import {
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const cards = [
+  const cards = [ 
     {
       id: 1,
       title: "Modules",
@@ -98,6 +98,7 @@ const HomePage = () => {
           </button>
         </div>
       </section>
+      {/* second section */}
       <div className="flex flex-col lg:flex-row mt-7 p-4 lg:p-10">
         <div className="lg:w-1/2 p-3">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold m-2">
@@ -121,6 +122,7 @@ const HomePage = () => {
           />
         </div>
       </div>
+      {/* third section */}
       <section className=" py-16 px-8 md:flex gap-36  dark:bg-zinc-700/80">
         <div className=" w-full md:w-[30%]">
           <img className="w-full" src="/elements/stock10.jpeg" alt="error" />
@@ -163,7 +165,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
+      {/* forth Section  */}
       <section className="bg-teal-50/50 py-16 px-8 dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8">
@@ -185,6 +187,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      {/* fifth section */}
       <div className="mt-12 w-full bg-green-100 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center px-4">
           <div>
@@ -209,6 +212,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      {/* six section */}
       <section className="py-16 bg-white text-black dark:bg-zinc-800/80 dark:text-white">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           How It Works?
@@ -252,6 +256,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      {/* 7 section  */}
       <div className="p-4 lg:p-8 mt-10">
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
           Explore MerCet
@@ -267,9 +272,11 @@ const HomePage = () => {
           ))}
         </div>
       </div>
+      {/* 8 section  */}
       <div className="cursor-pointer">
         <VideoGrid />
       </div>
+      {/* 9 section  */}
       <div className="flex flex-col lg:flex-row justify-between items-center m-10 dark:bg-zinc-600 rounded-lg p-7">
         <div className="lg:w-1/2 flex justify-center items-center">
           <img
@@ -280,7 +287,7 @@ const HomePage = () => {
         </div>
         <div className="lg:w-1/2">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-            Varsity Certified
+            MerCat Certified
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-xl mt-8">
             An online certification program designed to test your market
@@ -292,6 +299,7 @@ const HomePage = () => {
           </button>
         </div>
       </div>
+      {/* 10 section  */}
       <hr className="m-8 border-gray-300 dark:border-gray-700" />
       <div className="bg-white dark:bg-zinc-900 py-16 px-8">
         <div className="flex flex-col md:flex-row gap-8 justify-center dark:bg-zinc-800 rounded-lg p-3">
@@ -329,6 +337,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      {/* 11 section  */}
       <div className="w-full md:w-[75vw] h-full mt-28 mb-28 mx-auto shadow-md text-center border border-gray-300 rounded-lg bg-white dark:bg-zinc-700 dark:text-black dark:shadow-lg dark:border-none">
         <h3 className="text-4xl font-semibold py-6 dark:text-gray-200">
           Recent Comments
@@ -364,6 +373,7 @@ const HomePage = () => {
           ))}
         </div>
       </div>
+      {/* 12 section  */}
       <div className="flex flex-col rounded-xl lg:flex-row justify-around m-10 w-full p-10 lg:w-[75vw] mx-auto dark:bg-zinc-700 ">
         <div className="mb-4 lg:mb-0">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">
