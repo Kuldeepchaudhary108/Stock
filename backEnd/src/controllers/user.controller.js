@@ -271,7 +271,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
     const options = { secure: true, httpOnly: true, sameSite: "none" };
 
-
     const { accessToken, newRefreshToken } =
       await gernateAccessAndRefreshTokens(user._id);
 
