@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // export const Host = "https://papertrading-2u5c.onrender.com";
-export const Host = "http://localhost:3000";
+export const Host = "http://localhost:5000";
 export const USER_ROUTE = "/api/v1/users";
 // export const PORTFOLIO_ROUTE=""
 export const TRADE_ROUTE = "/api/v1/stock";

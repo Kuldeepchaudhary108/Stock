@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaChartBar,
@@ -14,8 +14,7 @@ import { login as authLogin } from "../../store/authSlice.js";
 const TradingHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  let isLoggedIn = false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const features = [
     {
       icon: <FaChartBar size={40} className="text-teal-600 mx-auto" />,
@@ -60,7 +59,7 @@ const TradingHome = () => {
       const storedUserData = localStorage.getItem("userData");
       if (storedUserData) {
         dispatch(authLogin(JSON.parse(storedUserData)));
-        isLoggedIn = true;
+        setIsLoggedIn(true);
       }
     }
   }, [isLoggedIn, dispatch]);
@@ -103,21 +102,25 @@ const TradingHome = () => {
             </p>
           </div>
 
-          <div className="p-6 gap-5 flex w-full sm:w-80">
-            <button
-              onClick={() => handleLogin()}
-              className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => handleSignup()}
-              className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
-            >
-              Signup
-            </button>
-            <p className="text-center text-sm text-gray-500 mt-2">It's Free</p>
-          </div>
+          {!isLoggedIn && (
+            <div className="p-6 gap-5 flex w-full sm:w-80">
+              <button
+                onClick={() => handleLogin()}
+                className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => handleSignup()}
+                className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700"
+              >
+                Signup
+              </button>
+              <p className="text-center text-sm text-gray-500 mt-2">
+                It's Free
+              </p>
+            </div>
+          )}
 
           {/* Download Section */}
           <div className="mt-10">

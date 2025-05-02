@@ -5,12 +5,14 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../contexts/theme";
 import { apiCLient, LOGOUT_ROUTE } from "../../services/api";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);  
   const navigate = useNavigate();
   const { themeMode, darkTheme, lightTheme } = useContext(ThemeContext);
+  const isLoggedIn = useSelector((state) => state.auth.status);
 
   const handleThemeToggle = () => {
     themeMode === "light" ? darkTheme() : lightTheme();

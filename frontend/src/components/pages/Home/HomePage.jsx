@@ -1,5 +1,4 @@
-// pages/HomePage.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, VideoGrid } from "../index.js";
 import { useNavigate } from "react-router";
 import {
@@ -11,10 +10,16 @@ import {
   FaSyncAlt,
   // FaChartLine,
 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const cards = [ 
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.status);
+
+  useEffect(() => {}, [isLoggedIn, dispatch]);
+
+  const cards = [
     {
       id: 1,
       title: "Modules",

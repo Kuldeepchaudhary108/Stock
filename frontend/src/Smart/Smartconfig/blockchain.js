@@ -13,7 +13,6 @@ export const connectWallet = async () => {
   const provider = new ethers.BrowserProvider(window.ethereum);
   const signer = await provider.getSigner();
   const userAddress = await signer.getAddress();
-
   console.log("Wallet connected:", userAddress);
   return { provider, signer, userAddress };
 };

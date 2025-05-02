@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  apiCLient,
-  GET_USER_ROUTE,
-  LOGIN_ROUTE,
-} from "../../../services/api.js";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { apiCLient, LOGIN_ROUTE } from "../../../services/api.js";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "../../../store/authSlice.js";
 
 const Login = () => {
   const disPatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,11 +17,7 @@ const Login = () => {
     try {
       const res = await apiCLient.post(LOGIN_ROUTE, { email, password });
       // console.log("res data ", res.data.user.user);
-      console.log("ohk");
-
       if (res.status === 200) {
-        console.log("just testing 200");
-
         const userData = res.data.user.user;
         // const userData = await apiCLient.get(GET_USER_ROUTE);
         if (userData) {
