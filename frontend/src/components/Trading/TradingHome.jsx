@@ -121,6 +121,14 @@ const TradingHome = () => {
               </p>
             </div>
           )}
+          {isLoggedIn && (
+            <div>
+              {" "}
+              <button className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700">
+                Let Trades
+              </button>
+            </div>
+          )}
 
           {/* Download Section */}
           <div className="mt-10">

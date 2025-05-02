@@ -20,9 +20,14 @@ const Login = () => {
       if (res.status === 200) {
         const userData = res.data.user.user;
         // const userData = await apiCLient.get(GET_USER_ROUTE);
+        console.log(location.state.from);
+
         if (userData) {
           disPatch(authLogin(userData));
-          navigate("/");
+          if (location.state?.from) {
+            navigate(location.state.from);
+          }
+          // navigate("/");
         }
       }
     } catch (error) {
