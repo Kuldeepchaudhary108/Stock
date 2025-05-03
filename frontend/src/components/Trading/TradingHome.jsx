@@ -79,6 +79,9 @@ const TradingHome = () => {
       navigate("/signup");
     }
   };
+  const handleLetsTrade = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <div className="home-page text-center mt-10 dark:text-white">
@@ -124,7 +127,10 @@ const TradingHome = () => {
           {isLoggedIn && (
             <div>
               {" "}
-              <button className="w-full bg-blue-600 rounded-xl text-white hover:bg-blue-700">
+              <button
+                onClick={() => handleLetsTrade()}
+                className="w-fit p-2 h-10 bg-blue-600 rounded-xl text-white hover:bg-blue-700 hover:scale-105 transform duration-150"
+              >
                 Let Trades
               </button>
             </div>

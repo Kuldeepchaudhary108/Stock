@@ -12,7 +12,7 @@ import {
 const OrderPanel = () => {
   const [orderType, setOrderType] = useState("buy");
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(null);
   const [companyName, setCompanyName] = useState("");
   const [stockId, setStockId] = useState("");
   const [holdingId, setHoldingId] = useState("");
@@ -27,12 +27,14 @@ const OrderPanel = () => {
     try {
       const response = await apiCLient.get(GET_STOCK);
       const stock = response.data?.user;
+      console.log("the stock details are follows :", stock);
 
       const matchingStock = stock.find((stock) => stock.symbol === symbol);
 
       if (matchingStock) {
         setCompanyName(matchingStock.companyName || "Unknown Company");
         setStockId(matchingStock._id);
+        setPrice(matchingStock.currentPrice);
 
         const response = await apiCLient.get(GET_HOLDING);
         const holdingData = response.data?.user;
@@ -126,7 +128,7 @@ const OrderPanel = () => {
           type="text"
           value={companyName}
           disabled
-          className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border border-gray-300  rounded-lg mt-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
       <div className="mb-4">

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);  
+  const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { themeMode, darkTheme, lightTheme } = useContext(ThemeContext);
   const isLoggedIn = useSelector((state) => state.auth.status);
@@ -153,21 +153,21 @@ const Navbar = () => {
             <div className="absolute right-0 mt-2 bg-white dark:bg-gray-600 shadow-lg rounded-md w-32">
               <button
                 onClick={() => {
-                  handleLogout();
-                  setShowDropdown(false);
-                }}
-                className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-700 transition-all duration-300"
-              >
-                Log Out
-              </button>
-              <button
-                onClick={() => {
                   navigate("/user-profile");
                   setShowDropdown(false);
                 }}
-                className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-700 transition-all duration-300"
+                className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-300 transition-all duration-300"
               >
                 Profile
+              </button>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setShowDropdown(false);
+                }}
+                className="block w-full text-center text-xl px-4 py-2 rounded-lg hover:bg-zinc-300 transition-all duration-300"
+              >
+                Log Out
               </button>
             </div>
           )}
